@@ -1,26 +1,29 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { Logo } from "./Logo";
 import { Button } from "./ui/button";
-
-const primary = [
-  { to: "/", label: "Home" },
-  { to: "/services", label: "Services" },
-  { to: "/about", label: "About" },
-  { to: "/contact", label: "Contact" },
-] as const;
-
-const partners = [
-  { to: "/physicians", label: "For Physicians", desc: "Prescribers & clinics" },
-  { to: "/corporate", label: "Corporate Wellness", desc: "Teams & executives" },
-  { to: "/insights", label: "Insights", desc: "Editorial from our lab" },
-] as const;
+import { LangSwitcher } from "./LangSwitcher";
 
 export function Header() {
+  const { t } = useTranslation();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [partnersOpen, setPartnersOpen] = useState(false);
+
+  const primary = [
+    { to: "/", label: t("nav.home") },
+    { to: "/services", label: t("nav.services") },
+    { to: "/about", label: t("nav.about") },
+    { to: "/contact", label: t("nav.contact") },
+  ] as const;
+
+  const partners = [
+    { to: "/physicians", label: t("nav.physicians"), desc: t("nav.physiciansDesc") },
+    { to: "/corporate", label: t("nav.corporate"), desc: t("nav.corporateDesc") },
+    { to: "/insights", label: t("nav.insights"), desc: t("nav.insightsDesc") },
+  ] as const;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -71,7 +74,7 @@ export function Header() {
                     : "nav-gold-shimmer hover:opacity-80"
                 }`}
               >
-                Partners <ChevronDown className="h-3 w-3" />
+                {t("nav.partners")} <ChevronDown className="h-3 w-3" />
               </button>
               {partnersOpen && (
                 <div className="absolute right-0 top-full pt-3">
@@ -90,22 +93,25 @@ export function Header() {
                 </div>
               )}
             </div>
+            <LangSwitcher tone={scrolled ? "dark" : "light"} />
           </nav>
-
 
           <div className="hidden md:block">
             <Button asChild size="sm" className="rounded-full bg-[color:var(--brand-gold)] px-5 text-primary hover:bg-[color:var(--brand-gold)]/90">
-              <Link to="/contact">Book a Consultation</Link>
+              <Link to="/contact">{t("nav.bookConsultation")}</Link>
             </Button>
           </div>
 
-          <button
-            className="shrink-0 md:hidden"
-            onClick={() => setOpen((v) => !v)}
-            aria-label="Toggle menu"
-          >
-            {open ? <X className="h-6 w-6 text-primary" /> : <Menu className="h-6 w-6 text-primary" />}
-          </button>
+          <div className="flex items-center gap-2 md:hidden">
+            <LangSwitcher tone={scrolled ? "dark" : "light"} />
+            <button
+              className="shrink-0"
+              onClick={() => setOpen((v) => !v)}
+              aria-label="Toggle menu"
+            >
+              {open ? <X className="h-6 w-6 text-primary" /> : <Menu className="h-6 w-6 text-primary" />}
+            </button>
+          </div>
         </div>
 
         {open && (
@@ -124,7 +130,7 @@ export function Header() {
                 </Link>
               ))}
               <div className="my-2 h-px bg-border/60" />
-              <p className="px-3 pb-1 text-[10px] font-medium tracking-[0.24em] text-muted-foreground uppercase">Partners</p>
+              <p className="px-3 pb-1 text-[10px] font-medium tracking-[0.24em] text-muted-foreground uppercase">{t("nav.partners")}</p>
               {partners.map((p) => (
                 <Link
                   key={p.to}
@@ -136,7 +142,7 @@ export function Header() {
                 </Link>
               ))}
               <Button asChild className="mt-3 rounded-full bg-[color:var(--brand-gold)] text-primary hover:bg-[color:var(--brand-gold)]/90">
-                <Link to="/contact" onClick={() => setOpen(false)}>Book a Consultation</Link>
+                <Link to="/contact" onClick={() => setOpen(false)}>{t("nav.bookConsultation")}</Link>
               </Button>
             </div>
           </div>
@@ -146,7 +152,7 @@ export function Header() {
       {/* Mobile sticky CTA */}
       <div className="fixed inset-x-0 bottom-0 z-40 border-t border-border/60 bg-background/95 px-4 py-3 backdrop-blur-xl md:hidden">
         <Button asChild className="w-full rounded-full bg-[color:var(--brand-gold)] text-primary hover:bg-[color:var(--brand-gold)]/90">
-          <Link to="/contact">Book a Consultation</Link>
+          <Link to="/contact">{t("nav.bookConsultation")}</Link>
         </Button>
       </div>
     </>
