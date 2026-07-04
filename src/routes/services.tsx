@@ -79,9 +79,7 @@ function ServicesPage() {
             {services.map((s, i) => {
               const inner = (
                 <>
-                  <div className="grid h-12 w-12 place-items-center rounded-full bg-[color:var(--brand-gold)]/15">
-                    <s.icon className="h-6 w-6 text-[color:var(--brand-teal)]" strokeWidth={1.5} />
-                  </div>
+                  <CardTile tile={s.tile} alt={s.title} size="md" />
                   <h3 className="mt-5 font-serif text-xl text-primary">{s.title}</h3>
                   <p className="mt-2 flex-1 text-sm text-muted-foreground">{s.body}</p>
                   <div className="mt-6 h-px w-full bg-gradient-to-r from-[color:var(--brand-gold)]/50 to-transparent" />
@@ -92,7 +90,7 @@ function ServicesPage() {
                   )}
                 </>
               );
-              const classes = "group relative flex h-full flex-col rounded-2xl border border-border/60 bg-card p-8 transition-all hover:border-[color:var(--brand-gold)]/60 hover:shadow-luxe";
+              const classes = "card-luxe group relative flex h-full flex-col rounded-2xl p-8";
               return (
                 <Reveal key={s.title} delay={(i % 3) * 0.06}>
                   {s.slug ? (
