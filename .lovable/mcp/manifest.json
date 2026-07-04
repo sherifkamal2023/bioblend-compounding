@@ -1,0 +1,88 @@
+{
+  "version": 1,
+  "sdk_version": "0.20.0",
+  "path": "/mcp",
+  "auth": {
+    "type": "none"
+  },
+  "mcp": {
+    "server": {
+      "name": "bioblend-mcp",
+      "version": "0.1.0",
+      "title": "BioBlend Compounding Pharmacy"
+    },
+    "tools": [
+      {
+        "name": "list_services",
+        "title": "List compounding services",
+        "description": "List all BioBlend Compounding Pharmacy practice areas (hormone, dermatology, pediatric, pet-wellness, wellness-iv) with slug, title, and tagline.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_service",
+        "title": "Get service details",
+        "description": "Get full details for one BioBlend practice area, including intro, offerings, and process. Optionally return the Arabic translation.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "slug": {
+              "type": "string",
+              "enum": [
+                "hormone",
+                "dermatology",
+                "pediatric",
+                "pet-wellness",
+                "wellness-iv"
+              ],
+              "description": "Practice area slug, e.g. 'hormone'."
+            },
+            "language": {
+              "description": "Language: 'en' (default) or 'ar' for Arabic.",
+              "type": "string",
+              "enum": [
+                "en",
+                "ar"
+              ]
+            }
+          },
+          "required": [
+            "slug"
+          ]
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_contact_info",
+        "title": "Get pharmacy contact info",
+        "description": "Return BioBlend Compounding Pharmacy contact details: phone, email, city, and website.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}
