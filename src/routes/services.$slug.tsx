@@ -3,10 +3,10 @@ import { ArrowLeft, ArrowRight, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Reveal } from "@/components/Reveal";
-import { practiceAreas, findPracticeArea } from "@/lib/practice-areas";
+import { practiceAreas, findPracticeArea, type PracticeArea } from "@/lib/practice-areas";
 
 export const Route = createFileRoute("/services/$slug")({
-  loader: ({ params }) => {
+  loader: ({ params }): { area: PracticeArea } => {
     const area = findPracticeArea(params.slug);
     if (!area) throw notFound();
     return { area };
