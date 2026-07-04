@@ -2,9 +2,11 @@ import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import "@/lib/i18n";
 import { Logo } from "./Logo";
 import { Button } from "./ui/button";
 import { LangSwitcher } from "./LangSwitcher";
+
 
 export function Header() {
   const { t } = useTranslation();
