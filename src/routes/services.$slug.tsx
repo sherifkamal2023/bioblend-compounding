@@ -78,7 +78,7 @@ function PracticeAreaPage() {
           <div className="mt-16 grid gap-6 md:grid-cols-2">
             {area.offerings.map((o, i) => (
               <Reveal key={o.title} delay={i * 0.05}>
-                <div className="rounded-2xl border border-border/60 bg-card p-8 shadow-soft transition-all hover:border-[color:var(--brand-gold)]/60 hover:shadow-luxe">
+                <div className="card-luxe rounded-2xl p-8">
                   <CheckCircle2 className="h-6 w-6 text-[color:var(--brand-gold)]" strokeWidth={1.4} />
                   <h3 className="mt-4 font-serif text-2xl text-primary">{o.title}</h3>
                   <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{o.body}</p>
