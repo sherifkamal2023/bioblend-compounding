@@ -13,6 +13,7 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
+import { LaylaHost } from "../components/LaylaHost";
 import { Toaster } from "../components/ui/sonner";
 import { initI18n, applyLangDir } from "../lib/i18n";
 
@@ -183,6 +184,7 @@ function RootComponent() {
           <Outlet />
         </main>
         <Footer />
+        <LaylaHost />
         <Toaster />
       </div>
     </QueryClientProvider>
