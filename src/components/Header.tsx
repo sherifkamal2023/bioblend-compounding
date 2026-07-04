@@ -38,9 +38,9 @@ export function Header() {
             : "bg-background/70 backdrop-blur-md md:bg-transparent"
         }`}
       >
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 md:px-6 md:py-4 lg:px-10">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-2 md:px-6 md:py-3 lg:px-10">
           <Link to="/" aria-label="BioBlend home" className="shrink-0">
-            <Logo />
+            <Logo size="lg" />
           </Link>
 
           <nav className="hidden items-center gap-8 md:flex">
@@ -48,8 +48,12 @@ export function Header() {
               <Link
                 key={n.to}
                 to={n.to}
-                className="text-sm text-foreground/75 transition-colors hover:text-primary"
-                activeProps={{ className: "text-primary font-medium" }}
+                className={`text-sm font-semibold tracking-wide transition-colors ${
+                  scrolled
+                    ? "text-foreground/80 hover:text-primary"
+                    : "nav-gold-shimmer hover:opacity-80"
+                }`}
+                activeProps={{ className: "font-bold" }}
                 activeOptions={{ exact: n.to === "/" }}
               >
                 {n.label}
@@ -60,7 +64,13 @@ export function Header() {
               onMouseEnter={() => setPartnersOpen(true)}
               onMouseLeave={() => setPartnersOpen(false)}
             >
-              <button className="inline-flex items-center gap-1 text-sm text-foreground/75 transition-colors hover:text-primary">
+              <button
+                className={`inline-flex items-center gap-1 text-sm font-semibold tracking-wide transition-colors ${
+                  scrolled
+                    ? "text-foreground/80 hover:text-primary"
+                    : "nav-gold-shimmer hover:opacity-80"
+                }`}
+              >
                 Partners <ChevronDown className="h-3 w-3" />
               </button>
               {partnersOpen && (
@@ -81,6 +91,7 @@ export function Header() {
               )}
             </div>
           </nav>
+
 
           <div className="hidden md:block">
             <Button asChild size="sm" className="rounded-full bg-[color:var(--brand-gold)] px-5 text-primary hover:bg-[color:var(--brand-gold)]/90">
