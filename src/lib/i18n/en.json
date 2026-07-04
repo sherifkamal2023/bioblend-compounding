@@ -1,0 +1,28 @@
+{
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "about": "About",
+    "contact": "Contact",
+    "partners": "Partners",
+    "physicians": "For Physicians",
+    "physiciansDesc": "Prescribers & clinics",
+    "corporate": "Corporate Wellness",
+    "corporateDesc": "Teams & executives",
+    "insights": "Insights",
+    "insightsDesc": "Editorial from our lab",
+    "bookConsultation": "Book a Consultation",
+    "language": "Language"
+  },
+  "hero": {
+    "eyebrow": "Compounding Pharmacy · Dubai",
+    "titleLine1": "Personalized medicine,",
+    "titleAccent": "precision wellness.",
+    "description": "BioBlend crafts custom-compounded solutions designed around your biology — from bio-identical hormones to pediatric formulations and everything in between.",
+    "ctaPrimary": "Book a Consultation",
+    "ctaSecondary": "Explore Treatments",
+    "licensed": "DHA licensed",
+    "promise": "\"Your Health. Our Blend.\"",
+    "promiseLabel": "The BioBlend promise"
+  }
+}
