@@ -3,6 +3,7 @@ import { ArrowUpRight, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Reveal } from "@/components/Reveal";
+import { tiles, type TileKey } from "@/lib/tiles";
 
 export const Route = createFileRoute("/insights")({
   head: () => ({
@@ -16,8 +17,9 @@ export const Route = createFileRoute("/insights")({
   component: InsightsPage,
 });
 
-const articles = [
+const articles: { tile: TileKey; category: string; title: string; excerpt: string; readTime: string; date: string }[] = [
   {
+    tile: "hormone",
     category: "Hormone Lab",
     title: "Why bio-identical progesterone belongs in your HRT conversation",
     excerpt: "The 20-year misread of the Women's Health Initiative — and what compounded progesterone actually does for perimenopausal patients.",
@@ -25,6 +27,7 @@ const articles = [
     date: "Coming soon",
   },
   {
+    tile: "dermatology",
     category: "Dermatology",
     title: "Tretinoin tolerance: a 12-week compounding protocol",
     excerpt: "A stepped approach to prescription retinoids in Middle Eastern skin types — pharmacist notes on base selection and buffering.",
@@ -32,6 +35,7 @@ const articles = [
     date: "Coming soon",
   },
   {
+    tile: "pediatric",
     category: "Pediatric",
     title: "Flavor systems that actually work for pediatric suspensions",
     excerpt: "Why bubblegum beats cherry, and how we work around allergen exclusions without sacrificing palatability.",
@@ -39,6 +43,7 @@ const articles = [
     date: "Coming soon",
   },
   {
+    tile: "longevity",
     category: "Longevity",
     title: "NAD+ IVs: what the evidence supports and what it doesn't",
     excerpt: "A pharmacist's honest read on the current NAD+ literature — dose, delivery, and who actually benefits.",
@@ -46,6 +51,7 @@ const articles = [
     date: "Coming soon",
   },
   {
+    tile: "petWellness",
     category: "Household Wellness",
     title: "Compounding for pets in a human pharmacy — a case for household-level care",
     excerpt: "How treating a diabetic cat safely intersects with the immunocompromised human in the same home.",
@@ -53,6 +59,7 @@ const articles = [
     date: "Coming soon",
   },
   {
+    tile: "sterile",
     category: "Practice",
     title: "USP <797> in a compounding lab, in plain language",
     excerpt: "What sterile compounding actually means, and why it should shape which pharmacy your physician trusts.",
