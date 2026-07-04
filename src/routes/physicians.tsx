@@ -18,11 +18,11 @@ export const Route = createFileRoute("/physicians")({
   component: PhysiciansPage,
 });
 
-const pillars = [
-  { icon: Beaker, title: "Bespoke formulary", body: "Micro-doses, delivery-form conversions, allergen-free bases, taste-masking — we co-design with you." },
-  { icon: ShieldCheck, title: "DHA-licensed & audited", body: "USP <795> non-sterile and USP <797> sterile compliance. Full batch documentation on request." },
-  { icon: Phone, title: "Direct pharmacist line", body: "A named pharmacist for your practice — no call centre. WhatsApp, phone, email — response inside the hour." },
-  { icon: FileText, title: "Digital Rx workflow", body: "Send prescriptions by secure link. Refill tracking and adherence notes flow back to your patient chart." },
+const pillars: { tile: TileKey; title: string; body: string }[] = [
+  { tile: "nutraceutical", title: "Bespoke formulary", body: "Micro-doses, delivery-form conversions, allergen-free bases, taste-masking — we co-design with you." },
+  { tile: "sterile", title: "DHA-licensed & audited", body: "USP <795> non-sterile and USP <797> sterile compliance. Full batch documentation on request." },
+  { tile: "partnership", title: "Direct pharmacist line", body: "A named pharmacist for your practice — no call centre. WhatsApp, phone, email — response inside the hour." },
+  { tile: "hormone", title: "Digital Rx workflow", body: "Send prescriptions by secure link. Refill tracking and adherence notes flow back to your patient chart." },
 ];
 
 const workflow = [
