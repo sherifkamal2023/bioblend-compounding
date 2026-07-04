@@ -35,14 +35,14 @@ function CorporatePage() {
   return (
     <>
       <section className="relative overflow-hidden bg-secondary/60 pt-36 pb-20">
-        <div className="mx-auto max-w-5xl px-6 lg:px-10">
+        <div className="mx-auto grid max-w-6xl gap-12 px-6 lg:grid-cols-[1.1fr_1fr] lg:items-center lg:px-10">
           <Reveal>
             <p className="eyebrow">Corporate Wellness</p>
-            <h1 className="mt-6 font-serif text-5xl leading-[1.02] text-primary md:text-7xl">
+            <h1 className="mt-6 font-serif text-5xl leading-[1.02] text-primary md:text-6xl">
               Precision wellness for <em className="italic text-[color:var(--brand-gold)]">teams that perform</em>.
             </h1>
             <div className="mt-6 gold-rule" />
-            <p className="mt-8 max-w-2xl text-lg text-muted-foreground">
+            <p className="mt-8 max-w-xl text-lg text-muted-foreground">
               BioBlend Corporate Wellness partners with clinics, hospitality groups, family offices, and executive teams
               across the UAE — bringing our compounding lab, pharmacists, and physician network to your workplace.
             </p>
@@ -55,8 +55,18 @@ function CorporatePage() {
               </Button>
             </div>
           </Reveal>
+          <Reveal delay={0.1}>
+            <div className="gold-frame overflow-hidden rounded-3xl">
+              <img
+                src={tiles.corporate}
+                alt="Executive team during a BioBlend onsite wellness consultation"
+                className="aspect-[4/5] w-full rounded-[calc(1.5rem-3px)] object-cover"
+              />
+            </div>
+          </Reveal>
         </div>
       </section>
+
 
       <section className="bg-background">
         <div className="mx-auto max-w-7xl px-6 py-24 lg:px-10">
