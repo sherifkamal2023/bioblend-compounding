@@ -1,7 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
-  FlaskConical,
-  Leaf,
   ShieldCheck,
   Sparkles,
   HeartPulse,
@@ -9,16 +7,23 @@ import {
   PawPrint,
   Droplet,
   ArrowRight,
+  ArrowUpRight,
   Phone,
   MapPin,
   Star,
+  CalendarCheck,
+  FileText,
+  Building2,
+  Stethoscope,
 } from "lucide-react";
+
 import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/SectionHeading";
 import heroLab from "@/assets/hero-lab.jpg";
 import productsFlatlay from "@/assets/products-flatlay.jpg";
 import pharmacistImg from "@/assets/pharmacist.jpg";
 import wellnessImg from "@/assets/wellness-portrait.jpg";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -34,23 +39,65 @@ export const Route = createFileRoute("/")({
   component: HomePage,
 });
 
-const pillars = [
+const quickActions = [
   {
-    icon: FlaskConical,
-    title: "Personalized Compounding",
-    body: "Every formulation is crafted for a single patient — dose, delivery, and every ingredient tailored to your biology.",
+    icon: CalendarCheck,
+    title: "Book a Consultation",
+    body: "Meet our pharmacists — 30-minute private review of your goals and prescriptions.",
+    to: "/contact",
+    cta: "Reserve time",
   },
   {
-    icon: Leaf,
-    title: "Premium Ingredients",
-    body: "Pharmaceutical-grade raw materials, ethically sourced and independently tested for purity and potency.",
+    icon: FileText,
+    title: "Transfer a Prescription",
+    body: "Move an active Rx to BioBlend — we handle the paperwork with your physician.",
+    to: "/contact",
+    cta: "Start transfer",
   },
   {
-    icon: ShieldCheck,
-    title: "Trusted Expertise",
-    body: "DHA-licensed pharmacists with decades of combined experience in sterile and non-sterile compounding.",
+    icon: MapPin,
+    title: "Visit the Lab",
+    body: "Tour our sterile compounding lab and consultation suite in Dubai.",
+    to: "/contact",
+    cta: "Get directions",
+  },
+  {
+    icon: Building2,
+    title: "Corporate Wellness",
+    body: "Tailored formulary programs for clinics, wellness centers, and executive teams.",
+    to: "/contact",
+    cta: "Partner with us",
   },
 ];
+
+const practiceAreas = [
+  {
+    icon: HeartPulse,
+    title: "Hormone Lab",
+    tagline: "Bio-identical HRT · Thyroid · Adrenal",
+  },
+  {
+    icon: Sparkles,
+    title: "Dermatology Lab",
+    tagline: "Custom serums · Peels · Anti-aging",
+  },
+  {
+    icon: Baby,
+    title: "Pediatric Lab",
+    tagline: "Flavored suspensions · Precise dosing",
+  },
+  {
+    icon: PawPrint,
+    title: "Veterinary Lab",
+    tagline: "Palatable formulas for pets",
+  },
+  {
+    icon: Droplet,
+    title: "Wellness & IV Lab",
+    tagline: "Nutraceuticals · IV therapy · Longevity",
+  },
+];
+
 
 const services = [
   { icon: HeartPulse, title: "Hormone Replacement", body: "Bio-identical HRT tailored to your hormone panel." },
@@ -155,20 +202,100 @@ function HomePage() {
         </div>
       </section>
 
-      {/* PILLARS */}
+      {/* QUAD ACTION STRIP */}
       <section className="border-b border-border/60 bg-background">
-        <div className="mx-auto grid max-w-7xl gap-8 px-6 py-20 md:grid-cols-3 lg:px-10">
-          {pillars.map((p) => (
-            <div key={p.title} className="group relative rounded-2xl border border-border/60 bg-card p-8 shadow-soft transition-all hover:-translate-y-1 hover:shadow-luxe">
-              <div className="grid h-14 w-14 place-items-center rounded-full bg-[color:var(--brand-gold)]/15 text-[color:var(--brand-gold)]">
-                <p.icon className="h-6 w-6" />
+        <div className="mx-auto grid max-w-7xl gap-px overflow-hidden bg-border/60 md:grid-cols-2 lg:grid-cols-4">
+          {quickActions.map((a) => (
+            <Link
+              key={a.title}
+              to={a.to}
+              className="group relative flex flex-col justify-between gap-6 bg-background p-8 transition-colors hover:bg-secondary/60"
+            >
+              <div>
+                <div className="grid h-11 w-11 place-items-center rounded-full bg-[color:var(--brand-gold)]/15 text-[color:var(--brand-gold)]">
+                  <a.icon className="h-5 w-5" strokeWidth={1.6} />
+                </div>
+                <h3 className="mt-5 font-serif text-xl leading-tight text-primary">{a.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{a.body}</p>
               </div>
-              <h3 className="mt-6 font-serif text-2xl text-primary">{p.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{p.body}</p>
-            </div>
+              <span className="inline-flex items-center gap-1 text-xs font-medium tracking-[0.22em] text-[color:var(--brand-gold)] uppercase">
+                {a.cta} <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </span>
+            </Link>
           ))}
         </div>
       </section>
+
+      {/* PRACTICE AREAS — Our Labs */}
+      <section className="bg-secondary/40">
+        <div className="mx-auto max-w-7xl px-6 py-24 lg:px-10">
+          <SectionHeading
+            eyebrow="Our Practice Areas"
+            align="center"
+            title={<>Five labs, one <em className="italic text-[color:var(--brand-gold)]">precision formulary</em></>}
+            description="Each discipline is led by DHA-licensed pharmacists compounding to physician spec — from micro-dose pediatric suspensions to sterile IV nutraceuticals."
+          />
+          <div className="mt-16 grid gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+            {practiceAreas.map((p) => (
+              <Link
+                key={p.title}
+                to="/services"
+                className="group flex flex-col items-center text-center"
+              >
+                <div className="relative">
+                  <div className="absolute inset-0 -m-2 rounded-full border border-[color:var(--brand-gold)]/30 opacity-0 transition-opacity group-hover:opacity-100" />
+                  <div className="grid h-28 w-28 place-items-center rounded-full bg-background shadow-soft ring-1 ring-border/60 transition-transform group-hover:-translate-y-1">
+                    <p.icon className="h-10 w-10 text-[color:var(--brand-teal)]" strokeWidth={1.3} />
+                  </div>
+                </div>
+                <h3 className="mt-6 font-serif text-lg tracking-wide text-primary uppercase">{p.title}</h3>
+                <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{p.tagline}</p>
+                <span className="mt-3 text-[0.68rem] font-medium tracking-[0.24em] text-[color:var(--brand-gold)] uppercase">See more</span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* YOUR PATH — editorial */}
+      <section className="bg-background">
+        <div className="mx-auto grid max-w-7xl gap-16 px-6 py-24 lg:grid-cols-[.9fr_1.1fr] lg:px-10">
+          <div>
+            <p className="eyebrow">Your path to</p>
+            <h2 className="mt-4 font-serif text-5xl leading-[1.05] text-primary md:text-6xl">
+              Precision
+              <br />
+              <em className="italic text-[color:var(--brand-gold)]">medicine</em>
+            </h2>
+            <div className="mt-6 gold-rule" />
+            <p className="mt-8 max-w-md text-muted-foreground">
+              A fusion of clinical rigor, artisanal compounding, and quiet, unhurried care.
+              Together with your physician, we design formulations that meet your biology where it is —
+              and evolve as you do.
+            </p>
+            <p className="mt-4 max-w-md text-muted-foreground">
+              BioBlend is not just a pharmacy. It is a personalized journey toward whole-life wellness.
+            </p>
+          </div>
+          <ol className="relative space-y-6">
+            {[
+              { n: "01", title: "Consult", body: "Private conversation with a pharmacist — goals, history, physician notes." },
+              { n: "02", title: "Formulate", body: "Bespoke compounding in our sterile lab — every ingredient, dose, and delivery tuned to you." },
+              { n: "03", title: "Care", body: "Discreet delivery, follow-up, and refinement over time as your protocol evolves." },
+            ].map((step) => (
+              <li key={step.n} className="relative flex gap-6 rounded-2xl border border-border/60 bg-card p-8 shadow-soft">
+                <span className="font-serif text-4xl leading-none text-[color:var(--brand-gold)]">{step.n}</span>
+                <div>
+                  <h3 className="font-serif text-2xl text-primary">{step.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{step.body}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+
 
       {/* ABOUT / SCIENCE-MEETS-CARE */}
       <section className="bg-secondary/60">
@@ -320,7 +447,49 @@ function HomePage() {
         </div>
       </section>
 
+      {/* CORPORATE & PARTNERSHIPS */}
+      <section className="bg-background">
+        <div className="mx-auto max-w-7xl px-6 pt-24 lg:px-10">
+          <div className="grid gap-8 md:grid-cols-2">
+            <article className="group flex flex-col justify-between gap-8 rounded-3xl border border-border/60 bg-secondary/50 p-10 transition-shadow hover:shadow-luxe">
+              <div>
+                <div className="inline-flex items-center gap-2 rounded-full border border-[color:var(--brand-gold)]/40 bg-background/60 px-3 py-1 text-[0.65rem] font-medium tracking-[0.24em] text-[color:var(--brand-gold)] uppercase">
+                  <Building2 className="h-3 w-3" /> For Organizations
+                </div>
+                <h3 className="mt-6 font-serif text-3xl leading-tight text-primary md:text-4xl">
+                  Corporate <em className="italic text-[color:var(--brand-gold)]">wellness</em> programs
+                </h3>
+                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                  Tailored formulary and preventive-health programs for executive teams, family offices, and wellness employers — delivered with the discretion your team expects.
+                </p>
+              </div>
+              <Link to="/contact" className="inline-flex items-center gap-2 text-sm font-medium tracking-widest text-[color:var(--brand-gold)] uppercase">
+                Design a program <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </Link>
+            </article>
+
+            <article className="group flex flex-col justify-between gap-8 rounded-3xl bg-primary p-10 text-primary-foreground shadow-luxe transition-shadow hover:shadow-luxe">
+              <div>
+                <div className="inline-flex items-center gap-2 rounded-full border border-[color:var(--brand-gold)]/40 bg-primary-foreground/5 px-3 py-1 text-[0.65rem] font-medium tracking-[0.24em] text-[color:var(--brand-gold)] uppercase">
+                  <Stethoscope className="h-3 w-3" /> For Clinicians
+                </div>
+                <h3 className="mt-6 font-serif text-3xl leading-tight md:text-4xl">
+                  Clinic & physician <em className="italic text-[color:var(--brand-gold)]">partnerships</em>
+                </h3>
+                <p className="mt-4 text-sm leading-relaxed text-primary-foreground/75">
+                  Refer patients or co-design protocols with our pharmacists — hormone panels, dermatology stacks, IV support, veterinary. Direct pharmacist line for prescribing physicians.
+                </p>
+              </div>
+              <Link to="/contact" className="inline-flex items-center gap-2 text-sm font-medium tracking-widest text-[color:var(--brand-gold)] uppercase">
+                Refer a patient <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </Link>
+            </article>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
+
       <section className="bg-background">
         <div className="mx-auto max-w-6xl px-6 py-24 lg:px-10">
           <div className="relative overflow-hidden rounded-[2.5rem] bg-primary p-12 text-primary-foreground shadow-luxe md:p-16">
