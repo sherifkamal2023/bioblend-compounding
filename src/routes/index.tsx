@@ -23,7 +23,9 @@ import { SectionHeading } from "@/components/SectionHeading";
 import heroLab from "@/assets/hero-lab.jpg";
 import productsFlatlay from "@/assets/products-flatlay.jpg";
 import pharmacistImg from "@/assets/pharmacist.jpg";
-import wellnessImg from "@/assets/wellness-portrait.jpg";
+import familyEn from "@/assets/family-wellness-en.jpg";
+import familyAr from "@/assets/family-wellness-ar.jpg";
+
 
 
 
@@ -141,7 +143,12 @@ const testimonials = [
 ];
 
 function HomePage() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const familyImg = i18n.language?.startsWith("ar") ? familyAr : familyEn;
+  const familyAlt = i18n.language?.startsWith("ar")
+    ? "عائلة سعيدة تمارس اليوغا في حديقة عند غروب الشمس"
+    : "Happy family sharing a healthy breakfast at home";
+
   return (
     <>
       {/* HERO */}
@@ -192,12 +199,13 @@ function HomePage() {
             <div className="absolute -top-6 -right-6 h-72 w-72 rounded-full bg-[color:var(--brand-gold)]/15 blur-3xl" />
             <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] border border-primary-foreground/10 shadow-luxe">
               <img
-                src={wellnessImg}
-                alt="Serene wellness portrait"
-                width={1400}
-                height={1600}
+                src={familyImg}
+                alt={familyAlt}
+                width={1152}
+                height={1440}
                 className="h-full w-full object-cover"
               />
+
               <div className="absolute inset-x-6 bottom-6 rounded-2xl bg-background/95 p-5 text-foreground backdrop-blur">
                 <p className="font-serif text-lg italic text-primary">{t("hero.promise")}</p>
                 <p className="mt-1 text-xs tracking-widest text-muted-foreground uppercase">
