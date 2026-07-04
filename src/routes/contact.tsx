@@ -24,8 +24,29 @@ export const Route = createFileRoute("/contact")({
   component: ContactPage,
 });
 
+type InquiryKind = "personal" | "corporate" | "clinician";
+
+const inquiryCopy: Record<InquiryKind, { heading: string; blurb: string; subjectPlaceholder: string }> = {
+  personal: {
+    heading: "Send us a note",
+    blurb: "We reply within one business day. For urgent prescriptions, please call.",
+    subjectPlaceholder: "e.g. Hormone Replacement, Pediatric, Skincare",
+  },
+  corporate: {
+    heading: "Design a corporate program",
+    blurb: "Tell us about your team and goals — we'll respond with a tailored program outline.",
+    subjectPlaceholder: "Team size, industry, wellness goals",
+  },
+  clinician: {
+    heading: "Physician & clinic partnerships",
+    blurb: "For referrals and co-designed protocols. Our pharmacist team will reach out directly.",
+    subjectPlaceholder: "Specialty, patient volume, formulations of interest",
+  },
+};
+
 function ContactPage() {
   const [submitting, setSubmitting] = useState(false);
+  const [inquiry, setInquiry] = useState<InquiryKind>("personal");
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -36,6 +57,7 @@ function ContactPage() {
       setSubmitting(false);
     }, 600);
   };
+
 
   return (
     <>
