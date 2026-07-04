@@ -78,7 +78,7 @@ function PracticeAreaPage() {
           <div className="mt-16 grid gap-6 md:grid-cols-2">
             {area.offerings.map((o, i) => (
               <Reveal key={o.title} delay={i * 0.05}>
-                <div className="rounded-2xl border border-border/60 bg-card p-8 shadow-soft transition-all hover:border-[color:var(--brand-gold)]/60 hover:shadow-luxe">
+                <div className="card-luxe rounded-2xl p-8">
                   <CheckCircle2 className="h-6 w-6 text-[color:var(--brand-gold)]" strokeWidth={1.4} />
                   <h3 className="mt-4 font-serif text-2xl text-primary">{o.title}</h3>
                   <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{o.body}</p>
@@ -98,7 +98,7 @@ function PracticeAreaPage() {
           <ol className="mt-14 space-y-4">
             {area.process.map((step, i) => (
               <Reveal key={i} delay={i * 0.05}>
-                <li className="flex gap-6 rounded-2xl border border-border/60 bg-card p-6 shadow-soft">
+                <li className="card-luxe flex gap-6 rounded-2xl p-6">
                   <span className="font-serif text-3xl leading-none text-[color:var(--brand-gold)]">{String(i + 1).padStart(2, "0")}</span>
                   <p className="pt-1 text-sm leading-relaxed text-foreground/80 md:text-base">{step}</p>
                 </li>
@@ -144,7 +144,7 @@ function PracticeAreaPage() {
                 key={p.slug}
                 to="/services/$slug"
                 params={{ slug: p.slug }}
-                className="group rounded-2xl border border-border/60 bg-card p-6 transition-all hover:border-[color:var(--brand-gold)]/60 hover:shadow-soft"
+                className="card-luxe group rounded-2xl p-6"
               >
                 <p className="eyebrow">{p.eyebrow}</p>
                 <h3 className="mt-3 font-serif text-lg text-primary group-hover:text-[color:var(--brand-teal)]">{p.title}</h3>

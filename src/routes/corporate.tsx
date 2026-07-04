@@ -1,8 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Building2, HeartPulse, Sparkles, Users, PackageCheck, Calendar, ArrowRight } from "lucide-react";
+import { Building2, Calendar, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Reveal } from "@/components/Reveal";
+import { CardTile } from "@/components/CardTile";
+import { tiles, type TileKey } from "@/lib/tiles";
 
 export const Route = createFileRoute("/corporate")({
   head: () => ({
@@ -16,11 +18,11 @@ export const Route = createFileRoute("/corporate")({
   component: CorporatePage,
 });
 
-const programs = [
-  { icon: HeartPulse, title: "Executive longevity", body: "Personalized HRT, peptide, and nutraceutical protocols for C-suite and high-performance teams." },
-  { icon: Sparkles, title: "Skin & dermatology days", body: "Dermatologist-led onsite consults with same-week compounded protocols delivered to the office." },
-  { icon: PackageCheck, title: "Formulary partnership", body: "Bespoke in-clinic formulary for wellness centres, spas, and hospitality — private-label ready." },
-  { icon: Users, title: "Team wellness clinics", body: "Onsite screening days: labs, IV therapy, vitamin protocols, follow-up plans." },
+const programs: { tile: TileKey; title: string; body: string }[] = [
+  { tile: "longevity", title: "Executive longevity", body: "Personalized HRT, peptide, and nutraceutical protocols for C-suite and high-performance teams." },
+  { tile: "dermatology", title: "Skin & dermatology days", body: "Dermatologist-led onsite consults with same-week compounded protocols delivered to the office." },
+  { tile: "nutraceutical", title: "Formulary partnership", body: "Bespoke in-clinic formulary for wellness centres, spas, and hospitality — private-label ready." },
+  { tile: "wellnessIv", title: "Team wellness clinics", body: "Onsite screening days: labs, IV therapy, vitamin protocols, follow-up plans." },
 ];
 
 const outcomes = [
@@ -33,14 +35,14 @@ function CorporatePage() {
   return (
     <>
       <section className="relative overflow-hidden bg-secondary/60 pt-36 pb-20">
-        <div className="mx-auto max-w-5xl px-6 lg:px-10">
+        <div className="mx-auto grid max-w-6xl gap-12 px-6 lg:grid-cols-[1.1fr_1fr] lg:items-center lg:px-10">
           <Reveal>
             <p className="eyebrow">Corporate Wellness</p>
-            <h1 className="mt-6 font-serif text-5xl leading-[1.02] text-primary md:text-7xl">
+            <h1 className="mt-6 font-serif text-5xl leading-[1.02] text-primary md:text-6xl">
               Precision wellness for <em className="italic text-[color:var(--brand-gold)]">teams that perform</em>.
             </h1>
             <div className="mt-6 gold-rule" />
-            <p className="mt-8 max-w-2xl text-lg text-muted-foreground">
+            <p className="mt-8 max-w-xl text-lg text-muted-foreground">
               BioBlend Corporate Wellness partners with clinics, hospitality groups, family offices, and executive teams
               across the UAE — bringing our compounding lab, pharmacists, and physician network to your workplace.
             </p>
@@ -53,8 +55,18 @@ function CorporatePage() {
               </Button>
             </div>
           </Reveal>
+          <Reveal delay={0.1}>
+            <div className="gold-frame overflow-hidden rounded-3xl">
+              <img
+                src={tiles.corporate}
+                alt="Executive team during a BioBlend onsite wellness consultation"
+                className="aspect-[4/5] w-full rounded-[calc(1.5rem-3px)] object-cover"
+              />
+            </div>
+          </Reveal>
         </div>
       </section>
+
 
       <section className="bg-background">
         <div className="mx-auto max-w-7xl px-6 py-24 lg:px-10">
@@ -64,10 +76,8 @@ function CorporatePage() {
           <div className="mt-16 grid gap-6 md:grid-cols-2">
             {programs.map((p, i) => (
               <Reveal key={p.title} delay={i * 0.06}>
-                <div className="flex gap-6 rounded-2xl border border-border/60 bg-card p-8 shadow-soft transition-all hover:border-[color:var(--brand-gold)]/60 hover:shadow-luxe">
-                  <div className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-[color:var(--brand-gold)]/15 text-[color:var(--brand-gold)]">
-                    <p.icon className="h-5 w-5" strokeWidth={1.6} />
-                  </div>
+                <div className="card-luxe flex items-start gap-6 rounded-2xl p-8">
+                  <CardTile tile={p.tile} alt={p.title} size="md" />
                   <div>
                     <h3 className="font-serif text-2xl text-primary">{p.title}</h3>
                     <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.body}</p>
@@ -102,7 +112,7 @@ function CorporatePage() {
           <div className="mt-14 grid gap-6 sm:grid-cols-2">
             {["Wellness clinics & aesthetic centres", "Family offices & concierge medicine", "5-star hospitality groups", "Executive & sports teams", "Boutique dermatology practices", "Longevity & functional medicine clinics"].map((k, i) => (
               <Reveal key={k} delay={i * 0.04}>
-                <div className="flex items-start gap-3 rounded-xl border border-border/60 bg-card p-5">
+                <div className="flex items-start gap-3 rounded-xl border border-[color:var(--brand-gold)]/30 bg-[color:var(--brand-gold)]/8 p-5 transition-colors hover:bg-[color:var(--brand-gold)]/12">
                   <Building2 className="mt-0.5 h-4 w-4 shrink-0 text-[color:var(--brand-teal)]" strokeWidth={1.6} />
                   <span className="text-sm text-foreground/80">{k}</span>
                 </div>

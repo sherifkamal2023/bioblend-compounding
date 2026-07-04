@@ -1,16 +1,4 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import {
-  HeartPulse,
-  Sparkles,
-  Baby,
-  Droplet,
-  PawPrint,
-  ShieldCheck,
-  FlaskConical,
-  Leaf,
-  Pill,
-  Syringe,
-} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Accordion,
@@ -20,6 +8,8 @@ import {
 } from "@/components/ui/accordion";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Reveal } from "@/components/Reveal";
+import { CardTile } from "@/components/CardTile";
+import type { TileKey } from "@/lib/tiles";
 
 export const Route = createFileRoute("/services")({
   head: () => ({
@@ -37,17 +27,17 @@ export const Route = createFileRoute("/services")({
   component: ServicesPage,
 });
 
-const services: { icon: typeof HeartPulse; title: string; body: string; slug?: string }[] = [
-  { icon: HeartPulse, title: "Hormone Replacement Therapy", body: "Bio-identical estrogen, progesterone, testosterone and thyroid formulations dosed to your labs.", slug: "hormone" },
-  { icon: Sparkles, title: "Dermatology & Anti-Aging", body: "Prescription-strength retinoids, tranexamic acid, custom peels and personalized skin protocols.", slug: "dermatology" },
-  { icon: Baby, title: "Pediatric Compounding", body: "Alcohol-free, sugar-free, dye-free suspensions in flavors children actually take.", slug: "pediatric" },
-  { icon: Droplet, title: "IV & Wellness Therapy", body: "NAD+, glutathione, vitamin and hydration infusions supervised by our clinical team.", slug: "wellness-iv" },
-  { icon: PawPrint, title: "Your Pet's Wellness Matters", body: "Your pet's wellness is part of yours. Species-appropriate, palatable formulations — transdermal cats, flavored canine treats — with medical-grade attention to safe handling and zoonotic-disease prevention for the whole household.", slug: "pet-wellness" },
-  { icon: ShieldCheck, title: "Pain Management", body: "Topical and transdermal analgesic combinations that avoid systemic side effects." },
-  { icon: FlaskConical, title: "Sterile Preparations", body: "USP <797> compliant sterile compounding for injectables and ophthalmics." },
-  { icon: Leaf, title: "Nutraceutical Blends", body: "Physician-guided vitamin, mineral and adaptogen formulations." },
-  { icon: Pill, title: "Longevity Protocols", body: "Peptides, senolytics and precision-medicine formulations for healthy aging." },
-  { icon: Syringe, title: "Weight & Metabolic", body: "GLP-1 support programs, metabolic panels and individualized protocols." },
+const services: { tile: TileKey; title: string; body: string; slug?: string }[] = [
+  { tile: "hormone", title: "Hormone Replacement Therapy", body: "Bio-identical estrogen, progesterone, testosterone and thyroid formulations dosed to your labs.", slug: "hormone" },
+  { tile: "dermatology", title: "Dermatology & Anti-Aging", body: "Prescription-strength retinoids, tranexamic acid, custom peels and personalized skin protocols.", slug: "dermatology" },
+  { tile: "pediatric", title: "Pediatric Compounding", body: "Alcohol-free, sugar-free, dye-free suspensions in flavors children actually take.", slug: "pediatric" },
+  { tile: "wellnessIv", title: "IV & Wellness Therapy", body: "NAD+, glutathione, vitamin and hydration infusions supervised by our clinical team.", slug: "wellness-iv" },
+  { tile: "petWellness", title: "Your Pet's Wellness Matters", body: "Your pet's wellness is part of yours. Species-appropriate, palatable formulations — transdermal cats, flavored canine treats — with medical-grade attention to safe handling and zoonotic-disease prevention for the whole household.", slug: "pet-wellness" },
+  { tile: "pain", title: "Pain Management", body: "Topical and transdermal analgesic combinations that avoid systemic side effects." },
+  { tile: "sterile", title: "Sterile Preparations", body: "USP <797> compliant sterile compounding for injectables and ophthalmics." },
+  { tile: "nutraceutical", title: "Nutraceutical Blends", body: "Physician-guided vitamin, mineral and adaptogen formulations." },
+  { tile: "longevity", title: "Longevity Protocols", body: "Peptides, senolytics and precision-medicine formulations for healthy aging." },
+  { tile: "weight", title: "Weight & Metabolic", body: "GLP-1 support programs, metabolic panels and individualized protocols." },
 ];
 
 const steps = [
@@ -89,9 +79,7 @@ function ServicesPage() {
             {services.map((s, i) => {
               const inner = (
                 <>
-                  <div className="grid h-12 w-12 place-items-center rounded-full bg-[color:var(--brand-gold)]/15">
-                    <s.icon className="h-6 w-6 text-[color:var(--brand-teal)]" strokeWidth={1.5} />
-                  </div>
+                  <CardTile tile={s.tile} alt={s.title} size="md" />
                   <h3 className="mt-5 font-serif text-xl text-primary">{s.title}</h3>
                   <p className="mt-2 flex-1 text-sm text-muted-foreground">{s.body}</p>
                   <div className="mt-6 h-px w-full bg-gradient-to-r from-[color:var(--brand-gold)]/50 to-transparent" />
@@ -102,7 +90,7 @@ function ServicesPage() {
                   )}
                 </>
               );
-              const classes = "group relative flex h-full flex-col rounded-2xl border border-border/60 bg-card p-8 transition-all hover:border-[color:var(--brand-gold)]/60 hover:shadow-luxe";
+              const classes = "card-luxe group relative flex h-full flex-col rounded-2xl p-8";
               return (
                 <Reveal key={s.title} delay={(i % 3) * 0.06}>
                   {s.slug ? (

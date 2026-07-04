@@ -88,7 +88,7 @@
 
   --background: var(--brand-ivory);
   --foreground: oklch(0.22 0.03 230);
-  --card: oklch(1 0 0);
+  --card: oklch(0.99 0.012 82);              /* champagne-tinted card, not pure white */
   --card-foreground: oklch(0.22 0.03 230);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.22 0.03 230);
@@ -188,4 +188,46 @@
 
 @utility shadow-soft {
   box-shadow: var(--shadow-soft);
+}
+
+/* Luxe card treatment: champagne surface, gold hairline top, gilded border on hover. */
+@utility card-luxe {
+  position: relative;
+  background:
+    linear-gradient(180deg, oklch(0.985 0.02 82 / 0.9), oklch(0.97 0.028 82 / 0.6)),
+    var(--card);
+  border: 1px solid oklch(0.86 0.06 82 / 0.7);
+  box-shadow: var(--shadow-soft);
+  transition: border-color 300ms ease, box-shadow 300ms ease, transform 300ms ease;
+}
+@utility card-luxe {
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--brand-gold), transparent);
+    opacity: 0.85;
+    pointer-events: none;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+  }
+  &:hover {
+    border-color: oklch(0.78 0.13 82 / 0.85);
+    box-shadow: var(--shadow-luxe);
+    transform: translateY(-2px);
+  }
+}
+
+/* Circular gold frame around category imagery tiles. */
+@utility gold-frame {
+  border-radius: 9999px;
+  padding: 3px;
+  background: conic-gradient(from 140deg,
+    oklch(0.82 0.13 82),
+    oklch(0.66 0.14 78),
+    oklch(0.88 0.09 85),
+    oklch(0.72 0.15 78),
+    oklch(0.82 0.13 82));
+  box-shadow: 0 6px 18px -10px oklch(0.55 0.15 80 / 0.55);
 }
