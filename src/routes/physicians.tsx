@@ -14,10 +14,10 @@ export const Route = createFileRoute("/physicians")({
       { name: "description", content: "Partner with BioBlend on bespoke formulations. DHA-licensed compounding, direct pharmacist access, and a growing formulary for prescribing physicians in the UAE." },
       { property: "og:title", content: "For Physicians — BioBlend Compounding Pharmacy" },
       { property: "og:description", content: "A partner pharmacy for prescribers who want precise, personalized formulations." },
-      { property: "og:url", content: "https://snug-build-playground.lovable.app/physicians" },
+      { property: "og:url", content: "https://bioblendpharmacy.com/physicians" },
       { property: "og:type", content: "website" },
     ],
-    links: [{ rel: "canonical", href: "https://snug-build-playground.lovable.app/physicians" }],
+    links: [{ rel: "canonical", href: "https://bioblendpharmacy.com/physicians" }],
   }),
   component: PhysiciansPage,
 });

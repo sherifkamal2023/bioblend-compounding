@@ -18,7 +18,7 @@ export const Route = createFileRoute("/services/$slug")({
     }
     const { area } = loaderData;
     const title = `${area.title} — BioBlend Compounding Pharmacy`;
-    const url = `https://snug-build-playground.lovable.app/services/${params.slug}`;
+    const url = `https://bioblendpharmacy.com/services/${params.slug}`;
     return {
       meta: [
         { title },

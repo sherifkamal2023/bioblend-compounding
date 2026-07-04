@@ -13,10 +13,10 @@ export const Route = createFileRoute("/insights")({
       { name: "description", content: "Editorial from BioBlend's compounding lab: hormone science, dermatology protocols, pediatric compounding, longevity research and pharmacist commentary from Dubai." },
       { property: "og:title", content: "Insights — BioBlend Compounding Pharmacy" },
       { property: "og:description", content: "Science, protocols, and pharmacist commentary from BioBlend." },
-      { property: "og:url", content: "https://snug-build-playground.lovable.app/insights" },
+      { property: "og:url", content: "https://bioblendpharmacy.com/insights" },
       { property: "og:type", content: "website" },
     ],
-    links: [{ rel: "canonical", href: "https://snug-build-playground.lovable.app/insights" }],
+    links: [{ rel: "canonical", href: "https://bioblendpharmacy.com/insights" }],
   }),
   component: InsightsPage,
 });

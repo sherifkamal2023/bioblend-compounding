@@ -18,10 +18,10 @@ export const Route = createFileRoute("/about")({
       },
       { property: "og:title", content: "About BioBlend Compounding Pharmacy" },
       { property: "og:description", content: "The story, philosophy and team behind BioBlend Compounding Pharmacy in Dubai." },
-      { property: "og:url", content: "https://snug-build-playground.lovable.app/about" },
+      { property: "og:url", content: "https://bioblendpharmacy.com/about" },
       { property: "og:type", content: "website" },
     ],
-    links: [{ rel: "canonical", href: "https://snug-build-playground.lovable.app/about" }],
+    links: [{ rel: "canonical", href: "https://bioblendpharmacy.com/about" }],
   }),
   component: AboutPage,
 });

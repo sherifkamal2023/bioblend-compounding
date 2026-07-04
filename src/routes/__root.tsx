@@ -126,8 +126,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "@type": "Pharmacy",
           name: "BioBlend Compounding Pharmacy",
           alternateName: "صيدلية بايوبلند للتركيبات الدوائية",
-          url: "https://snug-build-playground.lovable.app",
-          logo: "https://snug-build-playground.lovable.app/bioblend-favicon.png",
+          url: "https://bioblendpharmacy.com",
+          logo: "https://bioblendpharmacy.com/bioblend-favicon.png",
           description:
             "Precision compounding pharmacy in Dubai — bio-identical HRT, pediatric, dermatology, wellness and pet formulations.",
           telephone: "+971-4-3277355",
