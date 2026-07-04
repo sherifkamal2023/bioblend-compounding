@@ -1,36 +1,19 @@
-## Scope
+## Swap the BioBlend logo to the new PNG upload
 
-Two small, targeted changes. No new routes, no backend, no design-system edits.
+The user uploaded a cleaner PNG version of the BioBlend mark (`user-uploads://bb.png`) — same structure as before (teal upper B, red lower B, gold leaf, "BioBlend" wordmark), but a proper transparent-friendly PNG.
 
-### 1. Rebrand "Veterinary" → "Your Pet's Wellness Matters"
+### Steps
 
-Rationale: BioBlend is a human compounding pharmacy. Pet care is framed as an extension of the client's personal wellness (protecting the household, safe zoonotic-disease practices, quality of life for the whole family), not as a standalone veterinary service.
-
-Exact string replacements:
-
-- `src/routes/index.tsx`
-  - Practice Areas card: `"Veterinary Lab"` → `"Your Pet's Wellness Matters"`
-    - tagline: `"Palatable formulas for pets"` → `"Because their wellness is part of yours"`
-  - Services grid card: `"Veterinary Compounding"` → `"Your Pet's Wellness Matters"`
-    - body: `"Palatable formulations for beloved pets."` → `"Your pet's wellness is part of yours — palatable, safe formulations that protect the whole household."`
-- `src/routes/services.tsx`
-  - Services grid card: `"Veterinary Compounding"` → `"Your Pet's Wellness Matters"`
-    - body: `"Species-appropriate flavors and delivery forms — from transdermal cats to flavored canine treats."` → `"Your pet's wellness is part of yours. Species-appropriate, palatable formulations — transdermal cats, flavored canine treats — with medical-grade attention to safe handling and zoonotic-disease prevention for the whole household."`
-  - Page description meta: replace `"veterinary"` with `"pet wellness"` in the description string.
-
-Icon (`PawPrint`) stays. Placement in grids stays. No new copy blocks added.
-
-### 2. Restore the real BioBlend logo
-
-The current `src/components/Logo.tsx` is a hand-drawn SVG that doesn't match the brand mark. Replace it with the actual logo the user uploaded (`user-uploads://WhatsApp_Image_2026-07-04_at_2.17.43_PM_1-2.jpeg` — the "B" mark with the gold leaf, red + teal strokes, "BioBlend" wordmark).
-
-Steps:
-- Register the uploaded image as a Lovable asset via `lovable-assets create` from `/mnt/user-uploads/…` → `src/assets/bioblend-logo.png.asset.json`.
-- Rewrite `src/components/Logo.tsx` to render an `<img>` using the asset URL, preserving the existing props (className, size). Keep the same export signature so Header/Footer keep working without edits.
-- Add a memory rule: do not modify or replace the BioBlend logo — always use the user-provided mark.
+1. Upload the new PNG to the Lovable CDN:
+   - `lovable-assets create --file /mnt/user-uploads/bb.png --filename bioblend-logo.png > src/assets/bioblend-logo.asset.json` (overwrites the current pointer JSON, so every `<Logo />` usage in Header/Footer picks up the new URL automatically).
+2. Delete the previous CDN asset so we don't leave an orphaned JPEG behind. Since step 1 overwrites the pointer, capture the old `asset_id` first (from the current `src/assets/bioblend-logo.asset.json`) and after upload call `lovable-assets delete` against a temporary pointer — or simply leave the old asset (CDN cost is negligible). Recommendation: leave it; deletion of the previous asset is optional and reversible-only-by-reupload.
+3. Also set it as the site favicon (there is currently none configured for BioBlend):
+   - Copy the PNG into `public/bioblend-favicon.png`.
+   - Update `src/routes/__root.tsx` `head().links` to reference `/bioblend-favicon.png` and remove the default `/favicon.ico` link.
+   - `rm public/favicon.ico`.
+4. No component changes needed — `src/components/Logo.tsx` already reads from `bioblend-logo.asset.json`.
 
 ### Out of scope
 
-- No changes to Header/Footer/routes/styles.
-- No changes to the About page team names or any other copy.
-- No SEO metadata rewrites beyond the one Services description tweak.
+- No changes to Logo component layout, size, or wordmark handling.
+- No changes to any page copy.
