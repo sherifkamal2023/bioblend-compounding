@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Reveal } from "@/components/Reveal";
 import { CardTile } from "@/components/CardTile";
-import type { TileKey } from "@/lib/tiles";
+import { tiles, type TileKey } from "@/lib/tiles";
 
 export const Route = createFileRoute("/physicians")({
   head: () => ({
