@@ -14,6 +14,8 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { Toaster } from "../components/ui/sonner";
+import { initI18n, applyLangDir } from "../lib/i18n";
+
 
 function NotFoundComponent() {
   return (
@@ -136,6 +138,16 @@ function RootShell({ children }: { children: ReactNode }) {
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
+  useEffect(() => {
+    const i = initI18n();
+    applyLangDir(i.language);
+    const handler = (lng: string) => applyLangDir(lng);
+    i.on("languageChanged", handler);
+    return () => {
+      i.off("languageChanged", handler);
+    };
+  }, []);
+
   return (
     <QueryClientProvider client={queryClient}>
       <div className="flex min-h-screen flex-col">
@@ -149,3 +161,4 @@ function RootComponent() {
     </QueryClientProvider>
   );
 }
+
