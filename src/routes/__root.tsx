@@ -131,7 +131,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           description:
             "Precision compounding pharmacy in Dubai — bio-identical HRT, pediatric, dermatology, wellness and pet formulations.",
           telephone: "+971-4-3277355",
-          email: "hello@bioblendpharmacy.ae",
+          email: "hello@bioblendpharmacy.com",
           address: {
             "@type": "PostalAddress",
             addressLocality: "Dubai",

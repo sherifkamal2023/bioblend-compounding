@@ -67,8 +67,8 @@ export function Footer() {
             <ul className="mt-4 space-y-3 text-sm text-primary-foreground/80">
               <li className="flex items-start gap-2"><MapPin className="mt-0.5 h-4 w-4 text-[color:var(--brand-gold)]" /> {t.city}</li>
               <li className="flex items-start gap-2"><Phone className="mt-0.5 h-4 w-4 text-[color:var(--brand-gold)]" /> <a href="tel:+97143277355" className="hover:text-[color:var(--brand-gold)]" dir="ltr">+971 4 3277355</a></li>
-              <li className="flex items-start gap-2"><Globe className="mt-0.5 h-4 w-4 text-[color:var(--brand-gold)]" /> <span dir="ltr">bioblendpharmacy.ae</span></li>
-              <li className="flex items-start gap-2"><Mail className="mt-0.5 h-4 w-4 text-[color:var(--brand-gold)]" /> <span dir="ltr">hello@bioblendpharmacy.ae</span></li>
+              <li className="flex items-start gap-2"><Globe className="mt-0.5 h-4 w-4 text-[color:var(--brand-gold)]" /> <span dir="ltr">bioblendpharmacy.com</span></li>
+              <li className="flex items-start gap-2"><Mail className="mt-0.5 h-4 w-4 text-[color:var(--brand-gold)]" /> <span dir="ltr">hello@bioblendpharmacy.com</span></li>
             </ul>
             <div className="mt-5 flex gap-3">
               <a href="#" aria-label="Instagram" className="grid h-9 w-9 place-items-center rounded-full border border-primary-foreground/20 hover:border-[color:var(--brand-gold)] hover:text-[color:var(--brand-gold)]"><Instagram className="h-4 w-4" /></a>

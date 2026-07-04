@@ -11,7 +11,7 @@ export default defineTool({
     const info = {
       name: "BioBlend Compounding Pharmacy",
       phone: "+971-4-3277355",
-      email: "hello@bioblendpharmacy.ae",
+      email: "hello@bioblendpharmacy.com",
       city: "Dubai",
       country: "AE",
       website: "https://bioblendpharmacy.com",

@@ -33,7 +33,7 @@ export const Route = createFileRoute("/contact")({
           name: "BioBlend Compounding Pharmacy",
           image: "https://bioblendpharmacy.com/bioblend-favicon.png",
           telephone: "+971-4-3277355",
-          email: "hello@bioblendpharmacy.ae",
+          email: "hello@bioblendpharmacy.com",
           url: "https://bioblendpharmacy.com/contact",
           address: {
             "@type": "PostalAddress",
@@ -140,11 +140,11 @@ function ContactPage() {
                 </li>
                 <li className="flex items-start gap-3">
                   <Mail className="mt-0.5 h-5 w-5 text-[color:var(--brand-gold)]" />
-                  <a href="mailto:hello@bioblendpharmacy.ae" dir="ltr" className="hover:text-[color:var(--brand-gold)]">hello@bioblendpharmacy.ae</a>
+                  <a href="mailto:hello@bioblendpharmacy.com" dir="ltr" className="hover:text-[color:var(--brand-gold)]">hello@bioblendpharmacy.com</a>
                 </li>
                 <li className="flex items-start gap-3">
                   <Globe className="mt-0.5 h-5 w-5 text-[color:var(--brand-gold)]" />
-                  <span dir="ltr">bioblendpharmacy.ae</span>
+                  <span dir="ltr">bioblendpharmacy.com</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <Clock className="mt-0.5 h-5 w-5 text-[color:var(--brand-gold)]" />
