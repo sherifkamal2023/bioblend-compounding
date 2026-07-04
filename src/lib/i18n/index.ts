@@ -44,9 +44,7 @@ export function applyLangDir(lang: string) {
   document.documentElement.dir = entry.dir;
 }
 
-// Initialize eagerly on the client so components can call useTranslation.
-if (typeof window !== "undefined") {
-  initI18n();
-}
+// Initialize eagerly on both server (SSR) and client so components render
+// translated strings on first paint without a raw-key flash.
+initI18n();
 
-export default i18n;
