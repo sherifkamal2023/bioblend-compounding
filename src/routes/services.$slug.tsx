@@ -144,7 +144,7 @@ function PracticeAreaPage() {
                 key={p.slug}
                 to="/services/$slug"
                 params={{ slug: p.slug }}
-                className="group rounded-2xl border border-border/60 bg-card p-6 transition-all hover:border-[color:var(--brand-gold)]/60 hover:shadow-soft"
+                className="card-luxe group rounded-2xl p-6"
               >
                 <p className="eyebrow">{p.eyebrow}</p>
                 <h3 className="mt-3 font-serif text-lg text-primary group-hover:text-[color:var(--brand-teal)]">{p.title}</h3>
