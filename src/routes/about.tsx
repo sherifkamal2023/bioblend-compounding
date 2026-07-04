@@ -129,13 +129,15 @@ function AboutPage() {
           />
           <div className="mt-16 grid gap-8 md:grid-cols-3">
             {team.map((m) => (
-              <figure key={m.name} className="group overflow-hidden rounded-2xl bg-card shadow-soft">
+              <figure key={m.name} className="group relative overflow-hidden rounded-2xl border border-border/70 bg-card shadow-soft transition-all hover:-translate-y-1 hover:shadow-luxe hover:border-[color:var(--brand-gold)]/70">
+                <span aria-hidden className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-[color:var(--brand-gold)] to-transparent" />
                 <div className="aspect-[4/5] overflow-hidden">
                   <img src={m.img} alt={m.name} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
                 </div>
                 <figcaption className="p-6 text-center">
                   <p className="font-serif text-xl text-primary">{m.name}</p>
-                  <p className="mt-1 text-xs tracking-widest text-muted-foreground uppercase">{m.role}</p>
+                  <div className="mx-auto mt-2 gold-rule" />
+                  <p className="mt-3 text-xs tracking-widest text-muted-foreground uppercase">{m.role}</p>
                 </figcaption>
               </figure>
             ))}
