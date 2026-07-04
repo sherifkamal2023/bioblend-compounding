@@ -112,7 +112,7 @@ function CorporatePage() {
           <div className="mt-14 grid gap-6 sm:grid-cols-2">
             {["Wellness clinics & aesthetic centres", "Family offices & concierge medicine", "5-star hospitality groups", "Executive & sports teams", "Boutique dermatology practices", "Longevity & functional medicine clinics"].map((k, i) => (
               <Reveal key={k} delay={i * 0.04}>
-                <div className="flex items-start gap-3 rounded-xl border border-border/60 bg-card p-5">
+                <div className="flex items-start gap-3 rounded-xl border border-[color:var(--brand-gold)]/30 bg-[color:var(--brand-gold)]/8 p-5 transition-colors hover:bg-[color:var(--brand-gold)]/12">
                   <Building2 className="mt-0.5 h-4 w-4 shrink-0 text-[color:var(--brand-teal)]" strokeWidth={1.6} />
                   <span className="text-sm text-foreground/80">{k}</span>
                 </div>
