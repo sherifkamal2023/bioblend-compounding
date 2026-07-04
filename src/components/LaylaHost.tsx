@@ -15,8 +15,8 @@ import { useEffect, useState } from "react";
  *  - Boundary: never give medical diagnosis; refer to a pharmacist.
  */
 
-// Register the ElevenLabs custom element type for JSX
-declare global {
+// Register the ElevenLabs custom element type for JSX (React 19)
+declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
       "elevenlabs-convai": React.DetailedHTMLProps<
