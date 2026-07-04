@@ -48,12 +48,12 @@ export function Header() {
             <Logo size="lg" />
           </Link>
 
-          <nav className="hidden items-center gap-8 md:flex">
+          <nav className="hidden items-center gap-5 xl:gap-8 lg:flex">
             {primary.map((n) => (
               <Link
                 key={n.to}
                 to={n.to}
-                className={`text-sm font-semibold tracking-wide transition-colors ${
+                className={`whitespace-nowrap text-sm font-semibold tracking-wide transition-colors ${
                   scrolled
                     ? "text-foreground/80 hover:text-primary"
                     : "nav-gold-shimmer hover:opacity-80"
@@ -70,7 +70,7 @@ export function Header() {
               onMouseLeave={() => setPartnersOpen(false)}
             >
               <button
-                className={`inline-flex items-center gap-1 text-sm font-semibold tracking-wide transition-colors ${
+                className={`inline-flex items-center gap-1 whitespace-nowrap text-sm font-semibold tracking-wide transition-colors ${
                   scrolled
                     ? "text-foreground/80 hover:text-primary"
                     : "nav-gold-shimmer hover:opacity-80"
@@ -98,13 +98,13 @@ export function Header() {
             <LangSwitcher tone={scrolled ? "dark" : "light"} />
           </nav>
 
-          <div className="hidden md:block">
-            <Button asChild size="sm" className="rounded-full bg-[color:var(--brand-gold)] px-5 text-primary hover:bg-[color:var(--brand-gold)]/90">
+          <div className="hidden lg:block">
+            <Button asChild size="sm" className="whitespace-nowrap rounded-full bg-[color:var(--brand-gold)] px-5 text-primary hover:bg-[color:var(--brand-gold)]/90">
               <Link to="/contact">{t("nav.bookConsultation")}</Link>
             </Button>
           </div>
 
-          <div className="flex items-center gap-2 md:hidden">
+          <div className="flex items-center gap-2 lg:hidden">
             <LangSwitcher tone={scrolled ? "dark" : "light"} />
             <button
               className="shrink-0"
