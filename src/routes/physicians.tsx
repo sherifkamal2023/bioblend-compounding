@@ -101,7 +101,7 @@ function PhysiciansPage() {
           <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {workflow.map((s, i) => (
               <Reveal key={s.n} delay={i * 0.06}>
-                <div className="rounded-2xl border border-border/60 bg-card p-8 shadow-soft">
+                <div className="card-luxe rounded-2xl p-8">
                   <span className="font-serif text-5xl text-[color:var(--brand-gold)]">{s.n}</span>
                   <h3 className="mt-4 font-serif text-xl text-primary">{s.title}</h3>
                   <p className="mt-2 text-sm text-muted-foreground">{s.body}</p>
