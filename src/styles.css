@@ -88,7 +88,7 @@
 
   --background: var(--brand-ivory);
   --foreground: oklch(0.22 0.03 230);
-  --card: oklch(1 0 0);
+  --card: oklch(0.99 0.012 82);              /* champagne-tinted card, not pure white */
   --card-foreground: oklch(0.22 0.03 230);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.22 0.03 230);
