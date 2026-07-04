@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Reveal } from "@/components/Reveal";
 import { practiceAreas, findPracticeArea, type PracticeArea } from "@/lib/practice-areas";
+import { useIsAr } from "@/lib/useIsAr";
 
 export const Route = createFileRoute("/services/$slug")({
   loader: ({ params }): { area: PracticeArea } => {
@@ -43,40 +44,44 @@ export const Route = createFileRoute("/services/$slug")({
 
 function PracticeAreaPage() {
   const { area } = Route.useLoaderData() as { area: PracticeArea };
+  const isAr = useIsAr();
+  const loc = isAr && area.ar ? area.ar : area;
 
   return (
     <>
-      {/* HERO */}
       <section className="bg-secondary/60 pt-36 pb-20">
         <div className="mx-auto max-w-4xl px-6 lg:px-10">
           <Reveal>
             <Link to="/services" className="inline-flex items-center gap-2 text-xs font-medium tracking-[0.22em] text-[color:var(--brand-gold)] uppercase">
-              <ArrowLeft className="h-3 w-3" /> All services
+              <ArrowLeft className="h-3 w-3 rtl:rotate-180" /> {isAr ? "كل الخدمات" : "All services"}
             </Link>
           </Reveal>
           <Reveal delay={0.08}>
-            <p className="eyebrow mt-8">{area.eyebrow}</p>
-            <h1 className="mt-4 font-serif text-5xl leading-[1.05] text-primary md:text-6xl">{area.title}</h1>
+            <p className="eyebrow mt-8">{loc.eyebrow}</p>
+            <h1 className="mt-4 font-serif text-5xl leading-[1.05] text-primary md:text-6xl">{loc.title}</h1>
             <div className="mt-6 gold-rule" />
             <p className="mt-8 max-w-2xl font-serif text-2xl italic leading-snug text-primary/80 md:text-3xl">
-              {area.hero}
+              {loc.hero}
             </p>
-            <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">{area.intro}</p>
+            <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">{loc.intro}</p>
           </Reveal>
         </div>
       </section>
 
-      {/* OFFERINGS */}
       <section className="bg-background">
         <div className="mx-auto max-w-7xl px-6 py-24 lg:px-10">
           <Reveal>
             <SectionHeading
-              eyebrow="What we compound"
-              title={<>Formulations crafted for <em className="italic text-[color:var(--brand-gold)]">{area.title.toLowerCase()}</em></>}
+              eyebrow={isAr ? "ما نُحضّره" : "What we compound"}
+              title={isAr ? (
+                <>تركيبات مصمّمة لـ <em className="italic text-[color:var(--brand-gold)]">{loc.title}</em></>
+              ) : (
+                <>Formulations crafted for <em className="italic text-[color:var(--brand-gold)]">{loc.title.toLowerCase()}</em></>
+              )}
             />
           </Reveal>
           <div className="mt-16 grid gap-6 md:grid-cols-2">
-            {area.offerings.map((o, i) => (
+            {loc.offerings.map((o, i) => (
               <Reveal key={o.title} delay={i * 0.05}>
                 <div className="card-luxe rounded-2xl p-8">
                   <CheckCircle2 className="h-6 w-6 text-[color:var(--brand-gold)]" strokeWidth={1.4} />
@@ -89,14 +94,17 @@ function PracticeAreaPage() {
         </div>
       </section>
 
-      {/* PROCESS */}
       <section className="bg-secondary/60">
         <div className="mx-auto max-w-4xl px-6 py-24 lg:px-10">
           <Reveal>
-            <SectionHeading eyebrow="How it works" align="center" title={<>From prescription to <em className="italic text-[color:var(--brand-gold)]">delivery</em></>} />
+            <SectionHeading eyebrow={isAr ? "كيف تسير الأمور" : "How it works"} align="center" title={isAr ? (
+              <>من الوصفة إلى <em className="italic text-[color:var(--brand-gold)]">التوصيل</em></>
+            ) : (
+              <>From prescription to <em className="italic text-[color:var(--brand-gold)]">delivery</em></>
+            )} />
           </Reveal>
           <ol className="mt-14 space-y-4">
-            {area.process.map((step, i) => (
+            {loc.process.map((step, i) => (
               <Reveal key={i} delay={i * 0.05}>
                 <li className="card-luxe flex gap-6 rounded-2xl p-6">
                   <span className="font-serif text-3xl leading-none text-[color:var(--brand-gold)]">{String(i + 1).padStart(2, "0")}</span>
@@ -105,52 +113,57 @@ function PracticeAreaPage() {
               </Reveal>
             ))}
           </ol>
-          {area.note && (
+          {loc.note && (
             <p className="mt-10 rounded-xl border border-[color:var(--brand-gold)]/30 bg-[color:var(--brand-gold)]/8 p-5 text-xs italic text-primary/70">
-              {area.note}
+              {loc.note}
             </p>
           )}
         </div>
       </section>
 
-      {/* CTA */}
       <section className="bg-primary text-primary-foreground">
         <div className="mx-auto max-w-4xl px-6 py-20 text-center lg:px-10">
           <Reveal>
-            <p className="eyebrow text-[color:var(--brand-gold)]">Ready to start?</p>
+            <p className="eyebrow text-[color:var(--brand-gold)]">{isAr ? "جاهز للبدء؟" : "Ready to start?"}</p>
             <h2 className="mt-4 font-serif text-4xl leading-tight md:text-5xl">
-              Speak to a <em className="italic text-[color:var(--brand-gold)]">BioBlend pharmacist</em>
+              {isAr ? (
+                <>تحدّث مع <em className="italic text-[color:var(--brand-gold)]">صيدلي بايوبلند</em></>
+              ) : (
+                <>Speak to a <em className="italic text-[color:var(--brand-gold)]">BioBlend pharmacist</em></>
+              )}
             </h2>
             <div className="mx-auto mt-6 gold-rule" />
             <div className="mt-10 flex flex-wrap justify-center gap-4">
               <Button asChild size="lg" className="rounded-full bg-[color:var(--brand-gold)] px-8 text-primary hover:bg-[color:var(--brand-gold)]/90">
-                <Link to="/contact">Book a Consultation</Link>
+                <Link to="/contact">{isAr ? "احجز استشارتك" : "Book a Consultation"}</Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="rounded-full border-primary-foreground/30 bg-transparent px-8 text-primary-foreground hover:bg-primary-foreground/10">
-                <Link to="/services">Explore other services <ArrowRight className="ml-2 h-4 w-4" /></Link>
+                <Link to="/services">{isAr ? "استكشف خدمات أخرى" : "Explore other services"} <ArrowRight className="ml-2 h-4 w-4 rtl:rotate-180" /></Link>
               </Button>
             </div>
           </Reveal>
         </div>
       </section>
 
-      {/* RELATED */}
       <section className="bg-background">
         <div className="mx-auto max-w-7xl px-6 py-20 lg:px-10">
-          <p className="eyebrow text-center">Other practice areas</p>
+          <p className="eyebrow text-center">{isAr ? "مجالات أخرى" : "Other practice areas"}</p>
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {practiceAreas.filter((p) => p.slug !== area.slug).slice(0, 4).map((p) => (
-              <Link
-                key={p.slug}
-                to="/services/$slug"
-                params={{ slug: p.slug }}
-                className="card-luxe group rounded-2xl p-6"
-              >
-                <p className="eyebrow">{p.eyebrow}</p>
-                <h3 className="mt-3 font-serif text-lg text-primary group-hover:text-[color:var(--brand-teal)]">{p.title}</h3>
-                <p className="mt-2 text-xs text-muted-foreground">{p.tagline}</p>
-              </Link>
-            ))}
+            {practiceAreas.filter((p) => p.slug !== area.slug).slice(0, 4).map((p) => {
+              const l = isAr && p.ar ? p.ar : p;
+              return (
+                <Link
+                  key={p.slug}
+                  to="/services/$slug"
+                  params={{ slug: p.slug }}
+                  className="card-luxe group rounded-2xl p-6"
+                >
+                  <p className="eyebrow">{l.eyebrow}</p>
+                  <h3 className="mt-3 font-serif text-lg text-primary group-hover:text-[color:var(--brand-teal)]">{l.title}</h3>
+                  <p className="mt-2 text-xs text-muted-foreground">{l.tagline}</p>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>

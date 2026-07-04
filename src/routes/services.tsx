@@ -10,6 +10,7 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { Reveal } from "@/components/Reveal";
 import { CardTile } from "@/components/CardTile";
 import type { TileKey } from "@/lib/tiles";
+import { useIsAr } from "@/lib/useIsAr";
 
 export const Route = createFileRoute("/services")({
   head: () => ({
@@ -27,7 +28,9 @@ export const Route = createFileRoute("/services")({
   component: ServicesPage,
 });
 
-const services: { tile: TileKey; title: string; body: string; slug?: string }[] = [
+type ServiceItem = { tile: TileKey; title: string; body: string; slug?: string };
+
+const servicesEn: ServiceItem[] = [
   { tile: "hormone", title: "Hormone Replacement Therapy", body: "Bio-identical estrogen, progesterone, testosterone and thyroid formulations dosed to your labs.", slug: "hormone" },
   { tile: "dermatology", title: "Dermatology & Anti-Aging", body: "Prescription-strength retinoids, tranexamic acid, custom peels and personalized skin protocols.", slug: "dermatology" },
   { tile: "pediatric", title: "Pediatric Compounding", body: "Alcohol-free, sugar-free, dye-free suspensions in flavors children actually take.", slug: "pediatric" },
@@ -40,39 +43,74 @@ const services: { tile: TileKey; title: string; body: string; slug?: string }[] 
   { tile: "weight", title: "Weight & Metabolic", body: "GLP-1 support programs, metabolic panels and individualized protocols." },
 ];
 
-const steps = [
+const servicesAr: ServiceItem[] = [
+  { tile: "hormone", title: "علاج تعويض الهرمونات", body: "هرمونات طبيعية مطابقة (إستروجين، بروجستيرون، تستوستيرون، الغدة الدرقية) بجرعات مضبوطة على نتائج تحاليلك.", slug: "hormone" },
+  { tile: "dermatology", title: "الأمراض الجلدية ومكافحة الشيخوخة", body: "ريتينويدات بتركيز طبي، حمض الترانيكساميك، تقشيرات مخصّصة، وبروتوكولات عناية بالبشرة مصمّمة لك.", slug: "dermatology" },
+  { tile: "pediatric", title: "تركيبات الأطفال", body: "شرابات دوائية خالية من الكحول والسكر والملوّنات، بنكهات يحبّها الأطفال ويقبلونها بسهولة.", slug: "pediatric" },
+  { tile: "wellnessIv", title: "المغذّيات الوريدية والعافية", body: "جلسات وريدية للـ NAD+، الغلوتاثيون، الفيتامينات والترطيب تحت إشراف فريقنا الطبي.", slug: "wellness-iv" },
+  { tile: "petWellness", title: "صحّة حيوانك الأليف تهمّنا", body: "عافية حيوانك جزء من عافيتك. نُحضّر تركيبات آمنة ومقبولة الطعم — لصقات للقطط، مكافآت بنكهات للكلاب — مع أعلى معايير السلامة ومنع انتقال الأمراض داخل المنزل.", slug: "pet-wellness" },
+  { tile: "pain", title: "إدارة الألم", body: "مسكّنات موضعية ولصقات جلدية تُخفّف الألم دون آثار جانبية على باقي الجسم." },
+  { tile: "sterile", title: "التحضيرات المعقّمة", body: "تركيبات معقّمة للحقن وقطرات العيون وفق معايير USP <797>." },
+  { tile: "nutraceutical", title: "مزائج المكمّلات الغذائية", body: "فيتامينات ومعادن وأعشاب مكيّفة، بإشراف طبي وبتركيبات مصمّمة لاحتياجك." },
+  { tile: "longevity", title: "بروتوكولات طول العمر", body: "ببتيدات وتركيبات طب دقيق تدعم الشيخوخة الصحية والحيوية على المدى الطويل." },
+  { tile: "weight", title: "الوزن والصحّة الأيضية", body: "برامج دعم GLP-1، فحوصات أيضية، وبروتوكولات فردية لإدارة الوزن." },
+];
+
+const stepsEn = [
   { n: "01", title: "Consult", body: "Schedule a call or in-person visit with our pharmacists." },
   { n: "02", title: "Formulate", body: "We work with your physician on the ideal ingredients and dose." },
   { n: "03", title: "Compound", body: "Prepared in our Dubai lab under strict quality controls." },
   { n: "04", title: "Deliver", body: "Discreet delivery across the UAE with follow-up support." },
 ];
 
-const faqs = [
+const stepsAr = [
+  { n: "٠١", title: "الاستشارة", body: "احجز مكالمة أو زيارة مباشرة مع فريق الصيادلة عندنا." },
+  { n: "٠٢", title: "التصميم", body: "نتعاون مع طبيبك لاختيار المكوّنات والجرعة المناسبة تماماً لحالتك." },
+  { n: "٠٣", title: "التحضير", body: "نُحضّر التركيبة في مختبرنا بدبي وفق أعلى معايير الجودة والدقّة." },
+  { n: "٠٤", title: "التوصيل", body: "توصيل بسريّة تامّة في جميع أنحاء الإمارات، مع متابعة مستمرّة معك." },
+];
+
+const faqsEn = [
   { q: "What is compounding?", a: "Compounding is the art and science of preparing customized medications. Instead of a mass-produced pill, you get a formulation tailored to your dose, delivery form, and even flavor." },
   { q: "Do I need a prescription?", a: "Yes. Compounded medications require a prescription from a licensed physician. We can also liaise with your doctor to design the right formulation." },
   { q: "Are your ingredients regulated?", a: "All our raw materials are pharmaceutical grade, sourced from FDA-registered suppliers, and independently tested for identity, potency and purity." },
   { q: "Do you deliver across the UAE?", a: "Yes — we offer discreet, temperature-controlled delivery across the Emirates and can arrange international shipping where legally permitted." },
 ];
 
+const faqsAr = [
+  { q: "ما هي التركيبات الدوائية؟", a: "التركيب الدوائي هو تحضير دواء خاص بك تماماً بدلاً من الدواء الجاهز في الصيدلية. نُصمّم لك الجرعة والشكل الدوائي، وحتى النكهة، بحيث تناسب جسمك واحتياجك." },
+  { q: "هل أحتاج إلى وصفة طبية؟", a: "نعم، الأدوية المُركّبة تحتاج وصفة من طبيب مرخّص. ويمكننا أيضاً التواصل مع طبيبك لاختيار التركيبة الأنسب لك." },
+  { q: "هل موادّكم مرخّصة ومضمونة؟", a: "جميع موادّنا الخام صيدلانية النقاء، من موردين مسجّلين لدى FDA، ونفحصها بشكل مستقلّ للتأكد من الهوية والفاعلية والنقاوة." },
+  { q: "هل توصّلون داخل الإمارات؟", a: "نعم، نوفّر توصيلاً بسريّة تامّة وبدرجة حرارة مضبوطة داخل جميع الإمارات، ونرتّب الشحن الدولي حيث يسمح القانون." },
+];
+
 function ServicesPage() {
+  const ar = useIsAr();
+  const services = ar ? servicesAr : servicesEn;
+  const steps = ar ? stepsAr : stepsEn;
+  const faqs = ar ? faqsAr : faqsEn;
+
   return (
     <>
-      {/* HERO */}
       <section className="bg-secondary/60 pt-36 pb-20">
         <div className="mx-auto max-w-4xl px-6 text-center lg:px-10">
-          <p className="eyebrow">Services</p>
+          <p className="eyebrow">{ar ? "خدماتنا" : "Services"}</p>
           <h1 className="mt-4 font-serif text-5xl leading-[1.05] text-primary md:text-6xl">
-            Precision compounding for <em className="italic text-[color:var(--brand-gold)]">every prescription</em>
+            {ar ? (
+              <>تركيبات دقيقة لـ <em className="italic text-[color:var(--brand-gold)]">كل وصفة طبية</em></>
+            ) : (
+              <>Precision compounding for <em className="italic text-[color:var(--brand-gold)]">every prescription</em></>
+            )}
           </h1>
           <div className="mx-auto mt-6 gold-rule" />
           <p className="mx-auto mt-8 max-w-2xl text-lg text-muted-foreground">
-            From hormone optimization to pediatric flavors and sterile injectables, every formulation
-            at BioBlend is prepared by hand, one patient at a time.
+            {ar
+              ? "من تعديل الهرمونات إلى نكهات أدوية الأطفال والحقن المعقّمة، كل تركيبة في بايوبلند نُحضّرها بأيدينا، لمريض واحد في كل مرة."
+              : "From hormone optimization to pediatric flavors and sterile injectables, every formulation at BioBlend is prepared by hand, one patient at a time."}
           </p>
         </div>
       </section>
 
-      {/* GRID */}
       <section className="bg-background">
         <div className="mx-auto max-w-7xl px-6 py-24 lg:px-10">
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -85,7 +123,7 @@ function ServicesPage() {
                   <div className="mt-6 h-px w-full bg-gradient-to-r from-[color:var(--brand-gold)]/50 to-transparent" />
                   {s.slug && (
                     <span className="mt-4 inline-flex items-center gap-1 text-[0.68rem] font-medium tracking-[0.24em] text-[color:var(--brand-gold)] uppercase">
-                      Learn more →
+                      {ar ? "اعرف المزيد ←" : "Learn more →"}
                     </span>
                   )}
                 </>
@@ -107,13 +145,16 @@ function ServicesPage() {
         </div>
       </section>
 
-      {/* PROCESS */}
       <section className="bg-secondary/60">
         <div className="mx-auto max-w-7xl px-6 py-24 lg:px-10">
           <SectionHeading
             align="center"
-            eyebrow="Our Process"
-            title={<>A quiet, careful path to <em className="italic text-[color:var(--brand-gold)]">your formulation</em></>}
+            eyebrow={ar ? "كيف نعمل" : "Our Process"}
+            title={ar ? (
+              <>مسار هادئ ومدروس نحو <em className="italic text-[color:var(--brand-gold)]">تركيبتك الخاصة</em></>
+            ) : (
+              <>A quiet, careful path to <em className="italic text-[color:var(--brand-gold)]">your formulation</em></>
+            )}
           />
           <div className="mt-16 grid gap-8 md:grid-cols-4">
             {steps.map((s) => (
@@ -127,13 +168,12 @@ function ServicesPage() {
         </div>
       </section>
 
-      {/* FAQ */}
       <section className="bg-background">
         <div className="mx-auto max-w-3xl px-6 py-24 lg:px-10">
           <SectionHeading
             align="center"
-            eyebrow="Frequently Asked"
-            title="Questions we hear often"
+            eyebrow={ar ? "الأسئلة الشائعة" : "Frequently Asked"}
+            title={ar ? "أسئلة يسألها معظم عملائنا" : "Questions we hear often"}
           />
           <Accordion type="single" collapsible className="mt-12">
             {faqs.map((f) => (
@@ -148,7 +188,7 @@ function ServicesPage() {
 
           <div className="mt-14 text-center">
             <Button asChild size="lg" className="rounded-full bg-primary text-primary-foreground hover:bg-primary/90">
-              <Link to="/contact">Ask our pharmacists</Link>
+              <Link to="/contact">{ar ? "استشر صيادلتنا" : "Ask our pharmacists"}</Link>
             </Button>
           </div>
         </div>

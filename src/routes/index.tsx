@@ -25,8 +25,7 @@ import productsFlatlay from "@/assets/products-flatlay.jpg";
 import pharmacistImg from "@/assets/pharmacist.jpg";
 import familyEn from "@/assets/family-wellness-en.jpg";
 import familyAr from "@/assets/family-wellness-ar.jpg";
-
-
+import { useIsAr } from "@/lib/useIsAr";
 
 
 export const Route = createFileRoute("/")({
@@ -43,72 +42,37 @@ export const Route = createFileRoute("/")({
   component: HomePage,
 });
 
-const quickActions = [
-  {
-    icon: CalendarCheck,
-    title: "Book a Consultation",
-    body: "Meet our pharmacists — 30-minute private review of your goals and prescriptions.",
-    to: "/contact",
-    cta: "Reserve time",
-  },
-  {
-    icon: FileText,
-    title: "Transfer a Prescription",
-    body: "Move an active Rx to BioBlend — we handle the paperwork with your physician.",
-    to: "/contact",
-    cta: "Start transfer",
-  },
-  {
-    icon: MapPin,
-    title: "Visit the Lab",
-    body: "Tour our sterile compounding lab and consultation suite in Dubai.",
-    to: "/contact",
-    cta: "Get directions",
-  },
-  {
-    icon: Building2,
-    title: "Corporate Wellness",
-    body: "Tailored formulary programs for clinics, wellness centers, and executive teams.",
-    to: "/contact",
-    cta: "Partner with us",
-  },
-];
+const quickActionsEn = [
+  { icon: CalendarCheck, title: "Book a Consultation", body: "Meet our pharmacists — 30-minute private review of your goals and prescriptions.", to: "/contact", cta: "Reserve time" },
+  { icon: FileText, title: "Transfer a Prescription", body: "Move an active Rx to BioBlend — we handle the paperwork with your physician.", to: "/contact", cta: "Start transfer" },
+  { icon: MapPin, title: "Visit the Lab", body: "Tour our sterile compounding lab and consultation suite in Dubai.", to: "/contact", cta: "Get directions" },
+  { icon: Building2, title: "Corporate Wellness", body: "Tailored formulary programs for clinics, wellness centers, and executive teams.", to: "/contact", cta: "Partner with us" },
+] as const;
 
-const practiceAreas = [
-  {
-    icon: HeartPulse,
-    title: "Hormone Lab",
-    tagline: "Bio-identical HRT · Thyroid · Adrenal",
-    slug: "hormone",
-  },
-  {
-    icon: Sparkles,
-    title: "Dermatology Lab",
-    tagline: "Custom serums · Peels · Anti-aging",
-    slug: "dermatology",
-  },
-  {
-    icon: Baby,
-    title: "Pediatric Lab",
-    tagline: "Flavored suspensions · Precise dosing",
-    slug: "pediatric",
-  },
-  {
-    icon: PawPrint,
-    title: "Your Pet's Wellness Matters",
-    tagline: "Because their wellness is part of yours",
-    slug: "pet-wellness",
-  },
-  {
-    icon: Droplet,
-    title: "Wellness & IV Lab",
-    tagline: "Nutraceuticals · IV therapy · Longevity",
-    slug: "wellness-iv",
-  },
-];
+const quickActionsAr = [
+  { icon: CalendarCheck, title: "احجز استشارتك", body: "قابل صيادلتنا — 30 دقيقة خاصّة لمراجعة أهدافك ووصفاتك.", to: "/contact", cta: "احجز الآن" },
+  { icon: FileText, title: "انقل وصفتك إلينا", body: "انقل وصفة قائمة إلى بايوبلند — ونحن نتولّى التنسيق مع طبيبك.", to: "/contact", cta: "ابدأ النقل" },
+  { icon: MapPin, title: "زُر المختبر", body: "تعرّف على مختبر التركيب المعقّم وغرفة الاستشارات في دبي.", to: "/contact", cta: "احصل على الموقع" },
+  { icon: Building2, title: "صحّة الموظفين", body: "برامج تركيبات مصمّمة للعيادات، ومراكز العافية، والفرق التنفيذية.", to: "/contact", cta: "كن شريكاً" },
+] as const;
 
+const practiceAreasEn = [
+  { icon: HeartPulse, title: "Hormone Lab", tagline: "Bio-identical HRT · Thyroid · Adrenal", slug: "hormone" },
+  { icon: Sparkles, title: "Dermatology Lab", tagline: "Custom serums · Peels · Anti-aging", slug: "dermatology" },
+  { icon: Baby, title: "Pediatric Lab", tagline: "Flavored suspensions · Precise dosing", slug: "pediatric" },
+  { icon: PawPrint, title: "Your Pet's Wellness Matters", tagline: "Because their wellness is part of yours", slug: "pet-wellness" },
+  { icon: Droplet, title: "Wellness & IV Lab", tagline: "Nutraceuticals · IV therapy · Longevity", slug: "wellness-iv" },
+] as const;
 
-const services = [
+const practiceAreasAr = [
+  { icon: HeartPulse, title: "مختبر الهرمونات", tagline: "هرمونات طبيعية · درقية · كظرية", slug: "hormone" },
+  { icon: Sparkles, title: "مختبر الجلدية", tagline: "سيرومات مخصّصة · تقشيرات · مكافحة الشيخوخة", slug: "dermatology" },
+  { icon: Baby, title: "مختبر الأطفال", tagline: "شرابات بنكهات · جرعات دقيقة", slug: "pediatric" },
+  { icon: PawPrint, title: "صحّة حيوانك الأليف تهمّنا", tagline: "لأن عافيته جزء من عافيتك", slug: "pet-wellness" },
+  { icon: Droplet, title: "مختبر العافية والوريدي", tagline: "مكمّلات · جلسات وريدية · طول العمر", slug: "wellness-iv" },
+] as const;
+
+const servicesEn = [
   { icon: HeartPulse, title: "Hormone Replacement", body: "Bio-identical HRT tailored to your hormone panel." },
   { icon: Sparkles, title: "Dermatology & Anti-Aging", body: "Custom serums, peels, and skin protocols." },
   { icon: Baby, title: "Pediatric Compounding", body: "Gentle flavors and precise pediatric dosing." },
@@ -117,50 +81,69 @@ const services = [
   { icon: ShieldCheck, title: "Pain Management", body: "Topical and transdermal pain solutions." },
 ];
 
-const steps = [
+const servicesAr = [
+  { icon: HeartPulse, title: "تعويض الهرمونات", body: "هرمونات طبيعية مطابقة، مصمّمة على مقاس تحاليلك." },
+  { icon: Sparkles, title: "الجلدية ومكافحة الشيخوخة", body: "سيرومات مخصّصة، تقشيرات، وبروتوكولات عناية بالبشرة." },
+  { icon: Baby, title: "تركيبات الأطفال", body: "نكهات لطيفة وجرعات دقيقة تناسب طفلك." },
+  { icon: Droplet, title: "العافية والمغذّيات الوريدية", body: "خلطات مكمّلات وجلسات وريدية لدعم عافيتك." },
+  { icon: PawPrint, title: "صحّة حيوانك الأليف تهمّنا", body: "عافية حيوانك جزء من عافيتك — تركيبات آمنة ومقبولة تحمي الأسرة كلّها." },
+  { icon: ShieldCheck, title: "إدارة الألم", body: "حلول موضعية ولصقات جلدية لتخفيف الألم." },
+];
+
+const stepsEn = [
   { n: "01", title: "Consultation", body: "We listen — to your goals, your history, and your physician." },
   { n: "02", title: "Personalized Assessment", body: "Labs, symptoms, and lifestyle inform a bespoke plan." },
   { n: "03", title: "Custom Formulation", body: "Precision compounding in our sterile lab." },
   { n: "04", title: "Delivered Wellness", body: "Follow-up, refinement, and discreet delivery." },
 ];
 
-const testimonials = [
-  {
-    quote: "The team took time to understand my needs. My compounded HRT changed the way I feel every day.",
-    name: "Layla A.",
-    role: "Patient, Dubai",
-  },
-  {
-    quote: "Finally a pharmacy that treats you like a person, not a prescription. The formulations are exquisite.",
-    name: "Dr. Omar S.",
-    role: "Referring Physician",
-  },
-  {
-    quote: "The packaging, the science, the care — BioBlend feels like luxury with real medical rigor.",
-    name: "Priya R.",
-    role: "Wellness Client",
-  },
+const stepsAr = [
+  { n: "٠١", title: "الاستشارة", body: "نسمع منك — أهدافك، تاريخك الصحي، وملاحظات طبيبك." },
+  { n: "٠٢", title: "تقييم شخصي", body: "التحاليل والأعراض ونمط حياتك تُشكّل خطّة مصمّمة لك." },
+  { n: "٠٣", title: "تركيبة مخصّصة", body: "تحضير دقيق في مختبرنا المعقّم." },
+  { n: "٠٤", title: "عافية توصل إلى بابك", body: "متابعة، وتعديل، وتوصيل بسريّة تامّة." },
 ];
 
+const testimonialsEn = [
+  { quote: "The team took time to understand my needs. My compounded HRT changed the way I feel every day.", name: "Layla A.", role: "Patient, Dubai" },
+  { quote: "Finally a pharmacy that treats you like a person, not a prescription. The formulations are exquisite.", name: "Dr. Omar S.", role: "Referring Physician" },
+  { quote: "The packaging, the science, the care — BioBlend feels like luxury with real medical rigor.", name: "Priya R.", role: "Wellness Client" },
+];
+
+const testimonialsAr = [
+  { quote: "الفريق أخذ وقته ليفهم احتياجاتي فعلاً. تركيبة الهرمونات الخاصّة بي غيّرت شعوري كل يوم.", name: "ليلى ع.", role: "مريضة، دبي" },
+  { quote: "أخيراً صيدلية تتعامل معك كإنسان، لا كوصفة. تركيباتها في منتهى الدقّة.", name: "د. عمر س.", role: "طبيب مُحيل" },
+  { quote: "التغليف، والعلم، والاهتمام — بايوبلند تجربة راقية بمعايير طبية حقيقية.", name: "بريا ر.", role: "عميلة عافية" },
+];
+
+const aboutFeaturesEn = ["Personalized Medicine", "Hormone Optimization", "Dermatology & Skincare", "Longevity & Anti-Aging", "Functional Wellness", "Nutraceuticals"];
+const aboutFeaturesAr = ["طب شخصي", "تعديل الهرمونات", "الجلدية والعناية بالبشرة", "طول العمر ومكافحة الشيخوخة", "العافية الوظيفية", "المكمّلات الغذائية"];
+
+const formularyEn = ["Custom Capsules", "Topical Creams", "Anti-Aging Serums", "Wellness Supplements", "Personalized Skincare", "Hormone Support", "Sterile Injectables", "Pediatric Suspensions"];
+const formularyAr = ["كبسولات مخصّصة", "كريمات موضعية", "سيرومات مكافحة الشيخوخة", "مكمّلات العافية", "عناية بشرة مخصّصة", "دعم هرموني", "حقن معقّمة", "شرابات للأطفال"];
+
 function HomePage() {
-  const { t, i18n } = useTranslation();
-  const familyImg = i18n.language?.startsWith("ar") ? familyAr : familyEn;
-  const familyAlt = i18n.language?.startsWith("ar")
+  const { t } = useTranslation();
+  const ar = useIsAr();
+  const familyImg = ar ? familyAr : familyEn;
+  const familyAlt = ar
     ? "عائلة سعيدة تمارس اليوغا في حديقة عند غروب الشمس"
     : "Happy family sharing a healthy breakfast at home";
+
+  const quickActions = ar ? quickActionsAr : quickActionsEn;
+  const practiceAreas = ar ? practiceAreasAr : practiceAreasEn;
+  const services = ar ? servicesAr : servicesEn;
+  const steps = ar ? stepsAr : stepsEn;
+  const testimonials = ar ? testimonialsAr : testimonialsEn;
+  const aboutFeatures = ar ? aboutFeaturesAr : aboutFeaturesEn;
+  const formulary = ar ? formularyAr : formularyEn;
 
   return (
     <>
       {/* HERO */}
       <section className="relative isolate overflow-hidden bg-primary text-primary-foreground">
         <div className="absolute inset-0 -z-10">
-          <img
-            src={heroLab}
-            alt="Amber apothecary bottles on marble in a compounding lab"
-            width={1600}
-            height={1200}
-            className="h-full w-full object-cover opacity-40"
-          />
+          <img src={heroLab} alt={ar ? "زجاجات كهرمانية على رخام في مختبر تركيب" : "Amber apothecary bottles on marble in a compounding lab"} width={1600} height={1200} className="h-full w-full object-cover opacity-40" />
           <div className="absolute inset-0 bg-gradient-to-br from-primary/95 via-primary/80 to-primary/60" />
         </div>
 
@@ -189,8 +172,8 @@ function HomePage() {
             </div>
 
             <div className="mt-12 flex flex-wrap gap-x-8 gap-y-4 text-sm text-primary-foreground/75">
-              <span className="inline-flex items-center gap-2"><Phone className="h-4 w-4 text-[color:var(--brand-gold)]" /> +971 4 3277355</span>
-              <span className="inline-flex items-center gap-2"><MapPin className="h-4 w-4 text-[color:var(--brand-gold)]" /> Dubai, UAE</span>
+              <span className="inline-flex items-center gap-2"><Phone className="h-4 w-4 text-[color:var(--brand-gold)]" /> <span dir="ltr">+971 4 3277355</span></span>
+              <span className="inline-flex items-center gap-2"><MapPin className="h-4 w-4 text-[color:var(--brand-gold)]" /> {ar ? "دبي، الإمارات" : "Dubai, UAE"}</span>
               <span className="inline-flex items-center gap-2"><ShieldCheck className="h-4 w-4 text-[color:var(--brand-gold)]" /> {t("hero.licensed")}</span>
             </div>
           </div>
@@ -198,14 +181,7 @@ function HomePage() {
           <div className="relative hidden lg:block">
             <div className="absolute -top-6 -right-6 h-72 w-72 rounded-full bg-[color:var(--brand-gold)]/15 blur-3xl" />
             <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] border border-primary-foreground/10 shadow-luxe">
-              <img
-                src={familyImg}
-                alt={familyAlt}
-                width={1152}
-                height={1440}
-                className="h-full w-full object-cover"
-              />
-
+              <img src={familyImg} alt={familyAlt} width={1152} height={1440} className="h-full w-full object-cover" />
               <div className="absolute inset-x-6 bottom-6 rounded-2xl bg-background/95 p-5 text-foreground backdrop-blur">
                 <p className="font-serif text-lg italic text-primary">{t("hero.promise")}</p>
                 <p className="mt-1 text-xs tracking-widest text-muted-foreground uppercase">
@@ -235,7 +211,7 @@ function HomePage() {
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{a.body}</p>
               </div>
               <span className="inline-flex items-center gap-1 text-xs font-medium tracking-[0.22em] text-[color:var(--brand-gold)] uppercase">
-                {a.cta} <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                {a.cta} <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 rtl:-scale-x-100" />
               </span>
             </Link>
           ))}
@@ -246,10 +222,16 @@ function HomePage() {
       <section className="bg-secondary/40">
         <div className="mx-auto max-w-7xl px-6 py-24 lg:px-10">
           <SectionHeading
-            eyebrow="Our Practice Areas"
+            eyebrow={ar ? "مجالات ممارستنا" : "Our Practice Areas"}
             align="center"
-            title={<>Five labs, one <em className="italic text-[color:var(--brand-gold)]">precision formulary</em></>}
-            description="Each discipline is led by DHA-licensed pharmacists compounding to physician spec — from micro-dose pediatric suspensions to sterile IV nutraceuticals."
+            title={ar ? (
+              <>خمسة مختبرات، <em className="italic text-[color:var(--brand-gold)]">وتركيبات دقيقة واحدة</em></>
+            ) : (
+              <>Five labs, one <em className="italic text-[color:var(--brand-gold)]">precision formulary</em></>
+            )}
+            description={ar
+              ? "يُدير كل مختبر صيادلة مرخّصون من هيئة الصحة بدبي، ونُحضّر كل تركيبة وفق مواصفات طبيبك — من شرابات الأطفال بجرعات دقيقة إلى المغذّيات الوريدية المعقّمة."
+              : "Each discipline is led by DHA-licensed pharmacists compounding to physician spec — from micro-dose pediatric suspensions to sterile IV nutraceuticals."}
           />
           <div className="mt-16 grid gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
             {practiceAreas.map((p) => (
@@ -267,7 +249,7 @@ function HomePage() {
                 </div>
                 <h3 className="mt-6 font-serif text-lg tracking-wide text-primary uppercase">{p.title}</h3>
                 <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{p.tagline}</p>
-                <span className="mt-3 text-[0.68rem] font-medium tracking-[0.24em] text-[color:var(--brand-gold)] uppercase">See more</span>
+                <span className="mt-3 text-[0.68rem] font-medium tracking-[0.24em] text-[color:var(--brand-gold)] uppercase">{ar ? "اعرف المزيد" : "See more"}</span>
               </Link>
             ))}
           </div>
@@ -278,28 +260,36 @@ function HomePage() {
       <section className="bg-background">
         <div className="mx-auto grid max-w-7xl gap-16 px-6 py-24 lg:grid-cols-[.9fr_1.1fr] lg:px-10">
           <div>
-            <p className="eyebrow">Your path to</p>
+            <p className="eyebrow">{ar ? "طريقك إلى" : "Your path to"}</p>
             <h2 className="mt-4 font-serif text-5xl leading-[1.05] text-primary md:text-6xl">
-              Precision
-              <br />
-              <em className="italic text-[color:var(--brand-gold)]">medicine</em>
+              {ar ? (
+                <>الطب<br /><em className="italic text-[color:var(--brand-gold)]">الدقيق</em></>
+              ) : (
+                <>Precision<br /><em className="italic text-[color:var(--brand-gold)]">medicine</em></>
+              )}
             </h2>
             <div className="mt-6 gold-rule" />
             <p className="mt-8 max-w-md text-muted-foreground">
-              A fusion of clinical rigor, artisanal compounding, and quiet, unhurried care.
-              Together with your physician, we design formulations that meet your biology where it is —
-              and evolve as you do.
+              {ar
+                ? "مزيج من الصرامة السريرية، والتركيب الحرفي، والعناية الهادئة غير المتعجّلة. نُصمّم لك — مع طبيبك — تركيبات تلتقي مع جسمك حيث هو، وتتطوّر معك."
+                : "A fusion of clinical rigor, artisanal compounding, and quiet, unhurried care. Together with your physician, we design formulations that meet your biology where it is — and evolve as you do."}
             </p>
             <p className="mt-4 max-w-md text-muted-foreground">
-              BioBlend is not just a pharmacy. It is a personalized journey toward whole-life wellness.
+              {ar
+                ? "بايوبلند ليست مجرّد صيدلية. إنّها رحلة شخصية نحو عافية شاملة."
+                : "BioBlend is not just a pharmacy. It is a personalized journey toward whole-life wellness."}
             </p>
           </div>
           <ol className="relative space-y-6">
-            {[
+            {(ar ? [
+              { n: "٠١", title: "الاستشارة", body: "حديث خاص مع صيدلي — أهدافك، تاريخك الصحي، وملاحظات طبيبك." },
+              { n: "٠٢", title: "التركيب", body: "تحضير مخصّص في مختبرنا المعقّم — كل مكوّن، وجرعة، وشكل دوائي مضبوط عليك." },
+              { n: "٠٣", title: "العناية", body: "توصيل بسريّة، ومتابعة، وتعديل مع الوقت كلما تطوّر بروتوكولك." },
+            ] : [
               { n: "01", title: "Consult", body: "Private conversation with a pharmacist — goals, history, physician notes." },
               { n: "02", title: "Formulate", body: "Bespoke compounding in our sterile lab — every ingredient, dose, and delivery tuned to you." },
               { n: "03", title: "Care", body: "Discreet delivery, follow-up, and refinement over time as your protocol evolves." },
-            ].map((step) => (
+            ]).map((step) => (
               <li key={step.n} className="relative flex gap-6 rounded-2xl border border-border/60 bg-card p-8 shadow-soft">
                 <span className="font-serif text-4xl leading-none text-[color:var(--brand-gold)]">{step.n}</span>
                 <div>
@@ -312,30 +302,27 @@ function HomePage() {
         </div>
       </section>
 
-
-
       {/* ABOUT / SCIENCE-MEETS-CARE */}
       <section className="bg-secondary/60">
         <div className="mx-auto grid max-w-7xl items-center gap-14 px-6 py-24 lg:grid-cols-2 lg:px-10">
           <div className="relative">
             <div className="absolute -top-6 -left-6 h-40 w-40 rounded-full border border-[color:var(--brand-gold)]/40" />
-            <img
-              src={pharmacistImg}
-              alt="Pharmacist compounding a formulation"
-              width={1400}
-              height={1600}
-              loading="lazy"
-              className="relative aspect-[4/5] w-full rounded-[2rem] object-cover shadow-luxe"
-            />
+            <img src={pharmacistImg} alt={ar ? "صيدلي أثناء تحضير تركيبة دوائية" : "Pharmacist compounding a formulation"} width={1400} height={1600} loading="lazy" className="relative aspect-[4/5] w-full rounded-[2rem] object-cover shadow-luxe" />
           </div>
           <div>
             <SectionHeading
-              eyebrow="About BioBlend"
-              title={<>Where science meets <em className="not-italic italic text-[color:var(--brand-gold)]">personalized care</em></>}
-              description="BioBlend Compounding Pharmacy creates customized medications and wellness solutions tailored to each patient's unique biology, lifestyle, and healthcare needs. Every prescription is a collaboration between physician, pharmacist, and patient."
+              eyebrow={ar ? "عن بايوبلند" : "About BioBlend"}
+              title={ar ? (
+                <>حيث يلتقي العلم بـ <em className="not-italic italic text-[color:var(--brand-gold)]">العناية الشخصية</em></>
+              ) : (
+                <>Where science meets <em className="not-italic italic text-[color:var(--brand-gold)]">personalized care</em></>
+              )}
+              description={ar
+                ? "تُحضّر بايوبلند أدوية وحلول عافية مصمّمة لبيولوجية كل مريض، ونمط حياته، واحتياجاته الصحّية. كل وصفة تعاون بين الطبيب والصيدلي والمريض."
+                : "BioBlend Compounding Pharmacy creates customized medications and wellness solutions tailored to each patient's unique biology, lifestyle, and healthcare needs. Every prescription is a collaboration between physician, pharmacist, and patient."}
             />
             <div className="mt-10 grid grid-cols-2 gap-6 text-sm">
-              {["Personalized Medicine", "Hormone Optimization", "Dermatology & Skincare", "Longevity & Anti-Aging", "Functional Wellness", "Nutraceuticals"].map((f) => (
+              {aboutFeatures.map((f) => (
                 <div key={f} className="flex items-center gap-3 border-b border-border/60 pb-3">
                   <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--brand-gold)]" />
                   <span className="text-foreground/80">{f}</span>
@@ -344,7 +331,7 @@ function HomePage() {
             </div>
             <div className="mt-10">
               <Button asChild variant="outline" className="rounded-full border-primary text-primary hover:bg-primary hover:text-primary-foreground">
-                <Link to="/about">Our Philosophy <ArrowRight className="ml-2 h-4 w-4" /></Link>
+                <Link to="/about">{ar ? "فلسفتنا" : "Our Philosophy"} <ArrowRight className="ml-2 h-4 w-4 rtl:rotate-180" /></Link>
               </Button>
             </div>
           </div>
@@ -355,10 +342,16 @@ function HomePage() {
       <section className="bg-background">
         <div className="mx-auto max-w-7xl px-6 py-24 lg:px-10">
           <SectionHeading
-            eyebrow="Our Services"
+            eyebrow={ar ? "خدماتنا" : "Our Services"}
             align="center"
-            title={<>Crafted for every stage of <em className="italic text-[color:var(--brand-gold)]">your wellness journey</em></>}
-            description="From bio-identical hormones to pediatric flavors and veterinary formulations — every prescription is compounded to spec in our sterile Dubai lab."
+            title={ar ? (
+              <>مصمّمة لكل مرحلة في <em className="italic text-[color:var(--brand-gold)]">رحلة عافيتك</em></>
+            ) : (
+              <>Crafted for every stage of <em className="italic text-[color:var(--brand-gold)]">your wellness journey</em></>
+            )}
+            description={ar
+              ? "من الهرمونات الطبيعية إلى نكهات أدوية الأطفال والتركيبات البيطرية — كل وصفة نُحضّرها وفق مواصفاتك في مختبرنا المعقّم في دبي."
+              : "From bio-identical hormones to pediatric flavors and veterinary formulations — every prescription is compounded to spec in our sterile Dubai lab."}
           />
           <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {services.map((s) => (
@@ -368,7 +361,7 @@ function HomePage() {
                 <h3 className="mt-5 font-serif text-xl text-primary">{s.title}</h3>
                 <p className="mt-2 text-sm text-muted-foreground">{s.body}</p>
                 <Link to="/services" className="mt-5 inline-flex items-center gap-1 text-xs font-medium tracking-widest text-[color:var(--brand-gold)] uppercase">
-                  Learn more <ArrowRight className="h-3 w-3" />
+                  {ar ? "اعرف المزيد" : "Learn more"} <ArrowRight className="h-3 w-3 rtl:rotate-180" />
                 </Link>
               </div>
             ))}
@@ -384,10 +377,14 @@ function HomePage() {
         </div>
         <div className="mx-auto max-w-7xl px-6 py-24 lg:px-10">
           <SectionHeading
-            eyebrow="How It Works"
+            eyebrow={ar ? "كيف نعمل" : "How It Works"}
             invert
             align="center"
-            title={<>Four steps from consultation to <em className="italic text-[color:var(--brand-gold)]">bespoke wellness</em></>}
+            title={ar ? (
+              <>أربع خطوات من الاستشارة إلى <em className="italic text-[color:var(--brand-gold)]">عافية مصمّمة لك</em></>
+            ) : (
+              <>Four steps from consultation to <em className="italic text-[color:var(--brand-gold)]">bespoke wellness</em></>
+            )}
           />
           <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
             {steps.map((s, i) => (
@@ -409,12 +406,18 @@ function HomePage() {
         <div className="mx-auto grid max-w-7xl items-center gap-14 px-6 py-24 lg:grid-cols-[.9fr_1.1fr] lg:px-10">
           <div>
             <SectionHeading
-              eyebrow="The Formulary"
-              title={<>Every bottle, tuned to <em className="italic text-[color:var(--brand-gold)]">a single patient</em></>}
-              description="Custom capsules, topical creams, sublingual troches, sterile injectables, and nutraceutical blends — all compounded in-house with pharmaceutical-grade ingredients."
+              eyebrow={ar ? "التركيبات المتاحة" : "The Formulary"}
+              title={ar ? (
+                <>كل زجاجة، مضبوطة على <em className="italic text-[color:var(--brand-gold)]">مريض واحد</em></>
+              ) : (
+                <>Every bottle, tuned to <em className="italic text-[color:var(--brand-gold)]">a single patient</em></>
+              )}
+              description={ar
+                ? "كبسولات مخصّصة، كريمات موضعية، أقراص ذائبة تحت اللسان، حقن معقّمة، وخلطات مكمّلات — كلها تُحضَّر داخلياً بمواد صيدلانية النقاء."
+                : "Custom capsules, topical creams, sublingual troches, sterile injectables, and nutraceutical blends — all compounded in-house with pharmaceutical-grade ingredients."}
             />
             <ul className="mt-8 grid grid-cols-2 gap-x-6 gap-y-3 text-sm text-foreground/80">
-              {["Custom Capsules", "Topical Creams", "Anti-Aging Serums", "Wellness Supplements", "Personalized Skincare", "Hormone Support", "Sterile Injectables", "Pediatric Suspensions"].map((f) => (
+              {formulary.map((f) => (
                 <li key={f} className="flex items-center gap-2">
                   <span className="h-1 w-6 bg-[color:var(--brand-gold)]" />
                   {f}
@@ -423,14 +426,7 @@ function HomePage() {
             </ul>
           </div>
           <div className="relative">
-            <img
-              src={productsFlatlay}
-              alt="Luxury pharmacy products flat lay"
-              width={1600}
-              height={1000}
-              loading="lazy"
-              className="w-full rounded-[2rem] object-cover shadow-luxe"
-            />
+            <img src={productsFlatlay} alt={ar ? "عرض راقٍ لمنتجات الصيدلية" : "Luxury pharmacy products flat lay"} width={1600} height={1000} loading="lazy" className="w-full rounded-[2rem] object-cover shadow-luxe" />
           </div>
         </div>
       </section>
@@ -439,9 +435,13 @@ function HomePage() {
       <section className="bg-secondary/60">
         <div className="mx-auto max-w-7xl px-6 py-24 lg:px-10">
           <SectionHeading
-            eyebrow="Kind Words"
+            eyebrow={ar ? "كلمات لطيفة" : "Kind Words"}
             align="center"
-            title={<>What our patients & partners <em className="italic text-[color:var(--brand-gold)]">quietly celebrate</em></>}
+            title={ar ? (
+              <>ما يقوله <em className="italic text-[color:var(--brand-gold)]">مرضانا وشركاؤنا</em></>
+            ) : (
+              <>What our patients & partners <em className="italic text-[color:var(--brand-gold)]">quietly celebrate</em></>
+            )}
           />
           <div className="mt-16 grid gap-6 md:grid-cols-3">
             {testimonials.map((t) => (
@@ -471,34 +471,46 @@ function HomePage() {
             <article className="group flex flex-col justify-between gap-8 rounded-3xl border border-border/60 bg-secondary/50 p-10 transition-shadow hover:shadow-luxe">
               <div>
                 <div className="inline-flex items-center gap-2 rounded-full border border-[color:var(--brand-gold)]/40 bg-background/60 px-3 py-1 text-[0.65rem] font-medium tracking-[0.24em] text-[color:var(--brand-gold)] uppercase">
-                  <Building2 className="h-3 w-3" /> For Organizations
+                  <Building2 className="h-3 w-3" /> {ar ? "للمؤسّسات" : "For Organizations"}
                 </div>
                 <h3 className="mt-6 font-serif text-3xl leading-tight text-primary md:text-4xl">
-                  Corporate <em className="italic text-[color:var(--brand-gold)]">wellness</em> programs
+                  {ar ? (
+                    <>برامج <em className="italic text-[color:var(--brand-gold)]">صحّة الموظفين</em></>
+                  ) : (
+                    <>Corporate <em className="italic text-[color:var(--brand-gold)]">wellness</em> programs</>
+                  )}
                 </h3>
                 <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                  Tailored formulary and preventive-health programs for executive teams, family offices, and wellness employers — delivered with the discretion your team expects.
+                  {ar
+                    ? "برامج تركيبات ووقاية صحّية مصمّمة للفرق التنفيذية ومكاتب العائلات وأصحاب العمل — تُقدَّم بالتقدير والسريّة التي يتوقّعها فريقك."
+                    : "Tailored formulary and preventive-health programs for executive teams, family offices, and wellness employers — delivered with the discretion your team expects."}
                 </p>
               </div>
               <Link to="/contact" className="inline-flex items-center gap-2 text-sm font-medium tracking-widest text-[color:var(--brand-gold)] uppercase">
-                Design a program <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                {ar ? "صمّم برنامجاً" : "Design a program"} <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 rtl:-scale-x-100" />
               </Link>
             </article>
 
             <article className="group flex flex-col justify-between gap-8 rounded-3xl bg-primary p-10 text-primary-foreground shadow-luxe transition-shadow hover:shadow-luxe">
               <div>
                 <div className="inline-flex items-center gap-2 rounded-full border border-[color:var(--brand-gold)]/40 bg-primary-foreground/5 px-3 py-1 text-[0.65rem] font-medium tracking-[0.24em] text-[color:var(--brand-gold)] uppercase">
-                  <Stethoscope className="h-3 w-3" /> For Clinicians
+                  <Stethoscope className="h-3 w-3" /> {ar ? "للأطباء" : "For Clinicians"}
                 </div>
                 <h3 className="mt-6 font-serif text-3xl leading-tight md:text-4xl">
-                  Clinic & physician <em className="italic text-[color:var(--brand-gold)]">partnerships</em>
+                  {ar ? (
+                    <>شراكات <em className="italic text-[color:var(--brand-gold)]">العيادات والأطباء</em></>
+                  ) : (
+                    <>Clinic & physician <em className="italic text-[color:var(--brand-gold)]">partnerships</em></>
+                  )}
                 </h3>
                 <p className="mt-4 text-sm leading-relaxed text-primary-foreground/75">
-                  Refer patients or co-design protocols with our pharmacists — hormone panels, dermatology stacks, IV support, veterinary. Direct pharmacist line for prescribing physicians.
+                  {ar
+                    ? "أَحِل مرضاك أو صمّم البروتوكولات معنا — تحاليل هرمونات، بروتوكولات جلدية، دعم وريدي، رعاية بيطرية. خط مباشر مع الصيدلي للأطباء المُحيلين."
+                    : "Refer patients or co-design protocols with our pharmacists — hormone panels, dermatology stacks, IV support, veterinary. Direct pharmacist line for prescribing physicians."}
                 </p>
               </div>
               <Link to="/contact" className="inline-flex items-center gap-2 text-sm font-medium tracking-widest text-[color:var(--brand-gold)] uppercase">
-                Refer a patient <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                {ar ? "أَحِل مريضاً" : "Refer a patient"} <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 rtl:-scale-x-100" />
               </Link>
             </article>
           </div>
@@ -506,28 +518,30 @@ function HomePage() {
       </section>
 
       {/* CTA */}
-
       <section className="bg-background">
         <div className="mx-auto max-w-6xl px-6 py-24 lg:px-10">
           <div className="relative overflow-hidden rounded-[2.5rem] bg-primary p-12 text-primary-foreground shadow-luxe md:p-16">
             <div className="absolute -top-16 -right-16 h-64 w-64 rounded-full bg-[color:var(--brand-gold)]/20 blur-3xl" />
             <div className="relative grid gap-10 md:grid-cols-[1.4fr_.6fr] md:items-center">
               <div>
-                <p className="eyebrow text-[color:var(--brand-gold)]">Begin Your Blend</p>
+                <p className="eyebrow text-[color:var(--brand-gold)]">{ar ? "ابدأ تركيبتك" : "Begin Your Blend"}</p>
                 <h2 className="mt-4 font-serif text-4xl leading-tight md:text-5xl">
-                  Ready to formulate a plan built just for you?
+                  {ar
+                    ? "جاهز لتصميم خطّة عافية خاصّة بك؟"
+                    : "Ready to formulate a plan built just for you?"}
                 </h2>
                 <p className="mt-4 max-w-lg text-primary-foreground/80">
-                  Book a consultation with our pharmacists. We'll listen, review, and design a formulation
-                  that fits your life.
+                  {ar
+                    ? "احجز استشارة مع صيادلتنا. سنستمع، ونراجع، ونُصمّم تركيبة تناسب حياتك."
+                    : "Book a consultation with our pharmacists. We'll listen, review, and design a formulation that fits your life."}
                 </p>
               </div>
               <div className="flex flex-col gap-3">
                 <Button asChild size="lg" className="rounded-full bg-[color:var(--brand-gold)] text-primary hover:bg-[color:var(--brand-gold)]/90">
-                  <Link to="/contact">Book Consultation</Link>
+                  <Link to="/contact">{ar ? "احجز استشارتك" : "Book Consultation"}</Link>
                 </Button>
                 <a href="tel:+97143277355" className="text-center text-sm text-primary-foreground/80 hover:text-[color:var(--brand-gold)]">
-                  or call +971 4 3277355
+                  {ar ? "أو اتصل على" : "or call"} <span dir="ltr">+971 4 3277355</span>
                 </a>
               </div>
             </div>
