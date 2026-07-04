@@ -76,10 +76,8 @@ function CorporatePage() {
           <div className="mt-16 grid gap-6 md:grid-cols-2">
             {programs.map((p, i) => (
               <Reveal key={p.title} delay={i * 0.06}>
-                <div className="flex gap-6 rounded-2xl border border-border/60 bg-card p-8 shadow-soft transition-all hover:border-[color:var(--brand-gold)]/60 hover:shadow-luxe">
-                  <div className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-[color:var(--brand-gold)]/15 text-[color:var(--brand-gold)]">
-                    <p.icon className="h-5 w-5" strokeWidth={1.6} />
-                  </div>
+                <div className="card-luxe flex items-start gap-6 rounded-2xl p-8">
+                  <CardTile tile={p.tile} alt={p.title} size="md" />
                   <div>
                     <h3 className="font-serif text-2xl text-primary">{p.title}</h3>
                     <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.body}</p>
