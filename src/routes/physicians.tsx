@@ -41,17 +41,23 @@ function PhysiciansPage() {
   return (
     <>
       <section className="relative overflow-hidden bg-primary pt-36 pb-20 text-primary-foreground">
-        <div className="absolute inset-0 -z-10 opacity-[0.08]" aria-hidden="true">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,var(--brand-gold),transparent_50%)]" />
+        <div className="absolute inset-0 -z-10" aria-hidden="true">
+          <img
+            src={tiles.labWide}
+            alt=""
+            className="h-full w-full object-cover opacity-25 mix-blend-luminosity"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/85 to-primary/40" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,var(--brand-gold),transparent_55%)] opacity-[0.15]" />
         </div>
-        <div className="mx-auto max-w-5xl px-6 lg:px-10">
+        <div className="mx-auto grid max-w-6xl gap-12 px-6 lg:grid-cols-[1.15fr_1fr] lg:items-center lg:px-10">
           <Reveal>
             <p className="eyebrow text-[color:var(--brand-gold)]">For Physicians</p>
-            <h1 className="mt-6 font-serif text-5xl leading-[1.02] md:text-7xl">
+            <h1 className="mt-6 font-serif text-5xl leading-[1.02] md:text-6xl">
               A pharmacy that <em className="italic text-[color:var(--brand-gold)]">extends</em> your practice.
             </h1>
             <div className="mt-6 gold-rule" />
-            <p className="mt-8 max-w-2xl text-lg text-primary-foreground/80">
+            <p className="mt-8 max-w-xl text-lg text-primary-foreground/80">
               BioBlend is the compounding partner for physicians who prescribe outside the shelf —
               exact doses, exact bases, allergen exclusions, delivery-form flexibility. We handle the compounding rigour
               so you can focus on the plan.
@@ -65,8 +71,24 @@ function PhysiciansPage() {
               </Button>
             </div>
           </Reveal>
+          <Reveal delay={0.1}>
+            <div className="relative hidden lg:block">
+              <div className="gold-frame overflow-hidden rounded-3xl">
+                <img
+                  src={tiles.partnership}
+                  alt="BioBlend pharmacist consulting with a physician"
+                  className="aspect-[4/5] w-full rounded-[calc(1.5rem-3px)] object-cover"
+                />
+              </div>
+              <div className="absolute -bottom-6 -left-6 hidden rounded-2xl bg-[color:var(--brand-gold)] px-5 py-4 text-primary shadow-luxe md:block">
+                <p className="font-serif text-lg leading-tight">Named pharmacist</p>
+                <p className="text-[0.65rem] tracking-[0.24em] uppercase opacity-80">for your practice</p>
+              </div>
+            </div>
+          </Reveal>
         </div>
       </section>
+
 
       <section className="bg-background">
         <div className="mx-auto max-w-7xl px-6 py-24 lg:px-10">
