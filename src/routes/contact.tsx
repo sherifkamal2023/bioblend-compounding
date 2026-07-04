@@ -133,29 +133,53 @@ function ContactPage() {
 
             {/* Form */}
             <form onSubmit={onSubmit} className="rounded-3xl border border-border/60 bg-card p-10 shadow-soft">
-              <h2 className="font-serif text-3xl text-primary">Send us a note</h2>
+              <div className="flex flex-wrap gap-2" role="tablist" aria-label="Inquiry type">
+                {(["personal", "corporate", "clinician"] as const).map((k) => (
+                  <button
+                    key={k}
+                    type="button"
+                    role="tab"
+                    aria-selected={inquiry === k}
+                    onClick={() => setInquiry(k)}
+                    className={`rounded-full border px-4 py-1.5 text-xs font-medium tracking-[0.18em] uppercase transition-colors ${
+                      inquiry === k
+                        ? "border-[color:var(--brand-gold)] bg-[color:var(--brand-gold)]/15 text-primary"
+                        : "border-border/60 bg-transparent text-muted-foreground hover:text-primary"
+                    }`}
+                  >
+                    {k === "personal" ? "Personal" : k === "corporate" ? "Corporate" : "Clinician"}
+                  </button>
+                ))}
+              </div>
+
+              <h2 className="mt-6 font-serif text-3xl text-primary">{inquiryCopy[inquiry].heading}</h2>
               <div className="mt-2 gold-rule" />
-              <p className="mt-4 text-sm text-muted-foreground">
-                We reply within one business day. For urgent prescriptions, please call.
-              </p>
+              <p className="mt-4 text-sm text-muted-foreground">{inquiryCopy[inquiry].blurb}</p>
 
               <div className="mt-8 grid gap-5 md:grid-cols-2">
                 <div className="space-y-2">
-                  <Label htmlFor="name">Name</Label>
+                  <Label htmlFor="name">{inquiry === "personal" ? "Name" : "Contact name"}</Label>
                   <Input id="name" name="name" required placeholder="Your full name" />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="phone">Phone</Label>
                   <Input id="phone" name="phone" type="tel" placeholder="+971 …" />
                 </div>
+                {inquiry !== "personal" && (
+                  <div className="space-y-2 md:col-span-2">
+                    <Label htmlFor="organization">{inquiry === "corporate" ? "Organization" : "Clinic / Practice"}</Label>
+                    <Input id="organization" name="organization" placeholder={inquiry === "corporate" ? "Company name" : "Clinic or hospital name"} />
+                  </div>
+                )}
                 <div className="space-y-2 md:col-span-2">
                   <Label htmlFor="email">Email</Label>
                   <Input id="email" name="email" type="email" required placeholder="you@example.com" />
                 </div>
                 <div className="space-y-2 md:col-span-2">
                   <Label htmlFor="subject">Area of interest</Label>
-                  <Input id="subject" name="subject" placeholder="e.g. Hormone Replacement, Pediatric, Skincare" />
+                  <Input id="subject" name="subject" placeholder={inquiryCopy[inquiry].subjectPlaceholder} />
                 </div>
+
                 <div className="space-y-2 md:col-span-2">
                   <Label htmlFor="message">Message</Label>
                   <Textarea id="message" name="message" required rows={5} placeholder="Tell us a little about what you're looking for…" />
