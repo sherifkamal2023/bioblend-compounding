@@ -23,7 +23,9 @@ import { SectionHeading } from "@/components/SectionHeading";
 import heroLab from "@/assets/hero-lab.jpg";
 import productsFlatlay from "@/assets/products-flatlay.jpg";
 import pharmacistImg from "@/assets/pharmacist.jpg";
-import wellnessImg from "@/assets/wellness-portrait.jpg";
+import familyEn from "@/assets/family-wellness-en.jpg";
+import familyAr from "@/assets/family-wellness-ar.jpg";
+
 
 
 
@@ -141,7 +143,12 @@ const testimonials = [
 ];
 
 function HomePage() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const familyImg = i18n.language?.startsWith("ar") ? familyAr : familyEn;
+  const familyAlt = i18n.language?.startsWith("ar")
+    ? "عائلة سعيدة تمارس اليوغا في حديقة عند غروب الشمس"
+    : "Happy family sharing a healthy breakfast at home";
+
   return (
     <>
       {/* HERO */}
