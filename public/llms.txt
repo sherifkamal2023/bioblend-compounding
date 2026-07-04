@@ -1,0 +1,24 @@
+# BioBlend Compounding Pharmacy
+
+> DHA-licensed compounding pharmacy in Dubai, offering personalized formulations for hormone optimization, dermatology, pediatrics, wellness IV therapy, and pet wellness. The site is available in English and Arabic.
+
+BioBlend is a sterile compounding pharmacy that formulates personalized medicine to match each patient's labs, physician plan, and lifestyle — from bio-identical HRT and dermatology serums to pediatric suspensions and pet reformulations.
+
+## Pages
+
+- [Home](/): Personalized compounding pharmacy in Dubai — hormone, dermatology, pediatric, wellness IV, and pet formulations.
+- [About](/about): BioBlend's mission, lab standards, and the pharmacists behind every prescription.
+- [Services](/services): Overview of personalized medicine labs and how to start a prescription.
+- [Hormone Optimization](/services/hormone): Bio-identical HRT, thyroid, adrenal, and andropause protocols.
+- [Dermatology & Anti-Aging](/services/dermatology): Custom serums, pigmentation protocols, peptides, and medical peels.
+- [Pediatric Compounding](/services/pediatric): Flavored, alcohol-free, sugar-free, and micro-dosed pediatric suspensions.
+- [Your Pet's Wellness Matters](/services/pet-wellness): Pet medication reformulations for palatability, safety, and precise dosing.
+- [Wellness & IV Therapy](/services/wellness-iv): NAD+ and glutathione IVs, vitamin drips, longevity peptides, and nutraceuticals.
+- [For Physicians](/physicians): Partnership information, referral workflows, and clinical support for healthcare providers.
+- [Corporate Wellness](/corporate): Tailored formulary programs for clinics, wellness centers, and executive teams.
+- [Insights](/insights): Articles and guidance on compounding, personalized medicine, and wellness.
+- [Contact](/contact): Book a consultation, transfer a prescription, visit the lab, and pharmacy contact details.
+
+## Optional
+
+- [Sitemap](/sitemap.xml): Full list of indexed URLs for the site.
