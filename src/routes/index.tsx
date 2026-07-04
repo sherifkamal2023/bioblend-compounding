@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useTranslation } from "react-i18next";
 import {
   ShieldCheck,
   Sparkles,
@@ -23,6 +24,7 @@ import heroLab from "@/assets/hero-lab.jpg";
 import productsFlatlay from "@/assets/products-flatlay.jpg";
 import pharmacistImg from "@/assets/pharmacist.jpg";
 import wellnessImg from "@/assets/wellness-portrait.jpg";
+
 
 
 export const Route = createFileRoute("/")({
@@ -139,6 +141,7 @@ const testimonials = [
 ];
 
 function HomePage() {
+  const { t } = useTranslation();
   return (
     <>
       {/* HERO */}
@@ -156,33 +159,32 @@ function HomePage() {
 
         <div className="mx-auto grid max-w-7xl gap-16 px-6 pt-40 pb-28 lg:grid-cols-[1.1fr_.9fr] lg:px-10 lg:pt-48 lg:pb-40">
           <div>
-            <p className="eyebrow text-[color:var(--brand-gold)]">Compounding Pharmacy · Dubai</p>
+            <p className="eyebrow text-[color:var(--brand-gold)]">{t("hero.eyebrow")}</p>
             <h1 className="mt-6 font-serif text-5xl leading-[1.02] text-primary-foreground md:text-7xl">
-              Personalized medicine,
+              {t("hero.titleLine1")}
               <br />
               <em className="text-[color:var(--brand-gold)] not-italic font-serif italic">
-                precision wellness.
+                {t("hero.titleAccent")}
               </em>
             </h1>
             <div className="mt-6 gold-rule" />
             <p className="mt-8 max-w-xl text-lg text-primary-foreground/80">
-              BioBlend crafts custom-compounded solutions designed around your biology —
-              from bio-identical hormones to pediatric formulations and everything in between.
+              {t("hero.description")}
             </p>
 
             <div className="mt-10 flex flex-wrap gap-4">
               <Button asChild size="lg" className="rounded-full bg-[color:var(--brand-gold)] px-8 text-primary hover:bg-[color:var(--brand-gold)]/90">
-                <Link to="/contact">Book a Consultation</Link>
+                <Link to="/contact">{t("hero.ctaPrimary")}</Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="rounded-full border-primary-foreground/30 bg-transparent px-8 text-primary-foreground hover:bg-primary-foreground/10">
-                <Link to="/services">Explore Treatments <ArrowRight className="ml-2 h-4 w-4" /></Link>
+                <Link to="/services">{t("hero.ctaSecondary")} <ArrowRight className="ml-2 h-4 w-4 rtl:rotate-180" /></Link>
               </Button>
             </div>
 
             <div className="mt-12 flex flex-wrap gap-x-8 gap-y-4 text-sm text-primary-foreground/75">
               <span className="inline-flex items-center gap-2"><Phone className="h-4 w-4 text-[color:var(--brand-gold)]" /> +971 4 3277355</span>
               <span className="inline-flex items-center gap-2"><MapPin className="h-4 w-4 text-[color:var(--brand-gold)]" /> Dubai, UAE</span>
-              <span className="inline-flex items-center gap-2"><ShieldCheck className="h-4 w-4 text-[color:var(--brand-gold)]" /> DHA licensed</span>
+              <span className="inline-flex items-center gap-2"><ShieldCheck className="h-4 w-4 text-[color:var(--brand-gold)]" /> {t("hero.licensed")}</span>
             </div>
           </div>
 
@@ -197,15 +199,16 @@ function HomePage() {
                 className="h-full w-full object-cover"
               />
               <div className="absolute inset-x-6 bottom-6 rounded-2xl bg-background/95 p-5 text-foreground backdrop-blur">
-                <p className="font-serif text-lg italic text-primary">"Your Health. Our Blend."</p>
+                <p className="font-serif text-lg italic text-primary">{t("hero.promise")}</p>
                 <p className="mt-1 text-xs tracking-widest text-muted-foreground uppercase">
-                  The BioBlend promise
+                  {t("hero.promiseLabel")}
                 </p>
               </div>
             </div>
           </div>
         </div>
       </section>
+
 
       {/* QUAD ACTION STRIP */}
       <section className="border-b border-border/60 bg-background">
