@@ -40,23 +40,65 @@ export const Route = createFileRoute("/")({
   component: HomePage,
 });
 
-const pillars = [
+const quickActions = [
   {
-    icon: FlaskConical,
-    title: "Personalized Compounding",
-    body: "Every formulation is crafted for a single patient — dose, delivery, and every ingredient tailored to your biology.",
+    icon: CalendarCheck,
+    title: "Book a Consultation",
+    body: "Meet our pharmacists — 30-minute private review of your goals and prescriptions.",
+    to: "/contact",
+    cta: "Reserve time",
   },
   {
-    icon: Leaf,
-    title: "Premium Ingredients",
-    body: "Pharmaceutical-grade raw materials, ethically sourced and independently tested for purity and potency.",
+    icon: FileText,
+    title: "Transfer a Prescription",
+    body: "Move an active Rx to BioBlend — we handle the paperwork with your physician.",
+    to: "/contact",
+    cta: "Start transfer",
   },
   {
-    icon: ShieldCheck,
-    title: "Trusted Expertise",
-    body: "DHA-licensed pharmacists with decades of combined experience in sterile and non-sterile compounding.",
+    icon: MapPin,
+    title: "Visit the Lab",
+    body: "Tour our sterile compounding lab and consultation suite in Dubai.",
+    to: "/contact",
+    cta: "Get directions",
+  },
+  {
+    icon: Building2,
+    title: "Corporate Wellness",
+    body: "Tailored formulary programs for clinics, wellness centers, and executive teams.",
+    to: "/contact",
+    cta: "Partner with us",
   },
 ];
+
+const practiceAreas = [
+  {
+    icon: HeartPulse,
+    title: "Hormone Lab",
+    tagline: "Bio-identical HRT · Thyroid · Adrenal",
+  },
+  {
+    icon: Sparkles,
+    title: "Dermatology Lab",
+    tagline: "Custom serums · Peels · Anti-aging",
+  },
+  {
+    icon: Baby,
+    title: "Pediatric Lab",
+    tagline: "Flavored suspensions · Precise dosing",
+  },
+  {
+    icon: PawPrint,
+    title: "Veterinary Lab",
+    tagline: "Palatable formulas for pets",
+  },
+  {
+    icon: Droplet,
+    title: "Wellness & IV Lab",
+    tagline: "Nutraceuticals · IV therapy · Longevity",
+  },
+];
+
 
 const services = [
   { icon: HeartPulse, title: "Hormone Replacement", body: "Bio-identical HRT tailored to your hormone panel." },
