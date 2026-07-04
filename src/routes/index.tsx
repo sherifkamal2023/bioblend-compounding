@@ -88,8 +88,8 @@ const practiceAreas = [
   },
   {
     icon: PawPrint,
-    title: "Veterinary Lab",
-    tagline: "Palatable formulas for pets",
+    title: "Your Pet's Wellness Matters",
+    tagline: "Because their wellness is part of yours",
   },
   {
     icon: Droplet,
@@ -104,7 +104,7 @@ const services = [
   { icon: Sparkles, title: "Dermatology & Anti-Aging", body: "Custom serums, peels, and skin protocols." },
   { icon: Baby, title: "Pediatric Compounding", body: "Gentle flavors and precise pediatric dosing." },
   { icon: Droplet, title: "Wellness & IV Therapy", body: "Nutraceutical blends and IV wellness support." },
-  { icon: PawPrint, title: "Veterinary Compounding", body: "Palatable formulations for beloved pets." },
+  { icon: PawPrint, title: "Your Pet's Wellness Matters", body: "Your pet's wellness is part of yours — palatable, safe formulations that protect the whole household." },
   { icon: ShieldCheck, title: "Pain Management", body: "Topical and transdermal pain solutions." },
 ];
 
