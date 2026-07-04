@@ -199,12 +199,13 @@ function HomePage() {
             <div className="absolute -top-6 -right-6 h-72 w-72 rounded-full bg-[color:var(--brand-gold)]/15 blur-3xl" />
             <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] border border-primary-foreground/10 shadow-luxe">
               <img
-                src={wellnessImg}
-                alt="Serene wellness portrait"
-                width={1400}
-                height={1600}
+                src={familyImg}
+                alt={familyAlt}
+                width={1152}
+                height={1440}
                 className="h-full w-full object-cover"
               />
+
               <div className="absolute inset-x-6 bottom-6 rounded-2xl bg-background/95 p-5 text-foreground backdrop-blur">
                 <p className="font-serif text-lg italic text-primary">{t("hero.promise")}</p>
                 <p className="mt-1 text-xs tracking-widest text-muted-foreground uppercase">
