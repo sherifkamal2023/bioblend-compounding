@@ -120,7 +120,7 @@ function PhysiciansPage() {
           <div className="mt-12 grid gap-3 sm:grid-cols-2 md:grid-cols-4">
             {specialties.map((s, i) => (
               <Reveal key={s} delay={i * 0.03}>
-                <div className="flex items-center gap-3 rounded-xl border border-border/60 bg-card p-4">
+                <div className="flex items-center gap-3 rounded-xl border border-[color:var(--brand-gold)]/30 bg-[color:var(--brand-gold)]/8 p-4 transition-colors hover:bg-[color:var(--brand-gold)]/12">
                   <Stethoscope className="h-4 w-4 shrink-0 text-[color:var(--brand-teal)]" strokeWidth={1.6} />
                   <span className="text-sm text-foreground/80">{s}</span>
                 </div>
