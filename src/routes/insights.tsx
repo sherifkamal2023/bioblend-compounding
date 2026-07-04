@@ -91,20 +91,29 @@ function InsightsPage() {
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {articles.map((a, i) => (
               <Reveal key={a.title} delay={(i % 3) * 0.06}>
-                <article className="group flex h-full flex-col rounded-2xl border border-border/60 bg-card p-8 shadow-soft transition-all hover:border-[color:var(--brand-gold)]/60 hover:shadow-luxe">
-                  <div className="flex items-center justify-between">
-                    <span className="text-[0.68rem] font-medium tracking-[0.24em] text-[color:var(--brand-gold)] uppercase">
+                <article className="card-luxe group flex h-full flex-col overflow-hidden rounded-2xl">
+                  <div className="relative aspect-[16/10] overflow-hidden">
+                    <img
+                      src={tiles[a.tile]}
+                      alt={a.title}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent" />
+                    <span className="absolute left-4 top-4 rounded-full bg-[color:var(--brand-gold)]/95 px-3 py-1 text-[0.62rem] font-semibold tracking-[0.24em] text-primary uppercase shadow">
                       {a.category}
                     </span>
-                    <span className="text-xs text-muted-foreground">{a.readTime}</span>
                   </div>
-                  <h2 className="mt-6 font-serif text-2xl leading-snug text-primary group-hover:text-[color:var(--brand-teal)]">
-                    {a.title}
-                  </h2>
-                  <p className="mt-4 flex-1 text-sm leading-relaxed text-muted-foreground">{a.excerpt}</p>
-                  <div className="mt-8 flex items-center justify-between border-t border-border/60 pt-5 text-xs text-muted-foreground">
-                    <span className="italic">{a.date}</span>
-                    <ArrowUpRight className="h-4 w-4 text-[color:var(--brand-gold)] transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                  <div className="flex flex-1 flex-col p-8">
+                    <span className="text-xs text-muted-foreground">{a.readTime}</span>
+                    <h2 className="mt-4 font-serif text-2xl leading-snug text-primary group-hover:text-[color:var(--brand-teal)]">
+                      {a.title}
+                    </h2>
+                    <p className="mt-4 flex-1 text-sm leading-relaxed text-muted-foreground">{a.excerpt}</p>
+                    <div className="mt-8 flex items-center justify-between border-t border-[color:var(--brand-gold)]/25 pt-5 text-xs text-muted-foreground">
+                      <span className="italic">{a.date}</span>
+                      <ArrowUpRight className="h-4 w-4 text-[color:var(--brand-gold)] transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                    </div>
                   </div>
                 </article>
               </Reveal>
