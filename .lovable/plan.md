@@ -1,44 +1,36 @@
-# Enhance BioBlend with LifeLab-Inspired Patterns
+## Scope
 
-LifeLab.bio is a private wellness club (different vertical) but its layout DNA translates beautifully to a premium compounding pharmacy. I'll borrow the *structure and feel*, not the content.
+Two small, targeted changes. No new routes, no backend, no design-system edits.
 
-## What we're borrowing from LifeLab
+### 1. Rebrand "Veterinary" → "Your Pet's Wellness Matters"
 
-| LifeLab pattern | BioBlend adaptation |
-|---|---|
-| Cinematic hero with editorial serif tagline ("Well-being, *Reimagined*") | Refined hero: "Medicine, *Personalized*" — italic serif accent word, quieter overline, single primary CTA |
-| "Our 5 Labs" pillar grid (Movement/Nutrition/Recovery/Mind/Connection) | "Our Practice Areas" pillar grid — 5 illustrated circles: Hormone Therapy, Dermatology, Pediatric, Veterinary, Sterile IV — each links to Services section |
-| Quad CTA strip (Consultation / Events / Facilities / Corporate) under hero | Quad strip: Book Consultation · Prescription Transfer · Visit Lab · Corporate Wellness |
-| "Your path to Well-Being" mission block with SVG diagram | "Your path to precision medicine" — 3-step illustrated flow (Consult → Compound → Care) |
-| Locations gallery (KAFD, Villa Kama, Enclave, Bali) | Kept minimal — single "Visit the Lab" card with our Riyadh location + map preview |
-| Corporate Wellness offering | New teaser card on Home linking to a lightweight "Corporate / Clinic Partnerships" section on Services page |
-| Sticky "Book a Consultation" CTA banner | Sticky bottom bar on mobile + persistent header button: "Book a Consultation" (WhatsApp link) |
-| Editorial imagery + generous whitespace + serif/sans pairing | Already in place — tighten spacing rhythm and increase image scale in hero + pillars |
+Rationale: BioBlend is a human compounding pharmacy. Pet care is framed as an extension of the client's personal wellness (protecting the household, safe zoonotic-disease practices, quality of life for the whole family), not as a standalone veterinary service.
 
-## Concrete changes
+Exact string replacements:
 
-**Home (`src/routes/index.tsx`)**
-1. Rework hero: overline "Compounding Pharmacy · Riyadh", H1 with italic serif accent, one primary CTA (Book Consultation) + ghost secondary (Explore Services). Larger hero image, softer overlay.
-2. Add **Quad CTA strip** directly under hero (4 small cards: Consultation, Prescription Transfer, Visit Lab, Corporate Wellness).
-3. Replace current 3-pillar strip with **5 Practice Areas grid** (circular icon + label + one-line + See More link). Icons rendered as inline SVGs with brand gold on ivory.
-4. Add **"Your Path to Precision Medicine"** editorial block: left column heading + prose, right column 3-step numbered flow (Consult → Formulate → Care).
-5. Add **Corporate & Clinic Partnerships** teaser card before the contact CTA band.
-6. Keep testimonials and contact band.
+- `src/routes/index.tsx`
+  - Practice Areas card: `"Veterinary Lab"` → `"Your Pet's Wellness Matters"`
+    - tagline: `"Palatable formulas for pets"` → `"Because their wellness is part of yours"`
+  - Services grid card: `"Veterinary Compounding"` → `"Your Pet's Wellness Matters"`
+    - body: `"Palatable formulations for beloved pets."` → `"Your pet's wellness is part of yours — palatable, safe formulations that protect the whole household."`
+- `src/routes/services.tsx`
+  - Services grid card: `"Veterinary Compounding"` → `"Your Pet's Wellness Matters"`
+    - body: `"Species-appropriate flavors and delivery forms — from transdermal cats to flavored canine treats."` → `"Your pet's wellness is part of yours. Species-appropriate, palatable formulations — transdermal cats, flavored canine treats — with medical-grade attention to safe handling and zoonotic-disease prevention for the whole household."`
+  - Page description meta: replace `"veterinary"` with `"pet wellness"` in the description string.
 
-**Header (`src/components/Header.tsx`)**
-- Add persistent "Book a Consultation" gold button (right of nav), matching LifeLab's always-visible CTA.
+Icon (`PawPrint`) stays. Placement in grids stays. No new copy blocks added.
 
-**Contact (`src/routes/contact.tsx`)**
-- Add a compact "Corporate Wellness / Clinic Partnerships" inquiry toggle above the form (changes form heading + subject).
+### 2. Restore the real BioBlend logo
 
-**No new routes.** All additions layer onto existing files. No backend, no Cloud, no data model changes — this is presentation + IA only.
+The current `src/components/Logo.tsx` is a hand-drawn SVG that doesn't match the brand mark. Replace it with the actual logo the user uploaded (`user-uploads://WhatsApp_Image_2026-07-04_at_2.17.43_PM_1-2.jpeg` — the "B" mark with the gold leaf, red + teal strokes, "BioBlend" wordmark).
 
-## Assets
-- Generate 5 pillar icons (transparent PNG, gold on ivory) via imagegen.
-- Optionally regenerate hero as a wider cinematic image if the current one feels cramped.
+Steps:
+- Register the uploaded image as a Lovable asset via `lovable-assets create` from `/mnt/user-uploads/…` → `src/assets/bioblend-logo.png.asset.json`.
+- Rewrite `src/components/Logo.tsx` to render an `<img>` using the asset URL, preserving the existing props (className, size). Keep the same export signature so Header/Footer keep working without edits.
+- Add a memory rule: do not modify or replace the BioBlend logo — always use the user-provided mark.
 
-## Out of scope
-- Membership / quiz / events (LifeLab-specific, doesn't fit a pharmacy).
-- Video hero (adds weight; keep still image).
-- Multi-location gallery (BioBlend is single location).
-- Arabic/RTL, e-commerce, booking system, patient portal.
+### Out of scope
+
+- No changes to Header/Footer/routes/styles.
+- No changes to the About page team names or any other copy.
+- No SEO metadata rewrites beyond the one Services description tweak.

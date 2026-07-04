@@ -27,7 +27,7 @@ export const Route = createFileRoute("/services")({
       {
         name: "description",
         content:
-          "Explore BioBlend's compounding services: hormone replacement, pediatric, dermatology, veterinary, pain management, wellness, and sterile preparations.",
+          "Explore BioBlend's compounding services: hormone replacement, pediatric, dermatology, pet wellness, pain management, wellness, and sterile preparations.",
       },
       { property: "og:title", content: "Services — BioBlend Compounding Pharmacy" },
       { property: "og:description", content: "Custom compounding for hormones, dermatology, pediatrics, wellness and more." },
@@ -41,7 +41,7 @@ const services = [
   { icon: Sparkles, title: "Dermatology & Anti-Aging", body: "Prescription-strength retinoids, tranexamic acid, custom peels and personalized skin protocols." },
   { icon: Baby, title: "Pediatric Compounding", body: "Alcohol-free, sugar-free, dye-free suspensions in flavors children actually take." },
   { icon: Droplet, title: "IV & Wellness Therapy", body: "NAD+, glutathione, vitamin and hydration infusions supervised by our clinical team." },
-  { icon: PawPrint, title: "Veterinary Compounding", body: "Species-appropriate flavors and delivery forms — from transdermal cats to flavored canine treats." },
+  { icon: PawPrint, title: "Your Pet's Wellness Matters", body: "Your pet's wellness is part of yours. Species-appropriate, palatable formulations — transdermal cats, flavored canine treats — with medical-grade attention to safe handling and zoonotic-disease prevention for the whole household." },
   { icon: ShieldCheck, title: "Pain Management", body: "Topical and transdermal analgesic combinations that avoid systemic side effects." },
   { icon: FlaskConical, title: "Sterile Preparations", body: "USP <797> compliant sterile compounding for injectables and ophthalmics." },
   { icon: Leaf, title: "Nutraceutical Blends", body: "Physician-guided vitamin, mineral and adaptogen formulations." },
