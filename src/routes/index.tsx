@@ -448,7 +448,49 @@ function HomePage() {
         </div>
       </section>
 
+      {/* CORPORATE & PARTNERSHIPS */}
+      <section className="bg-background">
+        <div className="mx-auto max-w-7xl px-6 pt-24 lg:px-10">
+          <div className="grid gap-8 md:grid-cols-2">
+            <article className="group flex flex-col justify-between gap-8 rounded-3xl border border-border/60 bg-secondary/50 p-10 transition-shadow hover:shadow-luxe">
+              <div>
+                <div className="inline-flex items-center gap-2 rounded-full border border-[color:var(--brand-gold)]/40 bg-background/60 px-3 py-1 text-[0.65rem] font-medium tracking-[0.24em] text-[color:var(--brand-gold)] uppercase">
+                  <Building2 className="h-3 w-3" /> For Organizations
+                </div>
+                <h3 className="mt-6 font-serif text-3xl leading-tight text-primary md:text-4xl">
+                  Corporate <em className="italic text-[color:var(--brand-gold)]">wellness</em> programs
+                </h3>
+                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                  Tailored formulary and preventive-health programs for executive teams, family offices, and wellness employers — delivered with the discretion your team expects.
+                </p>
+              </div>
+              <Link to="/contact" className="inline-flex items-center gap-2 text-sm font-medium tracking-widest text-[color:var(--brand-gold)] uppercase">
+                Design a program <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </Link>
+            </article>
+
+            <article className="group flex flex-col justify-between gap-8 rounded-3xl bg-primary p-10 text-primary-foreground shadow-luxe transition-shadow hover:shadow-luxe">
+              <div>
+                <div className="inline-flex items-center gap-2 rounded-full border border-[color:var(--brand-gold)]/40 bg-primary-foreground/5 px-3 py-1 text-[0.65rem] font-medium tracking-[0.24em] text-[color:var(--brand-gold)] uppercase">
+                  <Stethoscope className="h-3 w-3" /> For Clinicians
+                </div>
+                <h3 className="mt-6 font-serif text-3xl leading-tight md:text-4xl">
+                  Clinic & physician <em className="italic text-[color:var(--brand-gold)]">partnerships</em>
+                </h3>
+                <p className="mt-4 text-sm leading-relaxed text-primary-foreground/75">
+                  Refer patients or co-design protocols with our pharmacists — hormone panels, dermatology stacks, IV support, veterinary. Direct pharmacist line for prescribing physicians.
+                </p>
+              </div>
+              <Link to="/contact" className="inline-flex items-center gap-2 text-sm font-medium tracking-widest text-[color:var(--brand-gold)] uppercase">
+                Refer a patient <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </Link>
+            </article>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
+
       <section className="bg-background">
         <div className="mx-auto max-w-6xl px-6 py-24 lg:px-10">
           <div className="relative overflow-hidden rounded-[2.5rem] bg-primary p-12 text-primary-foreground shadow-luxe md:p-16">
