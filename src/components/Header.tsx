@@ -50,10 +50,11 @@ export function Header() {
         </nav>
 
         <div className="hidden md:block">
-          <Button asChild size="sm" className="rounded-full bg-primary px-5 text-primary-foreground hover:bg-primary/90">
-            <Link to="/contact">Book Consultation</Link>
+          <Button asChild size="sm" className="rounded-full bg-[color:var(--brand-gold)] px-5 text-primary hover:bg-[color:var(--brand-gold)]/90">
+            <Link to="/contact">Book a Consultation</Link>
           </Button>
         </div>
+
 
         <button
           className="md:hidden"
