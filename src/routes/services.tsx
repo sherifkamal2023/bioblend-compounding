@@ -23,7 +23,10 @@ export const Route = createFileRoute("/services")({
       },
       { property: "og:title", content: "Services — BioBlend Compounding Pharmacy" },
       { property: "og:description", content: "Custom compounding for hormones, dermatology, pediatrics, wellness and more." },
+      { property: "og:url", content: "https://snug-build-playground.lovable.app/services" },
+      { property: "og:type", content: "website" },
     ],
+    links: [{ rel: "canonical", href: "https://snug-build-playground.lovable.app/services" }],
   }),
   component: ServicesPage,
 });

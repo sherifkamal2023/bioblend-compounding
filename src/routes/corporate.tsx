@@ -14,7 +14,10 @@ export const Route = createFileRoute("/corporate")({
       { name: "description", content: "BioBlend Corporate Wellness: onsite health screenings, executive HRT and longevity protocols, custom formulary partnerships for clinics, offices, and hospitality teams in Dubai." },
       { property: "og:title", content: "Corporate Wellness — BioBlend Compounding Pharmacy" },
       { property: "og:description", content: "Precision wellness for teams, executives, and organizations across the UAE." },
+      { property: "og:url", content: "https://snug-build-playground.lovable.app/corporate" },
+      { property: "og:type", content: "website" },
     ],
+    links: [{ rel: "canonical", href: "https://snug-build-playground.lovable.app/corporate" }],
   }),
   component: CorporatePage,
 });

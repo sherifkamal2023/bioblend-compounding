@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://snug-build-playground.lovable.app/sitemap.xml

@@ -31,13 +31,18 @@ import { useIsAr } from "@/lib/useIsAr";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "BioBlend Compounding Pharmacy — Your Health. Our Blend." },
+      { title: "BioBlend Compounding Pharmacy — Personalized Medicine in Dubai" },
       {
         name: "description",
         content:
-          "Dubai's premier compounding pharmacy for hormone optimization, dermatology, pediatric, and personalized wellness formulations.",
+          "Dubai's premier compounding pharmacy for hormone optimization, dermatology, pediatric, pet, and personalized wellness formulations. DHA-licensed. Your Health. Our Blend.",
       },
+      { property: "og:title", content: "BioBlend Compounding Pharmacy — Personalized Medicine in Dubai" },
+      { property: "og:description", content: "DHA-licensed compounding pharmacy in Dubai. Bio-identical HRT, dermatology, pediatric, IV wellness, longevity and pet formulations." },
+      { property: "og:url", content: "https://snug-build-playground.lovable.app/" },
+      { property: "og:type", content: "website" },
     ],
+    links: [{ rel: "canonical", href: "https://snug-build-playground.lovable.app/" }],
   }),
   component: HomePage,
 });
