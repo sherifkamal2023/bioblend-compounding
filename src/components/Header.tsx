@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, UserRound } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import "@/lib/i18n";
 import { Logo } from "./Logo";
@@ -98,7 +98,18 @@ export function Header() {
             <LangSwitcher tone={scrolled ? "dark" : "light"} />
           </nav>
 
-          <div className="hidden lg:block">
+          <div className="hidden items-center gap-2 lg:flex">
+            <Link
+              to="/auth"
+              className={`inline-flex items-center gap-1.5 rounded-full border px-4 py-2 text-xs font-semibold tracking-wide transition-colors ${
+                scrolled
+                  ? "border-border/70 text-foreground/80 hover:border-primary hover:text-primary"
+                  : "border-white/40 text-white/90 hover:border-white hover:text-white"
+              }`}
+            >
+              <UserRound className="h-3.5 w-3.5" />
+              Patient portal
+            </Link>
             <Button asChild size="sm" className="whitespace-nowrap rounded-full bg-[color:var(--brand-gold)] px-5 text-primary hover:bg-[color:var(--brand-gold)]/90">
               <Link to="/contact">{t("nav.bookConsultation")}</Link>
             </Button>
@@ -143,7 +154,14 @@ export function Header() {
                   {p.label}
                 </Link>
               ))}
-              <Button asChild className="mt-3 rounded-full bg-[color:var(--brand-gold)] text-primary hover:bg-[color:var(--brand-gold)]/90">
+              <Link
+                to="/auth"
+                onClick={() => setOpen(false)}
+                className="mt-3 flex items-center justify-center gap-1.5 rounded-full border border-border/70 px-4 py-2 text-sm font-medium text-foreground/80 hover:border-primary hover:text-primary"
+              >
+                <UserRound className="h-4 w-4" /> Patient portal
+              </Link>
+              <Button asChild className="mt-2 rounded-full bg-[color:var(--brand-gold)] text-primary hover:bg-[color:var(--brand-gold)]/90">
                 <Link to="/contact" onClick={() => setOpen(false)}>{t("nav.bookConsultation")}</Link>
               </Button>
             </div>
