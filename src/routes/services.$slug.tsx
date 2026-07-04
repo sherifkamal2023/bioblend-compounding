@@ -98,7 +98,7 @@ function PracticeAreaPage() {
           <ol className="mt-14 space-y-4">
             {area.process.map((step, i) => (
               <Reveal key={i} delay={i * 0.05}>
-                <li className="flex gap-6 rounded-2xl border border-border/60 bg-card p-6 shadow-soft">
+                <li className="card-luxe flex gap-6 rounded-2xl p-6">
                   <span className="font-serif text-3xl leading-none text-[color:var(--brand-gold)]">{String(i + 1).padStart(2, "0")}</span>
                   <p className="pt-1 text-sm leading-relaxed text-foreground/80 md:text-base">{step}</p>
                 </li>
