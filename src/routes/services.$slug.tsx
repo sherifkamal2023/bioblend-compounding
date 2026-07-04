@@ -42,7 +42,7 @@ export const Route = createFileRoute("/services/$slug")({
 });
 
 function PracticeAreaPage() {
-  const { area } = Route.useLoaderData();
+  const { area } = Route.useLoaderData() as { area: PracticeArea };
 
   return (
     <>
