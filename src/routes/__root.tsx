@@ -89,6 +89,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "BioBlend is a luxury compounding pharmacy in Dubai crafting personalized medicines, wellness formulations, and precision therapies. Your Health. Our Blend.",
       },
       { name: "author", content: "BioBlend Compounding Pharmacy" },
+      { property: "og:site_name", content: "BioBlend Compounding Pharmacy" },
       { property: "og:title", content: "BioBlend Compounding Pharmacy — Personalized Medicine in Dubai" },
       {
         property: "og:description",
@@ -96,6 +97,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Precision compounding, premium ingredients, and trusted expertise for personalized wellness in Dubai.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:locale", content: "en_US" },
+      { property: "og:locale:alternate", content: "ar_AE" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "BioBlend Compounding Pharmacy" },
       {
@@ -112,6 +115,30 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Work+Sans:wght@300;400;500;600&display=swap",
+      },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Pharmacy",
+          name: "BioBlend Compounding Pharmacy",
+          alternateName: "صيدلية بايوبلند للتركيبات الدوائية",
+          url: "https://snug-build-playground.lovable.app",
+          logo: "https://snug-build-playground.lovable.app/bioblend-favicon.png",
+          description:
+            "Precision compounding pharmacy in Dubai — bio-identical HRT, pediatric, dermatology, wellness and pet formulations.",
+          telephone: "+971-4-3277355",
+          email: "hello@bioblendpharmacy.ae",
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: "Dubai",
+            addressCountry: "AE",
+          },
+          areaServed: "AE",
+          sameAs: [] as string[],
+        }),
       },
     ],
   }),

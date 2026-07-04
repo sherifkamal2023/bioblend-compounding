@@ -12,19 +12,23 @@ export const Route = createFileRoute("/services/$slug")({
     if (!area) throw notFound();
     return { area };
   },
-  head: ({ loaderData }) => {
+  head: ({ params, loaderData }) => {
     if (!loaderData) {
       return { meta: [{ title: "Practice area not found — BioBlend" }, { name: "robots", content: "noindex" }] };
     }
     const { area } = loaderData;
     const title = `${area.title} — BioBlend Compounding Pharmacy`;
+    const url = `https://snug-build-playground.lovable.app/services/${params.slug}`;
     return {
       meta: [
         { title },
         { name: "description", content: area.tagline },
         { property: "og:title", content: title },
         { property: "og:description", content: area.tagline },
+        { property: "og:url", content: url },
+        { property: "og:type", content: "article" },
       ],
+      links: [{ rel: "canonical", href: url }],
     };
   },
   notFoundComponent: () => (

@@ -20,6 +20,42 @@ export const Route = createFileRoute("/contact")({
       },
       { property: "og:title", content: "Contact BioBlend" },
       { property: "og:description", content: "Book a consultation with BioBlend Compounding Pharmacy in Dubai." },
+      { property: "og:url", content: "https://snug-build-playground.lovable.app/contact" },
+      { property: "og:type", content: "website" },
+    ],
+    links: [{ rel: "canonical", href: "https://snug-build-playground.lovable.app/contact" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Pharmacy",
+          name: "BioBlend Compounding Pharmacy",
+          image: "https://snug-build-playground.lovable.app/bioblend-favicon.png",
+          telephone: "+971-4-3277355",
+          email: "hello@bioblendpharmacy.ae",
+          url: "https://snug-build-playground.lovable.app/contact",
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: "Dubai",
+            addressCountry: "AE",
+          },
+          openingHoursSpecification: [
+            {
+              "@type": "OpeningHoursSpecification",
+              dayOfWeek: ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
+              opens: "09:00",
+              closes: "22:00",
+            },
+            {
+              "@type": "OpeningHoursSpecification",
+              dayOfWeek: "Friday",
+              opens: "14:00",
+              closes: "22:00",
+            },
+          ],
+        }),
+      },
     ],
   }),
   component: ContactPage,
