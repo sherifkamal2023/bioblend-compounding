@@ -39,10 +39,10 @@ export const Route = createFileRoute("/")({
       },
       { property: "og:title", content: "BioBlend Compounding Pharmacy — Personalized Medicine in Dubai" },
       { property: "og:description", content: "DHA-licensed compounding pharmacy in Dubai. Bio-identical HRT, dermatology, pediatric, IV wellness, longevity and pet formulations." },
-      { property: "og:url", content: "https://snug-build-playground.lovable.app/" },
+      { property: "og:url", content: "https://bioblendpharmacy.com/" },
       { property: "og:type", content: "website" },
     ],
-    links: [{ rel: "canonical", href: "https://snug-build-playground.lovable.app/" }],
+    links: [{ rel: "canonical", href: "https://bioblendpharmacy.com/" }],
   }),
   component: HomePage,
 });

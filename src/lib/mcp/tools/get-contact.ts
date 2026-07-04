@@ -14,7 +14,7 @@ export default defineTool({
       email: "hello@bioblendpharmacy.ae",
       city: "Dubai",
       country: "AE",
-      website: "https://snug-build-playground.lovable.app",
+      website: "https://bioblendpharmacy.com",
     };
     return {
       content: [{ type: "text", text: JSON.stringify(info, null, 2) }],

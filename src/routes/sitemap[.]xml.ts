@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 import { practiceAreas } from "@/lib/practice-areas";
 
-const BASE_URL = "https://snug-build-playground.lovable.app";
+const BASE_URL = "https://bioblendpharmacy.com";
 
 interface SitemapEntry {
   path: string;

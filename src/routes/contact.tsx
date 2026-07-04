@@ -20,10 +20,10 @@ export const Route = createFileRoute("/contact")({
       },
       { property: "og:title", content: "Contact BioBlend" },
       { property: "og:description", content: "Book a consultation with BioBlend Compounding Pharmacy in Dubai." },
-      { property: "og:url", content: "https://snug-build-playground.lovable.app/contact" },
+      { property: "og:url", content: "https://bioblendpharmacy.com/contact" },
       { property: "og:type", content: "website" },
     ],
-    links: [{ rel: "canonical", href: "https://snug-build-playground.lovable.app/contact" }],
+    links: [{ rel: "canonical", href: "https://bioblendpharmacy.com/contact" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -31,10 +31,10 @@ export const Route = createFileRoute("/contact")({
           "@context": "https://schema.org",
           "@type": "Pharmacy",
           name: "BioBlend Compounding Pharmacy",
-          image: "https://snug-build-playground.lovable.app/bioblend-favicon.png",
+          image: "https://bioblendpharmacy.com/bioblend-favicon.png",
           telephone: "+971-4-3277355",
           email: "hello@bioblendpharmacy.ae",
-          url: "https://snug-build-playground.lovable.app/contact",
+          url: "https://bioblendpharmacy.com/contact",
           address: {
             "@type": "PostalAddress",
             addressLocality: "Dubai",
