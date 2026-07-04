@@ -5,6 +5,7 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { Reveal } from "@/components/Reveal";
 import { CardTile } from "@/components/CardTile";
 import { tiles, type TileKey } from "@/lib/tiles";
+import { useIsAr } from "@/lib/useIsAr";
 
 export const Route = createFileRoute("/physicians")({
   head: () => ({
@@ -18,85 +19,112 @@ export const Route = createFileRoute("/physicians")({
   component: PhysiciansPage,
 });
 
-const pillars: { tile: TileKey; title: string; body: string }[] = [
+type Pillar = { tile: TileKey; title: string; body: string };
+
+const pillarsEn: Pillar[] = [
   { tile: "nutraceutical", title: "Bespoke formulary", body: "Micro-doses, delivery-form conversions, allergen-free bases, taste-masking — we co-design with you." },
   { tile: "sterile", title: "DHA-licensed & audited", body: "USP <795> non-sterile and USP <797> sterile compliance. Full batch documentation on request." },
   { tile: "partnership", title: "Direct pharmacist line", body: "A named pharmacist for your practice — no call centre. WhatsApp, phone, email — response inside the hour." },
   { tile: "hormone", title: "Digital Rx workflow", body: "Send prescriptions by secure link. Refill tracking and adherence notes flow back to your patient chart." },
 ];
 
-const workflow = [
+const pillarsAr: Pillar[] = [
+  { tile: "nutraceutical", title: "تركيبات مصمّمة حسب طلبك", body: "جرعات دقيقة، تحويل بين الأشكال الدوائية، قواعد خالية من المسبّبات، وإخفاء الطعم — نصمّمها معك خطوة بخطوة." },
+  { tile: "sterile", title: "مرخّصون من DHA ومدقّقون", body: "التزام كامل بمعايير USP <795> غير المعقّمة و USP <797> المعقّمة، مع توفير كامل توثيق الدُفعات عند الطلب." },
+  { tile: "partnership", title: "خط مباشر مع صيدلي مخصّص", body: "صيدلي معيّن لعيادتك بالاسم — لا مركز اتصال. رد على واتساب أو الهاتف أو البريد خلال أقل من ساعة." },
+  { tile: "hormone", title: "نظام وصفات رقمي", body: "أرسل وصفاتك عبر رابط آمن. نُعيد لك ملاحظات الالتزام وإعادة الصرف مباشرة إلى ملف مريضك." },
+];
+
+const workflowEn = [
   { n: "01", title: "Onboard", body: "One 30-minute call with our lead pharmacist to map your commonly-prescribed formulations." },
   { n: "02", title: "Prescribe", body: "Send Rx via secure link, encrypted email, or e-prescription network." },
   { n: "03", title: "Compound", body: "Prepared in-lab within 24-72h depending on formulation." },
   { n: "04", title: "Deliver & follow-up", body: "Discreet delivery to your patient. Adherence and refill notes shared back." },
 ];
 
-const specialties = [
+const workflowAr = [
+  { n: "٠١", title: "الانضمام", body: "مكالمة واحدة 30 دقيقة مع كبير الصيادلة عندنا لحصر الوصفات التي تكتبها بشكل متكرّر." },
+  { n: "٠٢", title: "إرسال الوصفة", body: "أرسل الوصفة عبر رابط آمن، أو بريد مشفّر، أو منظومة الوصفات الإلكترونية." },
+  { n: "٠٣", title: "التحضير", body: "نُحضّرها في مختبرنا خلال 24 إلى 72 ساعة حسب نوع التركيبة." },
+  { n: "٠٤", title: "التوصيل والمتابعة", body: "توصيل بسريّة تامّة لمريضك، مع مشاركة ملاحظات الالتزام وإعادة الصرف معك." },
+];
+
+const specialtiesEn = [
   "Endocrinology & HRT", "Dermatology", "Pediatrics", "Functional & longevity medicine",
   "Pain management", "Women's health", "Sports medicine", "Integrative & wellness clinics",
 ];
 
+const specialtiesAr = [
+  "الغدد الصماء والهرمونات", "الأمراض الجلدية", "طب الأطفال", "الطب الوظيفي وطول العمر",
+  "علاج الألم", "صحة المرأة", "الطب الرياضي", "عيادات الطب التكاملي والعافية",
+];
+
 function PhysiciansPage() {
+  const ar = useIsAr();
+  const pillars = ar ? pillarsAr : pillarsEn;
+  const workflow = ar ? workflowAr : workflowEn;
+  const specialties = ar ? specialtiesAr : specialtiesEn;
+
   return (
     <>
       <section className="relative overflow-hidden bg-primary pt-36 pb-20 text-primary-foreground">
         <div className="absolute inset-0 -z-10" aria-hidden="true">
-          <img
-            src={tiles.labWide}
-            alt=""
-            className="h-full w-full object-cover opacity-25 mix-blend-luminosity"
-          />
+          <img src={tiles.labWide} alt="" className="h-full w-full object-cover opacity-25 mix-blend-luminosity" />
           <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/85 to-primary/40" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,var(--brand-gold),transparent_55%)] opacity-[0.15]" />
         </div>
         <div className="mx-auto grid max-w-6xl gap-12 px-6 lg:grid-cols-[1.15fr_1fr] lg:items-center lg:px-10">
           <Reveal>
-            <p className="eyebrow text-[color:var(--brand-gold)]">For Physicians</p>
+            <p className="eyebrow text-[color:var(--brand-gold)]">{ar ? "للأطباء" : "For Physicians"}</p>
             <h1 className="mt-6 font-serif text-5xl leading-[1.02] md:text-6xl">
-              A pharmacy that <em className="italic text-[color:var(--brand-gold)]">extends</em> your practice.
+              {ar ? (
+                <>صيدلية <em className="italic text-[color:var(--brand-gold)]">تُكمّل</em> عيادتك.</>
+              ) : (
+                <>A pharmacy that <em className="italic text-[color:var(--brand-gold)]">extends</em> your practice.</>
+              )}
             </h1>
             <div className="mt-6 gold-rule" />
             <p className="mt-8 max-w-xl text-lg text-primary-foreground/80">
-              BioBlend is the compounding partner for physicians who prescribe outside the shelf —
-              exact doses, exact bases, allergen exclusions, delivery-form flexibility. We handle the compounding rigour
-              so you can focus on the plan.
+              {ar
+                ? "بايوبلند شريك التركيب الدوائي للأطباء الذين يصفون وصفات خارج الجاهز — جرعات دقيقة، قواعد محدّدة، استثناء المسبّبات، ومرونة في الأشكال الدوائية. نحن نتولّى دقّة التحضير لتبقى أنت مركّزاً على خطّة العلاج."
+                : "BioBlend is the compounding partner for physicians who prescribe outside the shelf — exact doses, exact bases, allergen exclusions, delivery-form flexibility. We handle the compounding rigour so you can focus on the plan."}
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
               <Button asChild size="lg" className="rounded-full bg-[color:var(--brand-gold)] px-8 text-primary hover:bg-[color:var(--brand-gold)]/90">
-                <Link to="/contact">Start a partnership</Link>
+                <Link to="/contact">{ar ? "ابدأ الشراكة" : "Start a partnership"}</Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="rounded-full border-primary-foreground/30 bg-transparent px-8 text-primary-foreground hover:bg-primary-foreground/10">
-                <a href="tel:+97143277355">Speak to lead pharmacist <ArrowRight className="ml-2 h-4 w-4" /></a>
+                <a href="tel:+97143277355">{ar ? "تحدّث مع كبير الصيادلة" : "Speak to lead pharmacist"} <ArrowRight className="ml-2 h-4 w-4 rtl:rotate-180" /></a>
               </Button>
             </div>
           </Reveal>
           <Reveal delay={0.1}>
             <div className="relative hidden lg:block">
               <div className="gold-frame overflow-hidden rounded-3xl">
-                <img
-                  src={tiles.partnership}
-                  alt="BioBlend pharmacist consulting with a physician"
-                  className="aspect-[4/5] w-full rounded-[calc(1.5rem-3px)] object-cover"
-                />
+                <img src={tiles.partnership} alt={ar ? "صيدلي بايوبلند يتشاور مع طبيب" : "BioBlend pharmacist consulting with a physician"} className="aspect-[4/5] w-full rounded-[calc(1.5rem-3px)] object-cover" />
               </div>
               <div className="absolute -bottom-6 -left-6 hidden rounded-2xl bg-[color:var(--brand-gold)] px-5 py-4 text-primary shadow-luxe md:block">
-                <p className="font-serif text-lg leading-tight">Named pharmacist</p>
-                <p className="text-[0.65rem] tracking-[0.24em] uppercase opacity-80">for your practice</p>
+                <p className="font-serif text-lg leading-tight">{ar ? "صيدلي مخصّص" : "Named pharmacist"}</p>
+                <p className="text-[0.65rem] tracking-[0.24em] uppercase opacity-80">{ar ? "لعيادتك" : "for your practice"}</p>
               </div>
             </div>
           </Reveal>
         </div>
       </section>
 
-
       <section className="bg-background">
         <div className="mx-auto max-w-7xl px-6 py-24 lg:px-10">
           <Reveal>
             <SectionHeading
-              eyebrow="Why physicians choose BioBlend"
-              title={<>Precision, <em className="italic text-[color:var(--brand-gold)]">accountability</em>, and a direct line.</>}
-              description="No black-box compounding. Every batch is documented, every formulation reviewed by a named pharmacist assigned to your practice."
+              eyebrow={ar ? "لماذا يختارنا الأطباء" : "Why physicians choose BioBlend"}
+              title={ar ? (
+                <>دقّة، <em className="italic text-[color:var(--brand-gold)]">مسؤولية</em>، وخطّ مباشر معك.</>
+              ) : (
+                <>Precision, <em className="italic text-[color:var(--brand-gold)]">accountability</em>, and a direct line.</>
+              )}
+              description={ar
+                ? "لا تركيب مجهول المصدر. كل دفعة موثّقة، وكل تركيبة يراجعها صيدلي معيّن باسمه لعيادتك."
+                : "No black-box compounding. Every batch is documented, every formulation reviewed by a named pharmacist assigned to your practice."}
             />
           </Reveal>
           <div className="mt-16 grid gap-6 md:grid-cols-2">
@@ -118,7 +146,11 @@ function PhysiciansPage() {
       <section className="bg-secondary/60">
         <div className="mx-auto max-w-7xl px-6 py-24 lg:px-10">
           <Reveal>
-            <SectionHeading eyebrow="The workflow" align="center" title={<>From prescription to <em className="italic text-[color:var(--brand-gold)]">patient</em></>} />
+            <SectionHeading eyebrow={ar ? "سير العمل" : "The workflow"} align="center" title={ar ? (
+              <>من الوصفة إلى <em className="italic text-[color:var(--brand-gold)]">المريض</em></>
+            ) : (
+              <>From prescription to <em className="italic text-[color:var(--brand-gold)]">patient</em></>
+            )} />
           </Reveal>
           <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {workflow.map((s, i) => (
@@ -137,7 +169,11 @@ function PhysiciansPage() {
       <section className="bg-background">
         <div className="mx-auto max-w-6xl px-6 py-24 lg:px-10">
           <Reveal>
-            <SectionHeading eyebrow="Specialties we support" title={<>Cross-disciplinary <em className="italic text-[color:var(--brand-gold)]">compounding</em></>} />
+            <SectionHeading eyebrow={ar ? "التخصّصات التي ندعمها" : "Specialties we support"} title={ar ? (
+              <>تركيبات <em className="italic text-[color:var(--brand-gold)]">متعدّدة التخصّصات</em></>
+            ) : (
+              <>Cross-disciplinary <em className="italic text-[color:var(--brand-gold)]">compounding</em></>
+            )} />
           </Reveal>
           <div className="mt-12 grid gap-3 sm:grid-cols-2 md:grid-cols-4">
             {specialties.map((s, i) => (
@@ -156,12 +192,16 @@ function PhysiciansPage() {
         <div className="mx-auto max-w-4xl px-6 py-20 text-center lg:px-10">
           <Reveal>
             <h2 className="font-serif text-4xl leading-tight md:text-5xl">
-              Bring your <em className="italic text-[color:var(--brand-gold)]">next prescription</em> to BioBlend.
+              {ar ? (
+                <>أرسل <em className="italic text-[color:var(--brand-gold)]">وصفتك القادمة</em> إلى بايوبلند.</>
+              ) : (
+                <>Bring your <em className="italic text-[color:var(--brand-gold)]">next prescription</em> to BioBlend.</>
+              )}
             </h2>
             <div className="mx-auto mt-6 gold-rule" />
             <div className="mt-10 flex flex-wrap justify-center gap-4">
               <Button asChild size="lg" className="rounded-full bg-[color:var(--brand-gold)] px-8 text-primary hover:bg-[color:var(--brand-gold)]/90">
-                <Link to="/contact">Request onboarding call</Link>
+                <Link to="/contact">{ar ? "احجز مكالمة انضمام" : "Request onboarding call"}</Link>
               </Button>
             </div>
           </Reveal>
