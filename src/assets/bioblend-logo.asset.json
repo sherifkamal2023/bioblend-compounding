@@ -1,11 +1,11 @@
 {
   "version": 1,
-  "asset_id": "4f099b0f-0e8a-4e15-ab3f-c00a3327ee7b",
+  "asset_id": "f10ffc73-16ad-46c2-a135-13260674056e",
   "project_id": "8edcbf61-2e0e-4329-aa5c-5815fa5a50b3",
-  "url": "/__l5e/assets-v1/4f099b0f-0e8a-4e15-ab3f-c00a3327ee7b/bioblend-logo.jpeg",
-  "r2_key": "a/v1/8edcbf61-2e0e-4329-aa5c-5815fa5a50b3/4f099b0f-0e8a-4e15-ab3f-c00a3327ee7b/bioblend-logo.jpeg",
-  "original_filename": "bioblend-logo.jpeg",
-  "size": 56360,
-  "content_type": "image/jpeg",
-  "created_at": "2026-07-04T13:30:17Z"
+  "url": "/__l5e/assets-v1/f10ffc73-16ad-46c2-a135-13260674056e/bioblend-logo.png",
+  "r2_key": "a/v1/8edcbf61-2e0e-4329-aa5c-5815fa5a50b3/f10ffc73-16ad-46c2-a135-13260674056e/bioblend-logo.png",
+  "original_filename": "bioblend-logo.png",
+  "size": 136374,
+  "content_type": "image/png",
+  "created_at": "2026-07-04T13:39:00Z"
 }
