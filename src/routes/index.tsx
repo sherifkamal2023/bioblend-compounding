@@ -1,7 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
-  FlaskConical,
-  Leaf,
   ShieldCheck,
   Sparkles,
   HeartPulse,
@@ -18,6 +16,7 @@ import {
   Building2,
   Stethoscope,
 } from "lucide-react";
+
 import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/SectionHeading";
 import heroLab from "@/assets/hero-lab.jpg";
