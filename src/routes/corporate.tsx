@@ -1,8 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Building2, HeartPulse, Sparkles, Users, PackageCheck, Calendar, ArrowRight } from "lucide-react";
+import { Building2, Calendar, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Reveal } from "@/components/Reveal";
+import { CardTile } from "@/components/CardTile";
+import { tiles, type TileKey } from "@/lib/tiles";
 
 export const Route = createFileRoute("/corporate")({
   head: () => ({
@@ -16,11 +18,11 @@ export const Route = createFileRoute("/corporate")({
   component: CorporatePage,
 });
 
-const programs = [
-  { icon: HeartPulse, title: "Executive longevity", body: "Personalized HRT, peptide, and nutraceutical protocols for C-suite and high-performance teams." },
-  { icon: Sparkles, title: "Skin & dermatology days", body: "Dermatologist-led onsite consults with same-week compounded protocols delivered to the office." },
-  { icon: PackageCheck, title: "Formulary partnership", body: "Bespoke in-clinic formulary for wellness centres, spas, and hospitality — private-label ready." },
-  { icon: Users, title: "Team wellness clinics", body: "Onsite screening days: labs, IV therapy, vitamin protocols, follow-up plans." },
+const programs: { tile: TileKey; title: string; body: string }[] = [
+  { tile: "longevity", title: "Executive longevity", body: "Personalized HRT, peptide, and nutraceutical protocols for C-suite and high-performance teams." },
+  { tile: "dermatology", title: "Skin & dermatology days", body: "Dermatologist-led onsite consults with same-week compounded protocols delivered to the office." },
+  { tile: "nutraceutical", title: "Formulary partnership", body: "Bespoke in-clinic formulary for wellness centres, spas, and hospitality — private-label ready." },
+  { tile: "wellnessIv", title: "Team wellness clinics", body: "Onsite screening days: labs, IV therapy, vitamin protocols, follow-up plans." },
 ];
 
 const outcomes = [
