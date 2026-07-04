@@ -244,7 +244,8 @@ function HomePage() {
             {practiceAreas.map((p) => (
               <Link
                 key={p.title}
-                to="/services"
+                to="/services/$slug"
+                params={{ slug: p.slug }}
                 className="group flex flex-col items-center text-center"
               >
                 <div className="relative">
