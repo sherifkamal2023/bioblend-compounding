@@ -9,9 +9,14 @@ import {
   PawPrint,
   Droplet,
   ArrowRight,
+  ArrowUpRight,
   Phone,
   MapPin,
   Star,
+  CalendarCheck,
+  FileText,
+  Building2,
+  Stethoscope,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -19,6 +24,7 @@ import heroLab from "@/assets/hero-lab.jpg";
 import productsFlatlay from "@/assets/products-flatlay.jpg";
 import pharmacistImg from "@/assets/pharmacist.jpg";
 import wellnessImg from "@/assets/wellness-portrait.jpg";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
