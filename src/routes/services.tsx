@@ -19,6 +19,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { SectionHeading } from "@/components/SectionHeading";
+import { Reveal } from "@/components/Reveal";
 
 export const Route = createFileRoute("/services")({
   head: () => ({
@@ -36,12 +37,12 @@ export const Route = createFileRoute("/services")({
   component: ServicesPage,
 });
 
-const services = [
-  { icon: HeartPulse, title: "Hormone Replacement Therapy", body: "Bio-identical estrogen, progesterone, testosterone and thyroid formulations dosed to your labs." },
-  { icon: Sparkles, title: "Dermatology & Anti-Aging", body: "Prescription-strength retinoids, tranexamic acid, custom peels and personalized skin protocols." },
-  { icon: Baby, title: "Pediatric Compounding", body: "Alcohol-free, sugar-free, dye-free suspensions in flavors children actually take." },
-  { icon: Droplet, title: "IV & Wellness Therapy", body: "NAD+, glutathione, vitamin and hydration infusions supervised by our clinical team." },
-  { icon: PawPrint, title: "Your Pet's Wellness Matters", body: "Your pet's wellness is part of yours. Species-appropriate, palatable formulations — transdermal cats, flavored canine treats — with medical-grade attention to safe handling and zoonotic-disease prevention for the whole household." },
+const services: { icon: typeof HeartPulse; title: string; body: string; slug?: string }[] = [
+  { icon: HeartPulse, title: "Hormone Replacement Therapy", body: "Bio-identical estrogen, progesterone, testosterone and thyroid formulations dosed to your labs.", slug: "hormone" },
+  { icon: Sparkles, title: "Dermatology & Anti-Aging", body: "Prescription-strength retinoids, tranexamic acid, custom peels and personalized skin protocols.", slug: "dermatology" },
+  { icon: Baby, title: "Pediatric Compounding", body: "Alcohol-free, sugar-free, dye-free suspensions in flavors children actually take.", slug: "pediatric" },
+  { icon: Droplet, title: "IV & Wellness Therapy", body: "NAD+, glutathione, vitamin and hydration infusions supervised by our clinical team.", slug: "wellness-iv" },
+  { icon: PawPrint, title: "Your Pet's Wellness Matters", body: "Your pet's wellness is part of yours. Species-appropriate, palatable formulations — transdermal cats, flavored canine treats — with medical-grade attention to safe handling and zoonotic-disease prevention for the whole household.", slug: "pet-wellness" },
   { icon: ShieldCheck, title: "Pain Management", body: "Topical and transdermal analgesic combinations that avoid systemic side effects." },
   { icon: FlaskConical, title: "Sterile Preparations", body: "USP <797> compliant sterile compounding for injectables and ophthalmics." },
   { icon: Leaf, title: "Nutraceutical Blends", body: "Physician-guided vitamin, mineral and adaptogen formulations." },
@@ -85,16 +86,35 @@ function ServicesPage() {
       <section className="bg-background">
         <div className="mx-auto max-w-7xl px-6 py-24 lg:px-10">
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {services.map((s) => (
-              <div key={s.title} className="group relative flex h-full flex-col rounded-2xl border border-border/60 bg-card p-8 transition-all hover:border-[color:var(--brand-gold)]/60 hover:shadow-luxe">
-                <div className="grid h-12 w-12 place-items-center rounded-full bg-[color:var(--brand-gold)]/15">
-                  <s.icon className="h-6 w-6 text-[color:var(--brand-teal)]" strokeWidth={1.5} />
-                </div>
-                <h3 className="mt-5 font-serif text-xl text-primary">{s.title}</h3>
-                <p className="mt-2 flex-1 text-sm text-muted-foreground">{s.body}</p>
-                <div className="mt-6 h-px w-full bg-gradient-to-r from-[color:var(--brand-gold)]/50 to-transparent" />
-              </div>
-            ))}
+            {services.map((s, i) => {
+              const inner = (
+                <>
+                  <div className="grid h-12 w-12 place-items-center rounded-full bg-[color:var(--brand-gold)]/15">
+                    <s.icon className="h-6 w-6 text-[color:var(--brand-teal)]" strokeWidth={1.5} />
+                  </div>
+                  <h3 className="mt-5 font-serif text-xl text-primary">{s.title}</h3>
+                  <p className="mt-2 flex-1 text-sm text-muted-foreground">{s.body}</p>
+                  <div className="mt-6 h-px w-full bg-gradient-to-r from-[color:var(--brand-gold)]/50 to-transparent" />
+                  {s.slug && (
+                    <span className="mt-4 inline-flex items-center gap-1 text-[0.68rem] font-medium tracking-[0.24em] text-[color:var(--brand-gold)] uppercase">
+                      Learn more →
+                    </span>
+                  )}
+                </>
+              );
+              const classes = "group relative flex h-full flex-col rounded-2xl border border-border/60 bg-card p-8 transition-all hover:border-[color:var(--brand-gold)]/60 hover:shadow-luxe";
+              return (
+                <Reveal key={s.title} delay={(i % 3) * 0.06}>
+                  {s.slug ? (
+                    <Link to="/services/$slug" params={{ slug: s.slug }} className={classes}>
+                      {inner}
+                    </Link>
+                  ) : (
+                    <div className={classes}>{inner}</div>
+                  )}
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </section>

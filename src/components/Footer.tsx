@@ -27,6 +27,9 @@ export function Footer() {
               <li><Link to="/" className="hover:text-[color:var(--brand-gold)]">Home</Link></li>
               <li><Link to="/services" className="hover:text-[color:var(--brand-gold)]">Services</Link></li>
               <li><Link to="/about" className="hover:text-[color:var(--brand-gold)]">About</Link></li>
+              <li><Link to="/insights" className="hover:text-[color:var(--brand-gold)]">Insights</Link></li>
+              <li><Link to="/physicians" className="hover:text-[color:var(--brand-gold)]">For Physicians</Link></li>
+              <li><Link to="/corporate" className="hover:text-[color:var(--brand-gold)]">Corporate Wellness</Link></li>
               <li><Link to="/contact" className="hover:text-[color:var(--brand-gold)]">Contact</Link></li>
             </ul>
           </div>

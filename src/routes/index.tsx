@@ -75,26 +75,31 @@ const practiceAreas = [
     icon: HeartPulse,
     title: "Hormone Lab",
     tagline: "Bio-identical HRT · Thyroid · Adrenal",
+    slug: "hormone",
   },
   {
     icon: Sparkles,
     title: "Dermatology Lab",
     tagline: "Custom serums · Peels · Anti-aging",
+    slug: "dermatology",
   },
   {
     icon: Baby,
     title: "Pediatric Lab",
     tagline: "Flavored suspensions · Precise dosing",
+    slug: "pediatric",
   },
   {
     icon: PawPrint,
     title: "Your Pet's Wellness Matters",
     tagline: "Because their wellness is part of yours",
+    slug: "pet-wellness",
   },
   {
     icon: Droplet,
     title: "Wellness & IV Lab",
     tagline: "Nutraceuticals · IV therapy · Longevity",
+    slug: "wellness-iv",
   },
 ];
 
@@ -239,7 +244,8 @@ function HomePage() {
             {practiceAreas.map((p) => (
               <Link
                 key={p.title}
-                to="/services"
+                to="/services/$slug"
+                params={{ slug: p.slug }}
                 className="group flex flex-col items-center text-center"
               >
                 <div className="relative">
