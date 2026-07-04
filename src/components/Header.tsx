@@ -117,7 +117,7 @@ export function Header() {
         </div>
 
         {open && (
-          <div className="border-t border-border/60 bg-background/98 backdrop-blur-xl md:hidden">
+          <div className="border-t border-border/60 bg-background/98 backdrop-blur-xl lg:hidden">
             <div className="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-4">
               {primary.map((n) => (
                 <Link
@@ -152,7 +152,7 @@ export function Header() {
       </header>
 
       {/* Mobile sticky CTA */}
-      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-border/60 bg-background/95 px-4 py-3 backdrop-blur-xl md:hidden">
+      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-border/60 bg-background/95 px-4 py-3 backdrop-blur-xl lg:hidden">
         <Button asChild className="w-full rounded-full bg-[color:var(--brand-gold)] text-primary hover:bg-[color:var(--brand-gold)]/90">
           <Link to="/contact">{t("nav.bookConsultation")}</Link>
         </Button>
