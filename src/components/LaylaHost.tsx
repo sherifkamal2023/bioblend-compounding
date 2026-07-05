@@ -27,7 +27,10 @@ declare module "react" {
   }
 }
 
-const AGENT_ID = import.meta.env.VITE_ELEVENLABS_AGENT_ID as string | undefined;
+// ElevenLabs Conversational AI agent ID for Layla. Public identifier — safe to embed.
+const AGENT_ID =
+  (import.meta.env.VITE_ELEVENLABS_AGENT_ID as string | undefined) ??
+  "agent_0701kws4g2d5edgtrv6h6rw218gp";
 
 export function LaylaHost() {
   const [mounted, setMounted] = useState(false);
