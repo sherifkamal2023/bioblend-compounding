@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { useConversation } from "@elevenlabs/react";
+import { useConversation, ConversationProvider } from "@elevenlabs/react";
 import { Phone, MessageCircle, X, Send, PhoneOff } from "lucide-react";
 import laylaAvatar from "@/assets/layla-avatar.jpg.asset.json";
 import { getLaylaConversationToken } from "@/lib/elevenlabs.functions";
@@ -18,7 +18,11 @@ export function LaylaHost() {
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
   if (!mounted) return null;
-  return <LaylaHostClient />;
+  return (
+    <ConversationProvider>
+      <LaylaHostClient />
+    </ConversationProvider>
+  );
 }
 
 function LaylaHostClient() {
