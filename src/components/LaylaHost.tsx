@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { useConversation } from "@elevenlabs/react";
+import { useConversation, ConversationProvider } from "@elevenlabs/react";
 import { Phone, MessageCircle, X, Send, PhoneOff } from "lucide-react";
 import laylaAvatar from "@/assets/layla-avatar.jpg.asset.json";
 import { getLaylaConversationToken } from "@/lib/elevenlabs.functions";
