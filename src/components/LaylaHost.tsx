@@ -1,43 +1,52 @@
 import { useEffect, useState } from "react";
+import laylaAvatar from "@/assets/layla-avatar.jpg.asset.json";
 
 /**
  * Layla — BioBlend AI Host
  *
- * Embeds ElevenLabs Conversational AI widget. Layla is configured
- * inside the ElevenLabs dashboard (voice, persona, knowledge base).
- * Set VITE_ELEVENLABS_AGENT_ID to your Layla agent ID.
+ * Embeds ElevenLabs Conversational AI widget with a custom human
+ * avatar image (replaces the default orb). The widget will animate
+ * the avatar (pulse / speaking ring) in sync with agent audio.
  *
- * The agent's system prompt should include:
- *  - Persona: "You are Layla, a warm bilingual (English/Arabic) pharmacist
- *    at BioBlend Compounding Pharmacy in Dubai."
- *  - Scope: guide visitors through services (hormone, dermatology,
- *    pediatric, pet wellness, IV wellness), booking, and general info.
- *  - Boundary: never give medical diagnosis; refer to a pharmacist.
+ * NOTE: True mouth-level lip-sync from a still photo requires a
+ * video-avatar provider (Simli / Beyond Presence / HeyGen) enabled
+ * on the ElevenLabs agent in the dashboard. Once enabled there, the
+ * widget picks it up automatically — no code change needed.
  */
 
-// Register the ElevenLabs custom element type for JSX (React 19)
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
       "elevenlabs-convai": React.DetailedHTMLProps<
-        React.HTMLAttributes<HTMLElement> & { "agent-id"?: string },
+        React.HTMLAttributes<HTMLElement> & {
+          "agent-id"?: string;
+          "avatar-image-url"?: string;
+          "avatar-orb-color-1"?: string;
+          "avatar-orb-color-2"?: string;
+        },
         HTMLElement
       >;
     }
   }
 }
 
-// ElevenLabs Conversational AI agent ID for Layla. Public identifier — safe to embed.
 const AGENT_ID =
   (import.meta.env.VITE_ELEVENLABS_AGENT_ID as string | undefined) ??
   "agent_0701kws4g2d5edgtrv6h6rw218gp";
 
 export function LaylaHost() {
   const [mounted, setMounted] = useState(false);
+  const [avatarUrl, setAvatarUrl] = useState<string>("");
 
   useEffect(() => {
     setMounted(true);
-    // Inject ElevenLabs widget script once
+    // Widget requires an absolute URL for the avatar image
+    setAvatarUrl(
+      laylaAvatar.url.startsWith("http")
+        ? laylaAvatar.url
+        : `${window.location.origin}${laylaAvatar.url}`,
+    );
+
     const scriptSrc = "https://unpkg.com/@elevenlabs/convai-widget-embed";
     if (document.querySelector(`script[src="${scriptSrc}"]`)) return;
     const s = document.createElement("script");
@@ -47,11 +56,14 @@ export function LaylaHost() {
     document.body.appendChild(s);
   }, []);
 
-  if (!mounted || !AGENT_ID) return null;
+  if (!mounted || !AGENT_ID || !avatarUrl) return null;
 
   return (
     <div className="fixed bottom-24 right-4 z-40 md:bottom-6 md:right-6">
-      <elevenlabs-convai agent-id={AGENT_ID} />
+      <elevenlabs-convai
+        agent-id={AGENT_ID}
+        avatar-image-url={avatarUrl}
+      />
     </div>
   );
 }
