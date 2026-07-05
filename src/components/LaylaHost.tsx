@@ -15,6 +15,13 @@ import { getLaylaConversationToken } from "@/lib/elevenlabs.functions";
 type ChatMsg = { role: "user" | "assistant"; text: string };
 
 export function LaylaHost() {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  if (!mounted) return null;
+  return <LaylaHostClient />;
+}
+
+function LaylaHostClient() {
   const [mode, setMode] = useState<"idle" | "voice" | "chat">("idle");
   const [chatOpen, setChatOpen] = useState(false);
   const [messages, setMessages] = useState<ChatMsg[]>([]);
