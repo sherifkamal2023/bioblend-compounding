@@ -26,12 +26,7 @@ export function CardTile({
   return (
     <div className={`gold-frame shrink-0 ${sizeMap[size]} ${className}`}>
       <div className="h-full w-full overflow-hidden rounded-full bg-card">
-        <img
-          src={tiles[tile]}
-          alt={alt}
-          loading="lazy"
-          className="h-full w-full object-cover"
-        />
+        <img src={tiles[tile]} alt={alt} loading="lazy" className="h-full w-full object-cover" />
       </div>
     </div>
   );

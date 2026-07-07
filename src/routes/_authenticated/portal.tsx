@@ -92,9 +92,7 @@ function PlaceholderCard({ title, body }: { title: string; body: string }) {
     <div className="rounded-2xl border border-border/60 bg-card/60 p-6 shadow-luxe backdrop-blur-sm">
       <p className="font-serif text-xl text-primary">{title}</p>
       <p className="mt-2 text-sm text-muted-foreground">{body}</p>
-      <p className="mt-4 text-xs uppercase tracking-widest text-muted-foreground/70">
-        Coming soon
-      </p>
+      <p className="mt-4 text-xs uppercase tracking-widest text-muted-foreground/70">Coming soon</p>
     </div>
   );
 }

@@ -14,7 +14,12 @@ export const Route = createFileRoute("/services/$slug")({
   },
   head: ({ params, loaderData }) => {
     if (!loaderData) {
-      return { meta: [{ title: "Practice area not found — BioBlend" }, { name: "robots", content: "noindex" }] };
+      return {
+        meta: [
+          { title: "Practice area not found — BioBlend" },
+          { name: "robots", content: "noindex" },
+        ],
+      };
     }
     const { area } = loaderData;
     const title = `${area.title} — BioBlend Compounding Pharmacy`;
@@ -56,18 +61,26 @@ function PracticeAreaPage() {
       <section className="bg-secondary/60 pt-36 pb-20">
         <div className="mx-auto max-w-4xl px-6 lg:px-10">
           <Reveal>
-            <Link to="/services" className="inline-flex items-center gap-2 text-xs font-medium tracking-[0.22em] text-[color:var(--brand-gold)] uppercase">
-              <ArrowLeft className="h-3 w-3 rtl:rotate-180" /> {isAr ? "كل الخدمات" : "All services"}
+            <Link
+              to="/services"
+              className="inline-flex items-center gap-2 text-xs font-medium tracking-[0.22em] text-[color:var(--brand-gold)] uppercase"
+            >
+              <ArrowLeft className="h-3 w-3 rtl:rotate-180" />{" "}
+              {isAr ? "كل الخدمات" : "All services"}
             </Link>
           </Reveal>
           <Reveal delay={0.08}>
             <p className="eyebrow mt-8">{loc.eyebrow}</p>
-            <h1 className="mt-4 font-serif text-5xl leading-[1.05] text-primary md:text-6xl">{loc.title}</h1>
+            <h1 className="mt-4 font-serif text-5xl leading-[1.05] text-primary md:text-6xl">
+              {loc.title}
+            </h1>
             <div className="mt-6 gold-rule" />
             <p className="mt-8 max-w-2xl font-serif text-2xl italic leading-snug text-primary/80 md:text-3xl">
               {loc.hero}
             </p>
-            <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">{loc.intro}</p>
+            <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
+              {loc.intro}
+            </p>
           </Reveal>
         </div>
       </section>
@@ -77,18 +90,31 @@ function PracticeAreaPage() {
           <Reveal>
             <SectionHeading
               eyebrow={isAr ? "ما نُحضّره" : "What we compound"}
-              title={isAr ? (
-                <>تركيبات مصمّمة لـ <em className="italic text-[color:var(--brand-gold)]">{loc.title}</em></>
-              ) : (
-                <>Formulations crafted for <em className="italic text-[color:var(--brand-gold)]">{loc.title.toLowerCase()}</em></>
-              )}
+              title={
+                isAr ? (
+                  <>
+                    تركيبات مصمّمة لـ{" "}
+                    <em className="italic text-[color:var(--brand-gold)]">{loc.title}</em>
+                  </>
+                ) : (
+                  <>
+                    Formulations crafted for{" "}
+                    <em className="italic text-[color:var(--brand-gold)]">
+                      {loc.title.toLowerCase()}
+                    </em>
+                  </>
+                )
+              }
             />
           </Reveal>
           <div className="mt-16 grid gap-6 md:grid-cols-2">
             {loc.offerings.map((o, i) => (
               <Reveal key={o.title} delay={i * 0.05}>
                 <div className="card-luxe rounded-2xl p-8">
-                  <CheckCircle2 className="h-6 w-6 text-[color:var(--brand-gold)]" strokeWidth={1.4} />
+                  <CheckCircle2
+                    className="h-6 w-6 text-[color:var(--brand-gold)]"
+                    strokeWidth={1.4}
+                  />
                   <h3 className="mt-4 font-serif text-2xl text-primary">{o.title}</h3>
                   <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{o.body}</p>
                 </div>
@@ -101,18 +127,33 @@ function PracticeAreaPage() {
       <section className="bg-secondary/60">
         <div className="mx-auto max-w-4xl px-6 py-24 lg:px-10">
           <Reveal>
-            <SectionHeading eyebrow={isAr ? "كيف تسير الأمور" : "How it works"} align="center" title={isAr ? (
-              <>من الوصفة إلى <em className="italic text-[color:var(--brand-gold)]">التوصيل</em></>
-            ) : (
-              <>From prescription to <em className="italic text-[color:var(--brand-gold)]">delivery</em></>
-            )} />
+            <SectionHeading
+              eyebrow={isAr ? "كيف تسير الأمور" : "How it works"}
+              align="center"
+              title={
+                isAr ? (
+                  <>
+                    من الوصفة إلى <em className="italic text-[color:var(--brand-gold)]">التوصيل</em>
+                  </>
+                ) : (
+                  <>
+                    From prescription to{" "}
+                    <em className="italic text-[color:var(--brand-gold)]">delivery</em>
+                  </>
+                )
+              }
+            />
           </Reveal>
           <ol className="mt-14 space-y-4">
             {loc.process.map((step, i) => (
               <Reveal key={i} delay={i * 0.05}>
                 <li className="card-luxe flex gap-6 rounded-2xl p-6">
-                  <span className="font-serif text-3xl leading-none text-[color:var(--brand-gold)]">{String(i + 1).padStart(2, "0")}</span>
-                  <p className="pt-1 text-sm leading-relaxed text-foreground/80 md:text-base">{step}</p>
+                  <span className="font-serif text-3xl leading-none text-[color:var(--brand-gold)]">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <p className="pt-1 text-sm leading-relaxed text-foreground/80 md:text-base">
+                    {step}
+                  </p>
                 </li>
               </Reveal>
             ))}
@@ -128,21 +169,40 @@ function PracticeAreaPage() {
       <section className="bg-primary text-primary-foreground">
         <div className="mx-auto max-w-4xl px-6 py-20 text-center lg:px-10">
           <Reveal>
-            <p className="eyebrow text-[color:var(--brand-gold)]">{isAr ? "جاهز للبدء؟" : "Ready to start?"}</p>
+            <p className="eyebrow text-[color:var(--brand-gold)]">
+              {isAr ? "جاهز للبدء؟" : "Ready to start?"}
+            </p>
             <h2 className="mt-4 font-serif text-4xl leading-tight md:text-5xl">
               {isAr ? (
-                <>تحدّث مع <em className="italic text-[color:var(--brand-gold)]">صيدلي بايوبلند</em></>
+                <>
+                  تحدّث مع <em className="italic text-[color:var(--brand-gold)]">صيدلي بايوبلند</em>
+                </>
               ) : (
-                <>Speak to a <em className="italic text-[color:var(--brand-gold)]">BioBlend pharmacist</em></>
+                <>
+                  Speak to a{" "}
+                  <em className="italic text-[color:var(--brand-gold)]">BioBlend pharmacist</em>
+                </>
               )}
             </h2>
             <div className="mx-auto mt-6 gold-rule" />
             <div className="mt-10 flex flex-wrap justify-center gap-4">
-              <Button asChild size="lg" className="rounded-full bg-[color:var(--brand-gold)] px-8 text-primary hover:bg-[color:var(--brand-gold)]/90">
+              <Button
+                asChild
+                size="lg"
+                className="rounded-full bg-[color:var(--brand-gold)] px-8 text-primary hover:bg-[color:var(--brand-gold)]/90"
+              >
                 <Link to="/contact">{isAr ? "احجز استشارتك" : "Book a Consultation"}</Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="rounded-full border-primary-foreground/30 bg-transparent px-8 text-primary-foreground hover:bg-primary-foreground/10">
-                <Link to="/services">{isAr ? "استكشف خدمات أخرى" : "Explore other services"} <ArrowRight className="ml-2 h-4 w-4 rtl:rotate-180" /></Link>
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="rounded-full border-primary-foreground/30 bg-transparent px-8 text-primary-foreground hover:bg-primary-foreground/10"
+              >
+                <Link to="/services">
+                  {isAr ? "استكشف خدمات أخرى" : "Explore other services"}{" "}
+                  <ArrowRight className="ml-2 h-4 w-4 rtl:rotate-180" />
+                </Link>
               </Button>
             </div>
           </Reveal>
@@ -153,21 +213,26 @@ function PracticeAreaPage() {
         <div className="mx-auto max-w-7xl px-6 py-20 lg:px-10">
           <p className="eyebrow text-center">{isAr ? "مجالات أخرى" : "Other practice areas"}</p>
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {practiceAreas.filter((p) => p.slug !== area.slug).slice(0, 4).map((p) => {
-              const l = isAr && p.ar ? p.ar : p;
-              return (
-                <Link
-                  key={p.slug}
-                  to="/services/$slug"
-                  params={{ slug: p.slug }}
-                  className="card-luxe group rounded-2xl p-6"
-                >
-                  <p className="eyebrow">{l.eyebrow}</p>
-                  <h3 className="mt-3 font-serif text-lg text-primary group-hover:text-[color:var(--brand-teal)]">{l.title}</h3>
-                  <p className="mt-2 text-xs text-muted-foreground">{l.tagline}</p>
-                </Link>
-              );
-            })}
+            {practiceAreas
+              .filter((p) => p.slug !== area.slug)
+              .slice(0, 4)
+              .map((p) => {
+                const l = isAr && p.ar ? p.ar : p;
+                return (
+                  <Link
+                    key={p.slug}
+                    to="/services/$slug"
+                    params={{ slug: p.slug }}
+                    className="card-luxe group rounded-2xl p-6"
+                  >
+                    <p className="eyebrow">{l.eyebrow}</p>
+                    <h3 className="mt-3 font-serif text-lg text-primary group-hover:text-[color:var(--brand-teal)]">
+                      {l.title}
+                    </h3>
+                    <p className="mt-2 text-xs text-muted-foreground">{l.tagline}</p>
+                  </Link>
+                );
+              })}
           </div>
         </div>
       </section>

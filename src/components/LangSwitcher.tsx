@@ -13,9 +13,7 @@ export function LangSwitcher({ tone = "light" }: { tone?: "light" | "dark" }) {
   }, [i18n.language]);
 
   const buttonClass =
-    tone === "light"
-      ? "nav-gold-shimmer"
-      : "text-foreground/80 hover:text-primary";
+    tone === "light" ? "nav-gold-shimmer" : "text-foreground/80 hover:text-primary";
 
   return (
     <div className="relative" onMouseLeave={() => setOpen(false)}>

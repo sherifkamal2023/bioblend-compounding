@@ -43,27 +43,16 @@
           "properties": {
             "slug": {
               "type": "string",
-              "enum": [
-                "hormone",
-                "dermatology",
-                "pediatric",
-                "pet-wellness",
-                "wellness-iv"
-              ],
+              "enum": ["hormone", "dermatology", "pediatric", "pet-wellness", "wellness-iv"],
               "description": "Practice area slug, e.g. 'hormone'."
             },
             "language": {
               "description": "Language: 'en' (default) or 'ar' for Arabic.",
               "type": "string",
-              "enum": [
-                "en",
-                "ar"
-              ]
+              "enum": ["en", "ar"]
             }
           },
-          "required": [
-            "slug"
-          ]
+          "required": ["slug"]
         },
         "outputSchema": null
       },

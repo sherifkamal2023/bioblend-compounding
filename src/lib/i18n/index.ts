@@ -14,9 +14,10 @@ let initialized = false;
 export function initI18n() {
   if (initialized || i18n.isInitialized) return i18n;
   initialized = true;
-  const chain = typeof window !== "undefined"
-    ? i18n.use(LanguageDetector).use(initReactI18next)
-    : i18n.use(initReactI18next);
+  const chain =
+    typeof window !== "undefined"
+      ? i18n.use(LanguageDetector).use(initReactI18next)
+      : i18n.use(initReactI18next);
 
   chain.init({
     resources: {
@@ -47,4 +48,3 @@ export function applyLangDir(lang: string) {
 // Initialize eagerly on both server (SSR) and client so components render
 // translated strings on first paint without a raw-key flash.
 initI18n();
-

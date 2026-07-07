@@ -30,10 +30,7 @@ export function Logo({ variant = "dark", className, size = "md" }: LogoProps) {
         }}
       />
       {/* Gold shimmer sweep across the wordmark on mount */}
-      <span
-        aria-hidden
-        className="pointer-events-none absolute inset-0 overflow-hidden rounded-md"
-      >
+      <span aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden rounded-md">
         <span className="absolute inset-y-0 -left-1/2 w-1/2 animate-leaf-sweep bg-gradient-to-r from-transparent via-[color:var(--brand-gold)]/40 to-transparent" />
       </span>
       <img

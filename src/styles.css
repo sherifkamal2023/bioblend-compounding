@@ -68,27 +68,25 @@
   --radius: 0.5rem;
 
   /* Brand */
-  --brand-navy: oklch(0.28 0.045 220);      /* #0F2E3D */
-  --brand-teal: oklch(0.52 0.09 210);       /* #1B7A8C */
-  --brand-red: oklch(0.55 0.19 22);         /* #C8323C */
-  --brand-gold: oklch(0.78 0.13 82);        /* #D4A94A */
-  --brand-cream: oklch(0.95 0.022 82);      /* deeper warm cream */
-  --brand-ivory: oklch(0.96 0.018 82);      /* warmer ivory backdrop */
+  --brand-navy: oklch(0.28 0.045 220); /* #0F2E3D */
+  --brand-teal: oklch(0.52 0.09 210); /* #1B7A8C */
+  --brand-red: oklch(0.55 0.19 22); /* #C8323C */
+  --brand-gold: oklch(0.78 0.13 82); /* #D4A94A */
+  --brand-cream: oklch(0.95 0.022 82); /* deeper warm cream */
+  --brand-ivory: oklch(0.96 0.018 82); /* warmer ivory backdrop */
 
   --gradient-navy: linear-gradient(140deg, oklch(0.24 0.04 220) 0%, oklch(0.32 0.05 215) 100%);
   --gradient-gold: linear-gradient(120deg, oklch(0.82 0.13 82) 0%, oklch(0.72 0.15 78) 100%);
   --shadow-luxe:
-    0 30px 60px -25px oklch(0.2 0.04 220 / 0.35),
-    0 8px 24px -12px oklch(0.2 0.04 220 / 0.18),
+    0 30px 60px -25px oklch(0.2 0.04 220 / 0.35), 0 8px 24px -12px oklch(0.2 0.04 220 / 0.18),
     0 1px 0 0 oklch(0.78 0.13 82 / 0.35) inset;
   --shadow-soft:
-    0 14px 34px -20px oklch(0.2 0.04 220 / 0.28),
-    0 2px 6px -3px oklch(0.2 0.04 220 / 0.08),
+    0 14px 34px -20px oklch(0.2 0.04 220 / 0.28), 0 2px 6px -3px oklch(0.2 0.04 220 / 0.08),
     0 1px 0 0 oklch(0.78 0.13 82 / 0.22) inset;
 
   --background: var(--brand-ivory);
   --foreground: oklch(0.22 0.03 230);
-  --card: oklch(0.99 0.012 82);              /* champagne-tinted card, not pure white */
+  --card: oklch(0.99 0.012 82); /* champagne-tinted card, not pure white */
   --card-foreground: oklch(0.22 0.03 230);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.22 0.03 230);
@@ -160,7 +158,11 @@
     font-feature-settings: "ss01", "cv11";
   }
 
-  h1, h2, h3, h4, h5 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
     font-family: var(--font-serif);
     letter-spacing: -0.01em;
     font-weight: 500;
@@ -194,11 +196,13 @@
 @utility card-luxe {
   position: relative;
   background:
-    linear-gradient(180deg, oklch(0.985 0.02 82 / 0.9), oklch(0.97 0.028 82 / 0.6)),
-    var(--card);
+    linear-gradient(180deg, oklch(0.985 0.02 82 / 0.9), oklch(0.97 0.028 82 / 0.6)), var(--card);
   border: 1px solid oklch(0.86 0.06 82 / 0.7);
   box-shadow: var(--shadow-soft);
-  transition: border-color 300ms ease, box-shadow 300ms ease, transform 300ms ease;
+  transition:
+    border-color 300ms ease,
+    box-shadow 300ms ease,
+    transform 300ms ease;
 }
 @utility card-luxe {
   &::before {
@@ -223,44 +227,76 @@
 @utility gold-frame {
   border-radius: 9999px;
   padding: 3px;
-  background: conic-gradient(from 140deg,
+  background: conic-gradient(
+    from 140deg,
     oklch(0.82 0.13 82),
     oklch(0.66 0.14 78),
     oklch(0.88 0.09 85),
     oklch(0.72 0.15 78),
-    oklch(0.82 0.13 82));
+    oklch(0.82 0.13 82)
+  );
   box-shadow: 0 6px 18px -10px oklch(0.55 0.15 80 / 0.55);
 }
 
 /* Logo leaf-bloom + shimmer sweep animations */
 @keyframes leaf-bloom {
-  0% { opacity: 0; transform: scale(0.6); }
-  40% { opacity: 0.9; transform: scale(1.05); }
-  100% { opacity: 0.35; transform: scale(1); }
+  0% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  40% {
+    opacity: 0.9;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
 }
 @keyframes leaf-sweep {
-  0% { transform: translateX(0); }
-  60%, 100% { transform: translateX(400%); }
+  0% {
+    transform: translateX(0);
+  }
+  60%,
+  100% {
+    transform: translateX(400%);
+  }
 }
 @keyframes gold-shimmer-text {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }
 .animate-leaf-bloom {
-  animation: leaf-bloom 2.2s ease-out 0.1s both, leaf-bloom-idle 6s ease-in-out 2.5s infinite;
+  animation:
+    leaf-bloom 2.2s ease-out 0.1s both,
+    leaf-bloom-idle 6s ease-in-out 2.5s infinite;
 }
 @keyframes leaf-bloom-idle {
-  0%, 100% { opacity: 0.28; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(1.04); }
+  0%,
+  100% {
+    opacity: 0.28;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.04);
+  }
 }
 .animate-leaf-sweep {
   animation: leaf-sweep 2.4s ease-out 0.3s 1;
 }
 .nav-gold-shimmer {
-  background: linear-gradient(90deg,
+  background: linear-gradient(
+    90deg,
     oklch(0.78 0.13 82) 0%,
     oklch(0.92 0.09 88) 50%,
-    oklch(0.72 0.15 78) 100%);
+    oklch(0.72 0.15 78) 100%
+  );
   background-size: 200% 100%;
   -webkit-background-clip: text;
   background-clip: text;
