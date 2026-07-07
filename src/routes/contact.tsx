@@ -19,7 +19,10 @@ export const Route = createFileRoute("/contact")({
           "Reach BioBlend Compounding Pharmacy in Dubai. Call +971 4 3277355 or book a consultation online.",
       },
       { property: "og:title", content: "Contact BioBlend" },
-      { property: "og:description", content: "Book a consultation with BioBlend Compounding Pharmacy in Dubai." },
+      {
+        property: "og:description",
+        content: "Book a consultation with BioBlend Compounding Pharmacy in Dubai.",
+      },
       { property: "og:url", content: "https://bioblendpharmacy.com/contact" },
       { property: "og:type", content: "website" },
     ],
@@ -63,17 +66,44 @@ export const Route = createFileRoute("/contact")({
 
 type InquiryKind = "personal" | "corporate" | "clinician";
 
-const copyEn: Record<InquiryKind, { heading: string; blurb: string; subjectPlaceholder: string }> = {
-  personal: { heading: "Send us a note", blurb: "We reply within one business day. For urgent prescriptions, please call.", subjectPlaceholder: "e.g. Hormone Replacement, Pediatric, Skincare" },
-  corporate: { heading: "Design a corporate program", blurb: "Tell us about your team and goals — we'll respond with a tailored program outline.", subjectPlaceholder: "Team size, industry, wellness goals" },
-  clinician: { heading: "Physician & clinic partnerships", blurb: "For referrals and co-designed protocols. Our pharmacist team will reach out directly.", subjectPlaceholder: "Specialty, patient volume, formulations of interest" },
-};
+const copyEn: Record<InquiryKind, { heading: string; blurb: string; subjectPlaceholder: string }> =
+  {
+    personal: {
+      heading: "Send us a note",
+      blurb: "We reply within one business day. For urgent prescriptions, please call.",
+      subjectPlaceholder: "e.g. Hormone Replacement, Pediatric, Skincare",
+    },
+    corporate: {
+      heading: "Design a corporate program",
+      blurb: "Tell us about your team and goals — we'll respond with a tailored program outline.",
+      subjectPlaceholder: "Team size, industry, wellness goals",
+    },
+    clinician: {
+      heading: "Physician & clinic partnerships",
+      blurb:
+        "For referrals and co-designed protocols. Our pharmacist team will reach out directly.",
+      subjectPlaceholder: "Specialty, patient volume, formulations of interest",
+    },
+  };
 
-const copyAr: Record<InquiryKind, { heading: string; blurb: string; subjectPlaceholder: string }> = {
-  personal: { heading: "أرسل لنا رسالتك", blurb: "نرد خلال يوم عمل واحد. للوصفات العاجلة، يُرجى الاتصال بنا مباشرة.", subjectPlaceholder: "مثال: تعويض الهرمونات، أدوية أطفال، عناية بالبشرة" },
-  corporate: { heading: "صمّم برنامجاً لشركتك", blurb: "أخبرنا عن فريقك وأهدافك، وسنعود إليك بخطّة برنامج مفصّلة تناسبكم.", subjectPlaceholder: "حجم الفريق، القطاع، أهداف العافية" },
-  clinician: { heading: "شراكات الأطباء والعيادات", blurb: "للإحالات وتصميم البروتوكولات المشتركة. سيتواصل فريق الصيادلة معك مباشرة.", subjectPlaceholder: "التخصّص، عدد المرضى، التركيبات المطلوبة" },
-};
+const copyAr: Record<InquiryKind, { heading: string; blurb: string; subjectPlaceholder: string }> =
+  {
+    personal: {
+      heading: "أرسل لنا رسالتك",
+      blurb: "نرد خلال يوم عمل واحد. للوصفات العاجلة، يُرجى الاتصال بنا مباشرة.",
+      subjectPlaceholder: "مثال: تعويض الهرمونات، أدوية أطفال، عناية بالبشرة",
+    },
+    corporate: {
+      heading: "صمّم برنامجاً لشركتك",
+      blurb: "أخبرنا عن فريقك وأهدافك، وسنعود إليك بخطّة برنامج مفصّلة تناسبكم.",
+      subjectPlaceholder: "حجم الفريق، القطاع، أهداف العافية",
+    },
+    clinician: {
+      heading: "شراكات الأطباء والعيادات",
+      blurb: "للإحالات وتصميم البروتوكولات المشتركة. سيتواصل فريق الصيادلة معك مباشرة.",
+      subjectPlaceholder: "التخصّص، عدد المرضى، التركيبات المطلوبة",
+    },
+  };
 
 function ContactPage() {
   const ar = useIsAr();
@@ -85,7 +115,11 @@ function ContactPage() {
     e.preventDefault();
     setSubmitting(true);
     setTimeout(() => {
-      toast.success(ar ? "شكراً لك — سنتواصل معك خلال يوم عمل." : "Thank you — we'll be in touch within one business day.");
+      toast.success(
+        ar
+          ? "شكراً لك — سنتواصل معك خلال يوم عمل."
+          : "Thank you — we'll be in touch within one business day.",
+      );
       (e.target as HTMLFormElement).reset();
       setSubmitting(false);
     }, 600);
@@ -103,9 +137,13 @@ function ContactPage() {
           <p className="eyebrow">{ar ? "تواصل معنا" : "Contact"}</p>
           <h1 className="mt-4 font-serif text-5xl leading-[1.05] text-primary md:text-6xl">
             {ar ? (
-              <>لنُصمّم <em className="italic text-[color:var(--brand-gold)]">تركيبتك</em> معاً</>
+              <>
+                لنُصمّم <em className="italic text-[color:var(--brand-gold)]">تركيبتك</em> معاً
+              </>
             ) : (
-              <>Let's design your <em className="italic text-[color:var(--brand-gold)]">blend</em></>
+              <>
+                Let's design your <em className="italic text-[color:var(--brand-gold)]">blend</em>
+              </>
             )}
           </h1>
           <div className="mx-auto mt-6 gold-rule" />
@@ -130,17 +168,33 @@ function ContactPage() {
                 <li className="flex items-start gap-3">
                   <MapPin className="mt-0.5 h-5 w-5 text-[color:var(--brand-gold)]" />
                   <div>
-                    <p className="font-medium text-primary-foreground">{ar ? "دبي، الإمارات العربية المتحدة" : "Dubai, United Arab Emirates"}</p>
-                    <p className="mt-1 text-primary-foreground/70">{ar ? "الطابق الأرضي، بجانب Art House" : "Ground floor, next to Art House"}</p>
+                    <p className="font-medium text-primary-foreground">
+                      {ar ? "دبي، الإمارات العربية المتحدة" : "Dubai, United Arab Emirates"}
+                    </p>
+                    <p className="mt-1 text-primary-foreground/70">
+                      {ar ? "الطابق الأرضي، بجانب Art House" : "Ground floor, next to Art House"}
+                    </p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
                   <Phone className="mt-0.5 h-5 w-5 text-[color:var(--brand-gold)]" />
-                  <a href="tel:+97143277355" dir="ltr" className="hover:text-[color:var(--brand-gold)]">+971 4 3277355</a>
+                  <a
+                    href="tel:+97143277355"
+                    dir="ltr"
+                    className="hover:text-[color:var(--brand-gold)]"
+                  >
+                    +971 4 3277355
+                  </a>
                 </li>
                 <li className="flex items-start gap-3">
                   <Mail className="mt-0.5 h-5 w-5 text-[color:var(--brand-gold)]" />
-                  <a href="mailto:hello@bioblendpharmacy.com" dir="ltr" className="hover:text-[color:var(--brand-gold)]">hello@bioblendpharmacy.com</a>
+                  <a
+                    href="mailto:hello@bioblendpharmacy.com"
+                    dir="ltr"
+                    className="hover:text-[color:var(--brand-gold)]"
+                  >
+                    hello@bioblendpharmacy.com
+                  </a>
                 </li>
                 <li className="flex items-start gap-3">
                   <Globe className="mt-0.5 h-5 w-5 text-[color:var(--brand-gold)]" />
@@ -150,29 +204,51 @@ function ContactPage() {
                   <Clock className="mt-0.5 h-5 w-5 text-[color:var(--brand-gold)]" />
                   <div>
                     <p>{ar ? "السبت – الخميس · 9:00 – 22:00" : "Sat – Thu · 9:00 – 22:00"}</p>
-                    <p className="text-primary-foreground/70">{ar ? "الجمعة · 14:00 – 22:00" : "Friday · 14:00 – 22:00"}</p>
+                    <p className="text-primary-foreground/70">
+                      {ar ? "الجمعة · 14:00 – 22:00" : "Friday · 14:00 – 22:00"}
+                    </p>
                   </div>
                 </li>
               </ul>
 
               <div className="mt-10 flex gap-3">
-                <Button asChild className="flex-1 rounded-full bg-[color:var(--brand-gold)] text-primary hover:bg-[color:var(--brand-gold)]/90">
-                  <a href="tel:+97143277355"><Phone className="mr-2 h-4 w-4" /> {ar ? "اتصل" : "Call"}</a>
+                <Button
+                  asChild
+                  className="flex-1 rounded-full bg-[color:var(--brand-gold)] text-primary hover:bg-[color:var(--brand-gold)]/90"
+                >
+                  <a href="tel:+97143277355">
+                    <Phone className="mr-2 h-4 w-4" /> {ar ? "اتصل" : "Call"}
+                  </a>
                 </Button>
-                <Button asChild variant="outline" className="flex-1 rounded-full border-primary-foreground/30 bg-transparent text-primary-foreground hover:bg-primary-foreground/10">
+                <Button
+                  asChild
+                  variant="outline"
+                  className="flex-1 rounded-full border-primary-foreground/30 bg-transparent text-primary-foreground hover:bg-primary-foreground/10"
+                >
                   <a href="https://wa.me/97143277355" target="_blank" rel="noreferrer">
                     <MessageCircle className="mr-2 h-4 w-4" /> {ar ? "واتساب" : "WhatsApp"}
                   </a>
                 </Button>
               </div>
 
-              <p className="mt-10 border-t border-primary-foreground/15 pt-6 text-right text-xs tracking-[0.3em] text-primary-foreground/60 uppercase" dir="rtl" lang="ar">
+              <p
+                className="mt-10 border-t border-primary-foreground/15 pt-6 text-right text-xs tracking-[0.3em] text-primary-foreground/60 uppercase"
+                dir="rtl"
+                lang="ar"
+              >
                 صيدلية بايوبلند للتركيبات الدوائية
               </p>
             </aside>
 
-            <form onSubmit={onSubmit} className="rounded-3xl border border-border/60 bg-card p-10 shadow-soft">
-              <div className="flex flex-wrap gap-2" role="tablist" aria-label={ar ? "نوع الاستفسار" : "Inquiry type"}>
+            <form
+              onSubmit={onSubmit}
+              className="rounded-3xl border border-border/60 bg-card p-10 shadow-soft"
+            >
+              <div
+                className="flex flex-wrap gap-2"
+                role="tablist"
+                aria-label={ar ? "نوع الاستفسار" : "Inquiry type"}
+              >
                 {(["personal", "corporate", "clinician"] as const).map((k) => (
                   <button
                     key={k}
@@ -197,8 +273,21 @@ function ContactPage() {
 
               <div className="mt-8 grid gap-5 md:grid-cols-2">
                 <div className="space-y-2">
-                  <Label htmlFor="name">{inquiry === "personal" ? (ar ? "الاسم" : "Name") : (ar ? "اسم المسؤول" : "Contact name")}</Label>
-                  <Input id="name" name="name" required placeholder={ar ? "اسمك الكامل" : "Your full name"} />
+                  <Label htmlFor="name">
+                    {inquiry === "personal"
+                      ? ar
+                        ? "الاسم"
+                        : "Name"
+                      : ar
+                        ? "اسم المسؤول"
+                        : "Contact name"}
+                  </Label>
+                  <Input
+                    id="name"
+                    name="name"
+                    required
+                    placeholder={ar ? "اسمك الكامل" : "Your full name"}
+                  />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="phone">{ar ? "الهاتف" : "Phone"}</Label>
@@ -206,22 +295,62 @@ function ContactPage() {
                 </div>
                 {inquiry !== "personal" && (
                   <div className="space-y-2 md:col-span-2">
-                    <Label htmlFor="organization">{inquiry === "corporate" ? (ar ? "المؤسّسة" : "Organization") : (ar ? "العيادة / المستشفى" : "Clinic / Practice")}</Label>
-                    <Input id="organization" name="organization" placeholder={inquiry === "corporate" ? (ar ? "اسم الشركة" : "Company name") : (ar ? "اسم العيادة أو المستشفى" : "Clinic or hospital name")} />
+                    <Label htmlFor="organization">
+                      {inquiry === "corporate"
+                        ? ar
+                          ? "المؤسّسة"
+                          : "Organization"
+                        : ar
+                          ? "العيادة / المستشفى"
+                          : "Clinic / Practice"}
+                    </Label>
+                    <Input
+                      id="organization"
+                      name="organization"
+                      placeholder={
+                        inquiry === "corporate"
+                          ? ar
+                            ? "اسم الشركة"
+                            : "Company name"
+                          : ar
+                            ? "اسم العيادة أو المستشفى"
+                            : "Clinic or hospital name"
+                      }
+                    />
                   </div>
                 )}
                 <div className="space-y-2 md:col-span-2">
                   <Label htmlFor="email">{ar ? "البريد الإلكتروني" : "Email"}</Label>
-                  <Input id="email" name="email" type="email" required placeholder="you@example.com" />
+                  <Input
+                    id="email"
+                    name="email"
+                    type="email"
+                    required
+                    placeholder="you@example.com"
+                  />
                 </div>
                 <div className="space-y-2 md:col-span-2">
                   <Label htmlFor="subject">{ar ? "مجال الاهتمام" : "Area of interest"}</Label>
-                  <Input id="subject" name="subject" placeholder={copy[inquiry].subjectPlaceholder} />
+                  <Input
+                    id="subject"
+                    name="subject"
+                    placeholder={copy[inquiry].subjectPlaceholder}
+                  />
                 </div>
 
                 <div className="space-y-2 md:col-span-2">
                   <Label htmlFor="message">{ar ? "رسالتك" : "Message"}</Label>
-                  <Textarea id="message" name="message" required rows={5} placeholder={ar ? "أخبرنا قليلاً عمّا تبحث عنه…" : "Tell us a little about what you're looking for…"} />
+                  <Textarea
+                    id="message"
+                    name="message"
+                    required
+                    rows={5}
+                    placeholder={
+                      ar
+                        ? "أخبرنا قليلاً عمّا تبحث عنه…"
+                        : "Tell us a little about what you're looking for…"
+                    }
+                  />
                 </div>
               </div>
 
@@ -231,7 +360,13 @@ function ContactPage() {
                 disabled={submitting}
                 className="mt-8 w-full rounded-full bg-primary text-primary-foreground hover:bg-primary/90"
               >
-                {submitting ? (ar ? "جاري الإرسال…" : "Sending…") : (ar ? "إرسال الرسالة" : "Send message")}
+                {submitting
+                  ? ar
+                    ? "جاري الإرسال…"
+                    : "Sending…"
+                  : ar
+                    ? "إرسال الرسالة"
+                    : "Send message"}
               </Button>
               <p className="mt-4 text-center text-xs text-muted-foreground">
                 {ar
@@ -247,7 +382,11 @@ function ContactPage() {
         <div className="mx-auto max-w-7xl px-6 pb-24 lg:px-10">
           <div className="overflow-hidden rounded-3xl border border-border/60 shadow-soft">
             <iframe
-              title={ar ? "صيدلية بايوبلند للتركيبات الدوائية — دبي" : "BioBlend Compounding Pharmacy — Dubai"}
+              title={
+                ar
+                  ? "صيدلية بايوبلند للتركيبات الدوائية — دبي"
+                  : "BioBlend Compounding Pharmacy — Dubai"
+              }
               src="https://www.google.com/maps?q=Dubai%20United%20Arab%20Emirates&output=embed"
               width="100%"
               height="420"

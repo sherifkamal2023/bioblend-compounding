@@ -8,6 +8,7 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
+import { Analytics } from "@vercel/analytics/react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -16,7 +17,6 @@ import { Footer } from "../components/Footer";
 import { LaylaHost } from "../components/LaylaHost";
 import { Toaster } from "../components/ui/sonner";
 import { initI18n, applyLangDir } from "../lib/i18n";
-
 
 function NotFoundComponent() {
   return (
@@ -91,7 +91,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { name: "author", content: "BioBlend Compounding Pharmacy" },
       { property: "og:site_name", content: "BioBlend Compounding Pharmacy" },
-      { property: "og:title", content: "BioBlend Compounding Pharmacy — Personalized Medicine in Dubai" },
+      {
+        property: "og:title",
+        content: "BioBlend Compounding Pharmacy — Personalized Medicine in Dubai",
+      },
       {
         property: "og:description",
         content:
@@ -158,6 +161,7 @@ function RootShell({ children }: { children: ReactNode }) {
       <body>
         {children}
         <Scripts />
+        <Analytics />
       </body>
     </html>
   );
@@ -190,4 +194,3 @@ function RootComponent() {
     </QueryClientProvider>
   );
 }
-

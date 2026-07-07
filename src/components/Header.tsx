@@ -7,7 +7,6 @@ import { Logo } from "./Logo";
 import { Button } from "./ui/button";
 import { LangSwitcher } from "./LangSwitcher";
 
-
 export function Header() {
   const { t } = useTranslation();
   const [scrolled, setScrolled] = useState(false);
@@ -110,7 +109,11 @@ export function Header() {
               <UserRound className="h-3.5 w-3.5" />
               Patient portal
             </Link>
-            <Button asChild size="sm" className="whitespace-nowrap rounded-full bg-[color:var(--brand-gold)] px-5 text-primary hover:bg-[color:var(--brand-gold)]/90">
+            <Button
+              asChild
+              size="sm"
+              className="whitespace-nowrap rounded-full bg-[color:var(--brand-gold)] px-5 text-primary hover:bg-[color:var(--brand-gold)]/90"
+            >
               <Link to="/contact">{t("nav.bookConsultation")}</Link>
             </Button>
           </div>
@@ -122,7 +125,11 @@ export function Header() {
               onClick={() => setOpen((v) => !v)}
               aria-label="Toggle menu"
             >
-              {open ? <X className="h-6 w-6 text-primary" /> : <Menu className="h-6 w-6 text-primary" />}
+              {open ? (
+                <X className="h-6 w-6 text-primary" />
+              ) : (
+                <Menu className="h-6 w-6 text-primary" />
+              )}
             </button>
           </div>
         </div>
@@ -143,7 +150,9 @@ export function Header() {
                 </Link>
               ))}
               <div className="my-2 h-px bg-border/60" />
-              <p className="px-3 pb-1 text-[10px] font-medium tracking-[0.24em] text-muted-foreground uppercase">{t("nav.partners")}</p>
+              <p className="px-3 pb-1 text-[10px] font-medium tracking-[0.24em] text-muted-foreground uppercase">
+                {t("nav.partners")}
+              </p>
               {partners.map((p) => (
                 <Link
                   key={p.to}
@@ -161,8 +170,13 @@ export function Header() {
               >
                 <UserRound className="h-4 w-4" /> Patient portal
               </Link>
-              <Button asChild className="mt-2 rounded-full bg-[color:var(--brand-gold)] text-primary hover:bg-[color:var(--brand-gold)]/90">
-                <Link to="/contact" onClick={() => setOpen(false)}>{t("nav.bookConsultation")}</Link>
+              <Button
+                asChild
+                className="mt-2 rounded-full bg-[color:var(--brand-gold)] text-primary hover:bg-[color:var(--brand-gold)]/90"
+              >
+                <Link to="/contact" onClick={() => setOpen(false)}>
+                  {t("nav.bookConsultation")}
+                </Link>
               </Button>
             </div>
           </div>
@@ -171,7 +185,10 @@ export function Header() {
 
       {/* Mobile sticky CTA */}
       <div className="fixed inset-x-0 bottom-0 z-40 border-t border-border/60 bg-background/95 px-4 py-3 backdrop-blur-xl lg:hidden">
-        <Button asChild className="w-full rounded-full bg-[color:var(--brand-gold)] text-primary hover:bg-[color:var(--brand-gold)]/90">
+        <Button
+          asChild
+          className="w-full rounded-full bg-[color:var(--brand-gold)] text-primary hover:bg-[color:var(--brand-gold)]/90"
+        >
           <Link to="/contact">{t("nav.bookConsultation")}</Link>
         </Button>
       </div>

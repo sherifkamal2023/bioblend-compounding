@@ -123,17 +123,37 @@ function AuthPage() {
             <>
               <div>
                 <Label htmlFor="fullName">Full name</Label>
-                <Input id="fullName" name="fullName" required autoComplete="name" className="mt-1.5" />
+                <Input
+                  id="fullName"
+                  name="fullName"
+                  required
+                  autoComplete="name"
+                  className="mt-1.5"
+                />
               </div>
               <div>
                 <Label htmlFor="phone">Phone</Label>
-                <Input id="phone" name="phone" type="tel" required autoComplete="tel" className="mt-1.5" />
+                <Input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  required
+                  autoComplete="tel"
+                  className="mt-1.5"
+                />
               </div>
             </>
           )}
           <div>
             <Label htmlFor="email">Email</Label>
-            <Input id="email" name="email" type="email" required autoComplete="email" className="mt-1.5" />
+            <Input
+              id="email"
+              name="email"
+              type="email"
+              required
+              autoComplete="email"
+              className="mt-1.5"
+            />
           </div>
           <div>
             <Label htmlFor="password">Password</Label>
@@ -168,7 +188,9 @@ function AuthPage() {
         </form>
 
         <p className="mt-6 text-center text-xs text-muted-foreground">
-          <Link to="/" className="hover:text-primary">← Back to home</Link>
+          <Link to="/" className="hover:text-primary">
+            ← Back to home
+          </Link>
         </p>
       </div>
     </div>

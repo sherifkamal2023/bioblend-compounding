@@ -11,5 +11,6 @@
 4. **Verify** with a screenshot of `/` (header on ivory) and the footer (navy) via Playwright — confirm the mark is transparent-edged in the header and sits inside a clean ivory chip in the footer with no halo.
 
 ### Out of scope
+
 - No color changes to the logo itself.
 - No changes to Header/Footer layout beyond what the Logo component controls.

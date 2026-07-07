@@ -11,9 +11,16 @@ export const Route = createFileRoute("/corporate")({
   head: () => ({
     meta: [
       { title: "Corporate Wellness — BioBlend Compounding Pharmacy" },
-      { name: "description", content: "BioBlend Corporate Wellness: onsite health screenings, executive HRT and longevity protocols, custom formulary partnerships for clinics, offices, and hospitality teams in Dubai." },
+      {
+        name: "description",
+        content:
+          "BioBlend Corporate Wellness: onsite health screenings, executive HRT and longevity protocols, custom formulary partnerships for clinics, offices, and hospitality teams in Dubai.",
+      },
       { property: "og:title", content: "Corporate Wellness — BioBlend Compounding Pharmacy" },
-      { property: "og:description", content: "Precision wellness for teams, executives, and organizations across the UAE." },
+      {
+        property: "og:description",
+        content: "Precision wellness for teams, executives, and organizations across the UAE.",
+      },
       { property: "og:url", content: "https://bioblendpharmacy.com/corporate" },
       { property: "og:type", content: "website" },
     ],
@@ -25,17 +32,49 @@ export const Route = createFileRoute("/corporate")({
 type Program = { tile: TileKey; title: string; body: string };
 
 const programsEn: Program[] = [
-  { tile: "longevity", title: "Executive longevity", body: "Personalized HRT, peptide, and nutraceutical protocols for C-suite and high-performance teams." },
-  { tile: "dermatology", title: "Skin & dermatology days", body: "Dermatologist-led onsite consults with same-week compounded protocols delivered to the office." },
-  { tile: "nutraceutical", title: "Formulary partnership", body: "Bespoke in-clinic formulary for wellness centres, spas, and hospitality — private-label ready." },
-  { tile: "wellnessIv", title: "Team wellness clinics", body: "Onsite screening days: labs, IV therapy, vitamin protocols, follow-up plans." },
+  {
+    tile: "longevity",
+    title: "Executive longevity",
+    body: "Personalized HRT, peptide, and nutraceutical protocols for C-suite and high-performance teams.",
+  },
+  {
+    tile: "dermatology",
+    title: "Skin & dermatology days",
+    body: "Dermatologist-led onsite consults with same-week compounded protocols delivered to the office.",
+  },
+  {
+    tile: "nutraceutical",
+    title: "Formulary partnership",
+    body: "Bespoke in-clinic formulary for wellness centres, spas, and hospitality — private-label ready.",
+  },
+  {
+    tile: "wellnessIv",
+    title: "Team wellness clinics",
+    body: "Onsite screening days: labs, IV therapy, vitamin protocols, follow-up plans.",
+  },
 ];
 
 const programsAr: Program[] = [
-  { tile: "longevity", title: "طول عمر التنفيذيين", body: "بروتوكولات هرمونية وببتيدية ومكمّلات مصمّمة لكبار المسؤولين والفرق ذات الأداء العالي." },
-  { tile: "dermatology", title: "أيام العناية بالبشرة", body: "استشارات جلدية داخل مقرّ الشركة، مع توصيل التركيبات المخصّصة إلى المكتب خلال الأسبوع نفسه." },
-  { tile: "nutraceutical", title: "شراكة التركيبات", body: "تركيبات حصرية لمراكز العافية والسبا والفنادق — جاهزة للعلامة الخاصّة." },
-  { tile: "wellnessIv", title: "عيادات عافية للفرق", body: "أيام فحص داخل المقرّ: تحاليل، جلسات وريدية، بروتوكولات فيتامينات، وخطط متابعة." },
+  {
+    tile: "longevity",
+    title: "طول عمر التنفيذيين",
+    body: "بروتوكولات هرمونية وببتيدية ومكمّلات مصمّمة لكبار المسؤولين والفرق ذات الأداء العالي.",
+  },
+  {
+    tile: "dermatology",
+    title: "أيام العناية بالبشرة",
+    body: "استشارات جلدية داخل مقرّ الشركة، مع توصيل التركيبات المخصّصة إلى المكتب خلال الأسبوع نفسه.",
+  },
+  {
+    tile: "nutraceutical",
+    title: "شراكة التركيبات",
+    body: "تركيبات حصرية لمراكز العافية والسبا والفنادق — جاهزة للعلامة الخاصّة.",
+  },
+  {
+    tile: "wellnessIv",
+    title: "عيادات عافية للفرق",
+    body: "أيام فحص داخل المقرّ: تحاليل، جلسات وريدية، بروتوكولات فيتامينات، وخطط متابعة.",
+  },
 ];
 
 const outcomesEn = [
@@ -82,9 +121,14 @@ function CorporatePage() {
             <p className="eyebrow">{ar ? "صحّة الموظفين" : "Corporate Wellness"}</p>
             <h1 className="mt-6 font-serif text-5xl leading-[1.02] text-primary md:text-6xl">
               {ar ? (
-                <>عافية دقيقة <em className="italic text-[color:var(--brand-gold)]">لفرق تُنجز</em>.</>
+                <>
+                  عافية دقيقة <em className="italic text-[color:var(--brand-gold)]">لفرق تُنجز</em>.
+                </>
               ) : (
-                <>Precision wellness for <em className="italic text-[color:var(--brand-gold)]">teams that perform</em>.</>
+                <>
+                  Precision wellness for{" "}
+                  <em className="italic text-[color:var(--brand-gold)]">teams that perform</em>.
+                </>
               )}
             </h1>
             <div className="mt-6 gold-rule" />
@@ -94,17 +138,32 @@ function CorporatePage() {
                 : "BioBlend Corporate Wellness partners with clinics, hospitality groups, family offices, and executive teams across the UAE — bringing our compounding lab, pharmacists, and physician network to your workplace."}
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
-              <Button asChild size="lg" className="rounded-full bg-primary text-primary-foreground hover:bg-primary/90">
+              <Button
+                asChild
+                size="lg"
+                className="rounded-full bg-primary text-primary-foreground hover:bg-primary/90"
+              >
                 <Link to="/contact">{ar ? "احجز مكالمة تعريفية" : "Book a discovery call"}</Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="rounded-full">
-                <Link to="/physicians">{ar ? "للأطباء" : "For clinicians"} <ArrowRight className="ml-2 h-4 w-4 rtl:rotate-180" /></Link>
+                <Link to="/physicians">
+                  {ar ? "للأطباء" : "For clinicians"}{" "}
+                  <ArrowRight className="ml-2 h-4 w-4 rtl:rotate-180" />
+                </Link>
               </Button>
             </div>
           </Reveal>
           <Reveal delay={0.1}>
             <div className="gold-frame overflow-hidden rounded-3xl">
-              <img src={tiles.corporate} alt={ar ? "فريق تنفيذي أثناء استشارة عافية في مقرّهم" : "Executive team during a BioBlend onsite wellness consultation"} className="aspect-[4/5] w-full rounded-[calc(1.5rem-3px)] object-cover" />
+              <img
+                src={tiles.corporate}
+                alt={
+                  ar
+                    ? "فريق تنفيذي أثناء استشارة عافية في مقرّهم"
+                    : "Executive team during a BioBlend onsite wellness consultation"
+                }
+                className="aspect-[4/5] w-full rounded-[calc(1.5rem-3px)] object-cover"
+              />
             </div>
           </Reveal>
         </div>
@@ -113,11 +172,22 @@ function CorporatePage() {
       <section className="bg-background">
         <div className="mx-auto max-w-7xl px-6 py-24 lg:px-10">
           <Reveal>
-            <SectionHeading eyebrow={ar ? "برامجنا" : "Programs"} title={ar ? (
-              <>أربعة مستويات من <em className="italic text-[color:var(--brand-gold)]">الرعاية المؤسّسية</em></>
-            ) : (
-              <>Four tiers of <em className="italic text-[color:var(--brand-gold)]">corporate care</em></>
-            )} />
+            <SectionHeading
+              eyebrow={ar ? "برامجنا" : "Programs"}
+              title={
+                ar ? (
+                  <>
+                    أربعة مستويات من{" "}
+                    <em className="italic text-[color:var(--brand-gold)]">الرعاية المؤسّسية</em>
+                  </>
+                ) : (
+                  <>
+                    Four tiers of{" "}
+                    <em className="italic text-[color:var(--brand-gold)]">corporate care</em>
+                  </>
+                )
+              }
+            />
           </Reveal>
           <div className="mt-16 grid gap-6 md:grid-cols-2">
             {programs.map((p, i) => (
@@ -141,8 +211,12 @@ function CorporatePage() {
             {outcomes.map((o, i) => (
               <Reveal key={o.label} delay={i * 0.08}>
                 <div className="text-center md:text-left">
-                  <p className="font-serif text-6xl text-[color:var(--brand-gold)] md:text-7xl">{o.stat}</p>
-                  <p className="mt-4 text-sm leading-relaxed text-primary-foreground/75">{o.label}</p>
+                  <p className="font-serif text-6xl text-[color:var(--brand-gold)] md:text-7xl">
+                    {o.stat}
+                  </p>
+                  <p className="mt-4 text-sm leading-relaxed text-primary-foreground/75">
+                    {o.label}
+                  </p>
                 </div>
               </Reveal>
             ))}
@@ -153,17 +227,30 @@ function CorporatePage() {
       <section className="bg-background">
         <div className="mx-auto max-w-4xl px-6 py-24 lg:px-10">
           <Reveal>
-            <SectionHeading eyebrow={ar ? "شركاؤنا المثاليّون" : "Ideal partners"} align="center" title={ar ? (
-              <>مع من <em className="italic text-[color:var(--brand-gold)]">نتعاون</em></>
-            ) : (
-              <>Who we work <em className="italic text-[color:var(--brand-gold)]">with</em></>
-            )} />
+            <SectionHeading
+              eyebrow={ar ? "شركاؤنا المثاليّون" : "Ideal partners"}
+              align="center"
+              title={
+                ar ? (
+                  <>
+                    مع من <em className="italic text-[color:var(--brand-gold)]">نتعاون</em>
+                  </>
+                ) : (
+                  <>
+                    Who we work <em className="italic text-[color:var(--brand-gold)]">with</em>
+                  </>
+                )
+              }
+            />
           </Reveal>
           <div className="mt-14 grid gap-6 sm:grid-cols-2">
             {partners.map((k, i) => (
               <Reveal key={k} delay={i * 0.04}>
                 <div className="flex items-start gap-3 rounded-xl border border-[color:var(--brand-gold)]/30 bg-[color:var(--brand-gold)]/8 p-5 transition-colors hover:bg-[color:var(--brand-gold)]/12">
-                  <Building2 className="mt-0.5 h-4 w-4 shrink-0 text-[color:var(--brand-teal)]" strokeWidth={1.6} />
+                  <Building2
+                    className="mt-0.5 h-4 w-4 shrink-0 text-[color:var(--brand-teal)]"
+                    strokeWidth={1.6}
+                  />
                   <span className="text-sm text-foreground/80">{k}</span>
                 </div>
               </Reveal>
@@ -175,12 +262,21 @@ function CorporatePage() {
       <section className="bg-secondary/60">
         <div className="mx-auto max-w-4xl px-6 py-20 text-center lg:px-10">
           <Reveal>
-            <Calendar className="mx-auto h-8 w-8 text-[color:var(--brand-gold)]" strokeWidth={1.4} />
+            <Calendar
+              className="mx-auto h-8 w-8 text-[color:var(--brand-gold)]"
+              strokeWidth={1.4}
+            />
             <h2 className="mt-6 font-serif text-4xl leading-tight text-primary md:text-5xl">
               {ar ? (
-                <>صمّم برنامجاً خاصّاً <em className="italic text-[color:var(--brand-gold)]">لمؤسّستك</em>.</>
+                <>
+                  صمّم برنامجاً خاصّاً{" "}
+                  <em className="italic text-[color:var(--brand-gold)]">لمؤسّستك</em>.
+                </>
               ) : (
-                <>Design a program for your <em className="italic text-[color:var(--brand-gold)]">organization</em>.</>
+                <>
+                  Design a program for your{" "}
+                  <em className="italic text-[color:var(--brand-gold)]">organization</em>.
+                </>
               )}
             </h2>
             <div className="mx-auto mt-6 gold-rule" />
@@ -190,7 +286,11 @@ function CorporatePage() {
                 : "A 30-minute call with our corporate team is all we need to scope a proposal."}
             </p>
             <div className="mt-10">
-              <Button asChild size="lg" className="rounded-full bg-primary text-primary-foreground hover:bg-primary/90">
+              <Button
+                asChild
+                size="lg"
+                className="rounded-full bg-primary text-primary-foreground hover:bg-primary/90"
+              >
                 <Link to="/contact">{ar ? "اطلب عرضاً" : "Request a proposal"}</Link>
               </Button>
             </div>

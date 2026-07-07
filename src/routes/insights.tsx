@@ -10,9 +10,16 @@ export const Route = createFileRoute("/insights")({
   head: () => ({
     meta: [
       { title: "Insights — BioBlend Compounding Pharmacy" },
-      { name: "description", content: "Editorial from BioBlend's compounding lab: hormone science, dermatology protocols, pediatric compounding, longevity research and pharmacist commentary from Dubai." },
+      {
+        name: "description",
+        content:
+          "Editorial from BioBlend's compounding lab: hormone science, dermatology protocols, pediatric compounding, longevity research and pharmacist commentary from Dubai.",
+      },
       { property: "og:title", content: "Insights — BioBlend Compounding Pharmacy" },
-      { property: "og:description", content: "Science, protocols, and pharmacist commentary from BioBlend." },
+      {
+        property: "og:description",
+        content: "Science, protocols, and pharmacist commentary from BioBlend.",
+      },
       { property: "og:url", content: "https://bioblendpharmacy.com/insights" },
       { property: "og:type", content: "website" },
     ],
@@ -21,24 +28,125 @@ export const Route = createFileRoute("/insights")({
   component: InsightsPage,
 });
 
-type Article = { tile: TileKey; category: string; title: string; excerpt: string; readTime: string; date: string };
+type Article = {
+  tile: TileKey;
+  category: string;
+  title: string;
+  excerpt: string;
+  readTime: string;
+  date: string;
+};
 
 const articlesEn: Article[] = [
-  { tile: "hormone", category: "Hormone Lab", title: "Why bio-identical progesterone belongs in your HRT conversation", excerpt: "The 20-year misread of the Women's Health Initiative — and what compounded progesterone actually does for perimenopausal patients.", readTime: "8 min read", date: "Coming soon" },
-  { tile: "dermatology", category: "Dermatology", title: "Tretinoin tolerance: a 12-week compounding protocol", excerpt: "A stepped approach to prescription retinoids in Middle Eastern skin types — pharmacist notes on base selection and buffering.", readTime: "6 min read", date: "Coming soon" },
-  { tile: "pediatric", category: "Pediatric", title: "Flavor systems that actually work for pediatric suspensions", excerpt: "Why bubblegum beats cherry, and how we work around allergen exclusions without sacrificing palatability.", readTime: "5 min read", date: "Coming soon" },
-  { tile: "longevity", category: "Longevity", title: "NAD+ IVs: what the evidence supports and what it doesn't", excerpt: "A pharmacist's honest read on the current NAD+ literature — dose, delivery, and who actually benefits.", readTime: "10 min read", date: "Coming soon" },
-  { tile: "petWellness", category: "Household Wellness", title: "Compounding for pets in a human pharmacy — a case for household-level care", excerpt: "How treating a diabetic cat safely intersects with the immunocompromised human in the same home.", readTime: "7 min read", date: "Coming soon" },
-  { tile: "sterile", category: "Practice", title: "USP <797> in a compounding lab, in plain language", excerpt: "What sterile compounding actually means, and why it should shape which pharmacy your physician trusts.", readTime: "9 min read", date: "Coming soon" },
+  {
+    tile: "hormone",
+    category: "Hormone Lab",
+    title: "Why bio-identical progesterone belongs in your HRT conversation",
+    excerpt:
+      "The 20-year misread of the Women's Health Initiative — and what compounded progesterone actually does for perimenopausal patients.",
+    readTime: "8 min read",
+    date: "Coming soon",
+  },
+  {
+    tile: "dermatology",
+    category: "Dermatology",
+    title: "Tretinoin tolerance: a 12-week compounding protocol",
+    excerpt:
+      "A stepped approach to prescription retinoids in Middle Eastern skin types — pharmacist notes on base selection and buffering.",
+    readTime: "6 min read",
+    date: "Coming soon",
+  },
+  {
+    tile: "pediatric",
+    category: "Pediatric",
+    title: "Flavor systems that actually work for pediatric suspensions",
+    excerpt:
+      "Why bubblegum beats cherry, and how we work around allergen exclusions without sacrificing palatability.",
+    readTime: "5 min read",
+    date: "Coming soon",
+  },
+  {
+    tile: "longevity",
+    category: "Longevity",
+    title: "NAD+ IVs: what the evidence supports and what it doesn't",
+    excerpt:
+      "A pharmacist's honest read on the current NAD+ literature — dose, delivery, and who actually benefits.",
+    readTime: "10 min read",
+    date: "Coming soon",
+  },
+  {
+    tile: "petWellness",
+    category: "Household Wellness",
+    title: "Compounding for pets in a human pharmacy — a case for household-level care",
+    excerpt:
+      "How treating a diabetic cat safely intersects with the immunocompromised human in the same home.",
+    readTime: "7 min read",
+    date: "Coming soon",
+  },
+  {
+    tile: "sterile",
+    category: "Practice",
+    title: "USP <797> in a compounding lab, in plain language",
+    excerpt:
+      "What sterile compounding actually means, and why it should shape which pharmacy your physician trusts.",
+    readTime: "9 min read",
+    date: "Coming soon",
+  },
 ];
 
 const articlesAr: Article[] = [
-  { tile: "hormone", category: "مختبر الهرمونات", title: "لماذا يستحقّ البروجستيرون الطبيعي مكاناً في حديث الهرمونات؟", excerpt: "قراءة خاطئة استمرّت 20 عاماً لدراسة صحة المرأة — وما الذي يفعله البروجستيرون المُركّب فعلاً لمريضات ما قبل انقطاع الطمث.", readTime: "قراءة 8 دقائق", date: "قريباً" },
-  { tile: "dermatology", category: "الأمراض الجلدية", title: "التعوّد على التريتينوين: بروتوكول تركيب خلال 12 أسبوعاً", excerpt: "أسلوب تدريجي لاستخدام الريتينويدات على البشرة الشرق أوسطية — ملاحظات الصيدلي في اختيار القاعدة وتخفيف الحدّة.", readTime: "قراءة 6 دقائق", date: "قريباً" },
-  { tile: "pediatric", category: "طب الأطفال", title: "نكهات فعلاً تنجح مع شرابات الأطفال", excerpt: "لماذا نكهة العلكة تتفوّق على الكرز، وكيف نتعامل مع استثناء المسبّبات دون التضحية بالطعم.", readTime: "قراءة 5 دقائق", date: "قريباً" },
-  { tile: "longevity", category: "طول العمر", title: "حقن NAD+ الوريدية: ماذا تدعمه الأدلّة وماذا لا؟", excerpt: "قراءة صيدلانية صريحة للأدبيات الحالية عن NAD+ — الجرعة، وطريقة الإعطاء، ومن يستفيد فعلاً.", readTime: "قراءة 10 دقائق", date: "قريباً" },
-  { tile: "petWellness", category: "عافية المنزل", title: "تركيب أدوية الحيوانات الأليفة في صيدلية بشرية — لماذا يهمّ للأسرة كلّها", excerpt: "كيف تتقاطع سلامة علاج قطّة مصابة بالسكري مع سلامة إنسان مضعّف المناعة في نفس البيت.", readTime: "قراءة 7 دقائق", date: "قريباً" },
-  { tile: "sterile", category: "الممارسة", title: "معيار USP <797> في مختبر التركيب، بلغة مفهومة", excerpt: "ما معنى التركيب المعقّم فعلاً، ولماذا يجب أن يحدّد الصيدلية التي يعتمد عليها طبيبك.", readTime: "قراءة 9 دقائق", date: "قريباً" },
+  {
+    tile: "hormone",
+    category: "مختبر الهرمونات",
+    title: "لماذا يستحقّ البروجستيرون الطبيعي مكاناً في حديث الهرمونات؟",
+    excerpt:
+      "قراءة خاطئة استمرّت 20 عاماً لدراسة صحة المرأة — وما الذي يفعله البروجستيرون المُركّب فعلاً لمريضات ما قبل انقطاع الطمث.",
+    readTime: "قراءة 8 دقائق",
+    date: "قريباً",
+  },
+  {
+    tile: "dermatology",
+    category: "الأمراض الجلدية",
+    title: "التعوّد على التريتينوين: بروتوكول تركيب خلال 12 أسبوعاً",
+    excerpt:
+      "أسلوب تدريجي لاستخدام الريتينويدات على البشرة الشرق أوسطية — ملاحظات الصيدلي في اختيار القاعدة وتخفيف الحدّة.",
+    readTime: "قراءة 6 دقائق",
+    date: "قريباً",
+  },
+  {
+    tile: "pediatric",
+    category: "طب الأطفال",
+    title: "نكهات فعلاً تنجح مع شرابات الأطفال",
+    excerpt:
+      "لماذا نكهة العلكة تتفوّق على الكرز، وكيف نتعامل مع استثناء المسبّبات دون التضحية بالطعم.",
+    readTime: "قراءة 5 دقائق",
+    date: "قريباً",
+  },
+  {
+    tile: "longevity",
+    category: "طول العمر",
+    title: "حقن NAD+ الوريدية: ماذا تدعمه الأدلّة وماذا لا؟",
+    excerpt:
+      "قراءة صيدلانية صريحة للأدبيات الحالية عن NAD+ — الجرعة، وطريقة الإعطاء، ومن يستفيد فعلاً.",
+    readTime: "قراءة 10 دقائق",
+    date: "قريباً",
+  },
+  {
+    tile: "petWellness",
+    category: "عافية المنزل",
+    title: "تركيب أدوية الحيوانات الأليفة في صيدلية بشرية — لماذا يهمّ للأسرة كلّها",
+    excerpt: "كيف تتقاطع سلامة علاج قطّة مصابة بالسكري مع سلامة إنسان مضعّف المناعة في نفس البيت.",
+    readTime: "قراءة 7 دقائق",
+    date: "قريباً",
+  },
+  {
+    tile: "sterile",
+    category: "الممارسة",
+    title: "معيار USP <797> في مختبر التركيب، بلغة مفهومة",
+    excerpt: "ما معنى التركيب المعقّم فعلاً، ولماذا يجب أن يحدّد الصيدلية التي يعتمد عليها طبيبك.",
+    readTime: "قراءة 9 دقائق",
+    date: "قريباً",
+  },
 ];
 
 function InsightsPage() {
@@ -53,9 +161,15 @@ function InsightsPage() {
             <p className="eyebrow">{ar ? "مقالات ونصائح" : "Insights"}</p>
             <h1 className="mt-4 font-serif text-5xl leading-[1.05] text-primary md:text-6xl">
               {ar ? (
-                <>علم، بروتوكولات، <em className="italic text-[color:var(--brand-gold)]">وملاحظات صيادلة</em></>
+                <>
+                  علم، بروتوكولات،{" "}
+                  <em className="italic text-[color:var(--brand-gold)]">وملاحظات صيادلة</em>
+                </>
               ) : (
-                <>Science, protocols, <em className="italic text-[color:var(--brand-gold)]">and pharmacist notes</em></>
+                <>
+                  Science, protocols,{" "}
+                  <em className="italic text-[color:var(--brand-gold)]">and pharmacist notes</em>
+                </>
               )}
             </h1>
             <div className="mx-auto mt-6 gold-rule" />
@@ -75,7 +189,12 @@ function InsightsPage() {
               <Reveal key={a.title} delay={(i % 3) * 0.06}>
                 <article className="card-luxe group flex h-full flex-col overflow-hidden rounded-2xl">
                   <div className="relative aspect-[16/10] overflow-hidden">
-                    <img src={tiles[a.tile]} alt={a.title} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                    <img
+                      src={tiles[a.tile]}
+                      alt={a.title}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent" />
                     <span className="absolute left-4 top-4 rounded-full bg-[color:var(--brand-gold)]/95 px-3 py-1 text-[0.62rem] font-semibold tracking-[0.24em] text-primary uppercase shadow">
                       {a.category}
@@ -86,7 +205,9 @@ function InsightsPage() {
                     <h2 className="mt-4 font-serif text-2xl leading-snug text-primary group-hover:text-[color:var(--brand-teal)]">
                       {a.title}
                     </h2>
-                    <p className="mt-4 flex-1 text-sm leading-relaxed text-muted-foreground">{a.excerpt}</p>
+                    <p className="mt-4 flex-1 text-sm leading-relaxed text-muted-foreground">
+                      {a.excerpt}
+                    </p>
                     <div className="mt-8 flex items-center justify-between border-t border-[color:var(--brand-gold)]/25 pt-5 text-xs text-muted-foreground">
                       <span className="italic">{a.date}</span>
                       <ArrowUpRight className="h-4 w-4 text-[color:var(--brand-gold)] transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
@@ -105,9 +226,14 @@ function InsightsPage() {
             <Mail className="mx-auto h-8 w-8 text-[color:var(--brand-gold)]" strokeWidth={1.4} />
             <h2 className="mt-6 font-serif text-4xl leading-tight md:text-5xl">
               {ar ? (
-                <>رسالة فصليّة من <em className="italic text-[color:var(--brand-gold)]">مختبرنا</em></>
+                <>
+                  رسالة فصليّة من <em className="italic text-[color:var(--brand-gold)]">مختبرنا</em>
+                </>
               ) : (
-                <>A quarterly letter from <em className="italic text-[color:var(--brand-gold)]">our lab</em></>
+                <>
+                  A quarterly letter from{" "}
+                  <em className="italic text-[color:var(--brand-gold)]">our lab</em>
+                </>
               )}
             </h2>
             <div className="mx-auto mt-6 gold-rule" />
@@ -117,7 +243,11 @@ function InsightsPage() {
                 : "We publish long-form pieces four times a year. Leave your email to be notified when the first issue drops."}
             </p>
             <div className="mt-10">
-              <Button asChild size="lg" className="rounded-full bg-[color:var(--brand-gold)] px-8 text-primary hover:bg-[color:var(--brand-gold)]/90">
+              <Button
+                asChild
+                size="lg"
+                className="rounded-full bg-[color:var(--brand-gold)] px-8 text-primary hover:bg-[color:var(--brand-gold)]/90"
+              >
                 <Link to="/contact">{ar ? "اشترك عبر البريد" : "Subscribe by email"}</Link>
               </Button>
             </div>

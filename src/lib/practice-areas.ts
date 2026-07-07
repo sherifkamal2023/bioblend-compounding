@@ -30,10 +30,22 @@ export const practiceAreas: PracticeArea[] = [
     intro:
       "Our pharmacists formulate bio-identical estrogen, progesterone, testosterone, DHEA, and thyroid protocols to match your physician's plan — down to the milligram, in the delivery form you tolerate best.",
     offerings: [
-      { title: "Bio-identical HRT", body: "Estradiol, progesterone, testosterone in creams, troches, capsules or pellets." },
-      { title: "Thyroid support", body: "T3 / T4 combinations, slow-release capsules, alternative fillers for sensitivities." },
-      { title: "Adrenal & DHEA", body: "Micronised DHEA, pregnenolone, cortisol-support formulations." },
-      { title: "Andropause protocols", body: "Testosterone creams and injectables with clinical follow-up." },
+      {
+        title: "Bio-identical HRT",
+        body: "Estradiol, progesterone, testosterone in creams, troches, capsules or pellets.",
+      },
+      {
+        title: "Thyroid support",
+        body: "T3 / T4 combinations, slow-release capsules, alternative fillers for sensitivities.",
+      },
+      {
+        title: "Adrenal & DHEA",
+        body: "Micronised DHEA, pregnenolone, cortisol-support formulations.",
+      },
+      {
+        title: "Andropause protocols",
+        body: "Testosterone creams and injectables with clinical follow-up.",
+      },
     ],
     process: [
       "Physician sends prescription with lab-guided target dose.",
@@ -49,10 +61,22 @@ export const practiceAreas: PracticeArea[] = [
       intro:
         "يُحضّر صيادلتنا الإستروجين والبروجستيرون والتستوستيرون و DHEA وبروتوكولات الغدة الدرقية بشكل مطابق للطبيعي، وبما يتوافق تماماً مع خطّة طبيبك — بدقّة المليغرام، وبالشكل الدوائي الأنسب لك.",
       offerings: [
-        { title: "هرمونات طبيعية مطابقة", body: "إستراديول، بروجستيرون، وتستوستيرون في كريمات، أقراص ذائبة، كبسولات أو حبيبات." },
-        { title: "دعم الغدة الدرقية", body: "خلطات T3 / T4، كبسولات بطيئة الإطلاق، ومكوّنات بديلة لأصحاب الحساسية." },
-        { title: "دعم الغدّة الكظرية و DHEA", body: "تركيبات DHEA دقيقة، برجنينولون، ودعم لهرمون الكورتيزول." },
-        { title: "بروتوكولات سنّ اليأس عند الرجال", body: "كريمات وحقن تستوستيرون مع متابعة سريرية." },
+        {
+          title: "هرمونات طبيعية مطابقة",
+          body: "إستراديول، بروجستيرون، وتستوستيرون في كريمات، أقراص ذائبة، كبسولات أو حبيبات.",
+        },
+        {
+          title: "دعم الغدة الدرقية",
+          body: "خلطات T3 / T4، كبسولات بطيئة الإطلاق، ومكوّنات بديلة لأصحاب الحساسية.",
+        },
+        {
+          title: "دعم الغدّة الكظرية و DHEA",
+          body: "تركيبات DHEA دقيقة، برجنينولون، ودعم لهرمون الكورتيزول.",
+        },
+        {
+          title: "بروتوكولات سنّ اليأس عند الرجال",
+          body: "كريمات وحقن تستوستيرون مع متابعة سريرية.",
+        },
       ],
       process: [
         "يُرسل الطبيب الوصفة بالجرعة المستهدفة بناءً على التحاليل.",
@@ -73,8 +97,14 @@ export const practiceAreas: PracticeArea[] = [
     offerings: [
       { title: "Custom retinoid serums", body: "Tretinoin from 0.01% to 0.1% in tolerated bases." },
       { title: "Pigmentation protocols", body: "Tranexamic, kojic, arbutin, hydroquinone blends." },
-      { title: "Anti-aging peptides", body: "Copper peptides, growth factors, ceramide-rich bases." },
-      { title: "Medical peels", body: "TCA, glycolic, salicylic — physician-prescribed strengths." },
+      {
+        title: "Anti-aging peptides",
+        body: "Copper peptides, growth factors, ceramide-rich bases.",
+      },
+      {
+        title: "Medical peels",
+        body: "TCA, glycolic, salicylic — physician-prescribed strengths.",
+      },
     ],
     process: [
       "Consultation with your dermatologist establishes the goal.",
@@ -90,9 +120,15 @@ export const practiceAreas: PracticeArea[] = [
       intro:
         "نُحضّر الريتينويدات، وحمض الترانيكساميك، والهيدروكينون، وحمض الأزيليك، والكوجيك، والأربوتين، وخلطات الببتيدات بالتراكيز التي يحدّدها طبيب الجلدية — وبقاعدة تتقبّلها بشرتك.",
       offerings: [
-        { title: "سيرومات ريتينول مخصّصة", body: "تريتينوين بتركيز من 0.01٪ إلى 0.1٪ في قواعد لطيفة على البشرة." },
+        {
+          title: "سيرومات ريتينول مخصّصة",
+          body: "تريتينوين بتركيز من 0.01٪ إلى 0.1٪ في قواعد لطيفة على البشرة.",
+        },
         { title: "بروتوكولات التصبّغ", body: "خلطات ترانيكساميك، كوجيك، أربوتين، وهيدروكينون." },
-        { title: "ببتيدات مكافحة الشيخوخة", body: "ببتيدات النحاس، عوامل النمو، وقواعد غنيّة بالسيراميد." },
+        {
+          title: "ببتيدات مكافحة الشيخوخة",
+          body: "ببتيدات النحاس، عوامل النمو، وقواعد غنيّة بالسيراميد.",
+        },
         { title: "تقشيرات طبية", body: "TCA، غليكوليك، ساليسيليك — بتراكيز يصفها الطبيب." },
       ],
       process: [
@@ -112,9 +148,15 @@ export const practiceAreas: PracticeArea[] = [
     intro:
       "When a manufactured drug is only available in adult tablets, we transform it into a precisely-dosed pediatric suspension — free of alcohol, sugar, dyes, or common allergens.",
     offerings: [
-      { title: "Flavored suspensions", body: "Bubblegum, grape, strawberry, mango — child-tested." },
+      {
+        title: "Flavored suspensions",
+        body: "Bubblegum, grape, strawberry, mango — child-tested.",
+      },
       { title: "Micro-dosing", body: "Milligram-accurate dosing for neonates and infants." },
-      { title: "Allergen-free bases", body: "Gluten-, lactose-, dye-, and preservative-free options." },
+      {
+        title: "Allergen-free bases",
+        body: "Gluten-, lactose-, dye-, and preservative-free options.",
+      },
       { title: "Chewables & lozenges", body: "For children who refuse liquids." },
     ],
     process: [
@@ -133,7 +175,10 @@ export const practiceAreas: PracticeArea[] = [
       offerings: [
         { title: "شرابات بنكهات", body: "علكة، عنب، فراولة، مانجو — مُجرّبة على الأطفال." },
         { title: "جرعات دقيقة جداً", body: "دقّة بالمليغرام لحديثي الولادة والرضّع." },
-        { title: "قواعد خالية من المسبّبات", body: "خيارات خالية من الغلوتين واللاكتوز والملوّنات والمواد الحافظة." },
+        {
+          title: "قواعد خالية من المسبّبات",
+          body: "خيارات خالية من الغلوتين واللاكتوز والملوّنات والمواد الحافظة.",
+        },
         { title: "أقراص مضغ ومصّاصات", body: "للأطفال الذين يرفضون السوائل." },
       ],
       process: [
@@ -153,10 +198,19 @@ export const practiceAreas: PracticeArea[] = [
     intro:
       "We're a human compounding pharmacy first. But personal wellness doesn't stop at the humans in the household. When your pet needs a medication reformulated for palatability, safety, or precise dosing, we prepare it with the same medical rigor — protecting your quality of life and preventing household transmission risk.",
     offerings: [
-      { title: "Palatable reformulations", body: "Chicken, tuna, beef, or malt bases pets accept willingly." },
-      { title: "Transdermal delivery", body: "For cats who refuse oral medication — applied to the ear." },
+      {
+        title: "Palatable reformulations",
+        body: "Chicken, tuna, beef, or malt bases pets accept willingly.",
+      },
+      {
+        title: "Transdermal delivery",
+        body: "For cats who refuse oral medication — applied to the ear.",
+      },
       { title: "Precision dosing", body: "Micro-doses for exotics and small breeds." },
-      { title: "Zoonotic-safe handling", body: "Formulations that protect immunocompromised household members." },
+      {
+        title: "Zoonotic-safe handling",
+        body: "Formulations that protect immunocompromised household members.",
+      },
     ],
     process: [
       "Your veterinarian prescribes — we consult on the safest form.",
@@ -173,10 +227,16 @@ export const practiceAreas: PracticeArea[] = [
       intro:
         "نحن أساساً صيدلية تركيب للبشر. لكن العافية الشخصية لا تتوقّف عند أفراد الأسرة من البشر. عندما يحتاج حيوانك الأليف إلى إعادة تركيب دوائه لضمان قبوله للطعم، أو للسلامة، أو لدقّة الجرعة، نُحضّره بنفس الصرامة الطبية — لحماية جودة حياتك ومنع انتقال الأمراض داخل البيت.",
       offerings: [
-        { title: "إعادة تركيب مقبولة الطعم", body: "قواعد بنكهات الدجاج، التونا، اللحم، أو الشعير يتقبّلها الحيوان طوعاً." },
+        {
+          title: "إعادة تركيب مقبولة الطعم",
+          body: "قواعد بنكهات الدجاج، التونا، اللحم، أو الشعير يتقبّلها الحيوان طوعاً.",
+        },
         { title: "توصيل عبر الجلد", body: "للقطط التي ترفض الدواء الفموي — يُدهن خلف الأذن." },
         { title: "جرعات دقيقة", body: "جرعات صغيرة جداً للحيوانات النادرة والسلالات الصغيرة." },
-        { title: "تحضير آمن ضد الأمراض المشتركة", body: "تركيبات تحمي أفراد الأسرة أصحاب المناعة الضعيفة." },
+        {
+          title: "تحضير آمن ضد الأمراض المشتركة",
+          body: "تركيبات تحمي أفراد الأسرة أصحاب المناعة الضعيفة.",
+        },
       ],
       process: [
         "يصف الطبيب البيطري العلاج — ونستشيره في أنسب شكل دوائي.",
@@ -215,8 +275,14 @@ export const practiceAreas: PracticeArea[] = [
       intro:
         "من جلسات NAD+ والغلوتاثيون الوريدية، إلى المكمّلات الفموية المخصّصة وببتيدات طول العمر، يُحضّر مختبرنا المعقّم وفق معايير USP <797> للحقن و USP <795> للتركيبات الفموية.",
       offerings: [
-        { title: "جلسات NAD+ والغلوتاثيون", body: "جلسات وريدية لإصلاح الخلايا وتخليص الجسم من السموم." },
-        { title: "قطرات فيتامينات ومعادن", body: "خلطات Myers، تعزيز المناعة، ترطيب، وتعافٍ رياضي." },
+        {
+          title: "جلسات NAD+ والغلوتاثيون",
+          body: "جلسات وريدية لإصلاح الخلايا وتخليص الجسم من السموم.",
+        },
+        {
+          title: "قطرات فيتامينات ومعادن",
+          body: "خلطات Myers، تعزيز المناعة، ترطيب، وتعافٍ رياضي.",
+        },
         { title: "ببتيدات طول العمر", body: "بروتوكولات مكافحة الشيخوخة بوصفة طبية." },
         { title: "مكمّلات فموية", body: "خلطات فيتامينات وأعشاب مكيّفة بإشراف طبي." },
       ],
