@@ -15,8 +15,8 @@ import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { LaylaHost } from "../components/LaylaHost";
 import { Toaster } from "../components/ui/sonner";
-import { initI18n, applyLangDir, setLanguageSync } from "../lib/i18n";
-import { getLanguageCookie } from "../lib/lang.functions";
+import { initI18n, applyLangDir, setLanguageSync, LANG_STORAGE_KEY } from "../lib/i18n";
+
 
 
 
