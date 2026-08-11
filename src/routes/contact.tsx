@@ -83,6 +83,8 @@ function ContactPage() {
   const [submitting, setSubmitting] = useState(false);
   const [inquiry, setInquiry] = useState<InquiryKind>("personal");
   const copy = ar ? copyAr : copyEn;
+  const submitInquiry = useServerFn(submitContactInquiry);
+
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
