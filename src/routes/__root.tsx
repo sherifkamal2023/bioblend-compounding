@@ -15,7 +15,9 @@ import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { LaylaHost } from "../components/LaylaHost";
 import { Toaster } from "../components/ui/sonner";
-import { initI18n, applyLangDir } from "../lib/i18n";
+import { initI18n, applyLangDir, setLanguageSync, LANG_STORAGE_KEY } from "../lib/i18n";
+
+
 
 
 function NotFoundComponent() {
@@ -144,10 +146,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
   }),
   shellComponent: RootShell,
+
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
   errorComponent: ErrorComponent,
 });
+
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
@@ -166,15 +170,30 @@ function RootShell({ children }: { children: ReactNode }) {
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
+  // Pages are prerendered in English, so the saved language is applied only
+  // after hydration to keep the first client render identical to the HTML.
   useEffect(() => {
     const i = initI18n();
-    applyLangDir(i.language);
     const handler = (lng: string) => applyLangDir(lng);
     i.on("languageChanged", handler);
+    let saved: string | null = null;
+    try {
+      saved = window.localStorage.getItem(LANG_STORAGE_KEY);
+    } catch {
+      saved = null;
+    }
+    if (!saved) {
+      saved = document.cookie.match(/(?:^|;\s*)bioblend_lang=([^;]+)/)?.[1] ?? null;
+    }
+    setLanguageSync(saved ?? "en");
+    applyLangDir(saved ?? "en");
     return () => {
       i.off("languageChanged", handler);
     };
   }, []);
+
+
+
 
   return (
     <QueryClientProvider client={queryClient}>
