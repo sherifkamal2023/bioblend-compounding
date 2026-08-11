@@ -14,6 +14,42 @@ export type Database = {
   }
   public: {
     Tables: {
+      contact_submissions: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          inquiry_type: string
+          message: string
+          name: string
+          organization: string | null
+          phone: string | null
+          subject: string | null
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          inquiry_type?: string
+          message: string
+          name: string
+          organization?: string | null
+          phone?: string | null
+          subject?: string | null
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          inquiry_type?: string
+          message?: string
+          name?: string
+          organization?: string | null
+          phone?: string | null
+          subject?: string | null
+        }
+        Relationships: []
+      }
       patient_allowlist: {
         Row: {
           added_by: string | null

@@ -1,5 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useServerFn } from "@tanstack/react-start";
 import { useState } from "react";
+import { submitContactInquiry } from "@/lib/contact.functions";
+
 import { Phone, MapPin, Mail, Globe, Clock, MessageCircle } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
@@ -80,16 +83,40 @@ function ContactPage() {
   const [submitting, setSubmitting] = useState(false);
   const [inquiry, setInquiry] = useState<InquiryKind>("personal");
   const copy = ar ? copyAr : copyEn;
+  const submitInquiry = useServerFn(submitContactInquiry);
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const form = e.currentTarget;
+    const fd = new FormData(form);
     setSubmitting(true);
-    setTimeout(() => {
+    try {
+      await submitInquiry({
+        data: {
+          inquiry_type: inquiry,
+          name: String(fd.get("name") ?? ""),
+          email: String(fd.get("email") ?? ""),
+          phone: String(fd.get("phone") ?? ""),
+          organization: String(fd.get("organization") ?? ""),
+          subject: String(fd.get("subject") ?? ""),
+          message: String(fd.get("message") ?? ""),
+        },
+      });
       toast.success(ar ? "شكراً لك — سنتواصل معك خلال يوم عمل." : "Thank you — we'll be in touch within one business day.");
-      (e.target as HTMLFormElement).reset();
+      form.reset();
+    } catch (err) {
+      console.error(err);
+      toast.error(
+        ar
+          ? "تعذّر إرسال رسالتك. يُرجى المحاولة مرة أخرى أو الاتصال بنا مباشرة."
+          : "We couldn't send your message. Please try again or call us directly.",
+      );
+    } finally {
       setSubmitting(false);
-    }, 600);
+    }
   };
+
 
   const tabLabel = (k: InquiryKind) => {
     if (ar) return k === "personal" ? "فرد" : k === "corporate" ? "شركة" : "طبيب / عيادة";
