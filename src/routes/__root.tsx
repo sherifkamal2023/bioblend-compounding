@@ -169,22 +169,29 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
-  const { lang } = Route.useLoaderData();
 
-  // Set the language during render (before children render) on both server
-  // and client so SSR output and hydration agree.
-  initI18n(lang);
-  setLanguageSync(lang);
-
+  // Pages are prerendered in English, so the saved language is applied only
+  // after hydration to keep the first client render identical to the HTML.
   useEffect(() => {
-    applyLangDir(lang);
-    const handler = (lng: string) => applyLangDir(lng);
     const i = initI18n();
+    const handler = (lng: string) => applyLangDir(lng);
     i.on("languageChanged", handler);
+    let saved: string | null = null;
+    try {
+      saved = window.localStorage.getItem(LANG_STORAGE_KEY);
+    } catch {
+      saved = null;
+    }
+    if (!saved) {
+      saved = document.cookie.match(/(?:^|;\s*)bioblend_lang=([^;]+)/)?.[1] ?? null;
+    }
+    setLanguageSync(saved ?? "en");
+    applyLangDir(saved ?? "en");
     return () => {
       i.off("languageChanged", handler);
     };
-  }, [lang]);
+  }, []);
+
 
 
 
