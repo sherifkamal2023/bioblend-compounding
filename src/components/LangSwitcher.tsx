@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Globe, ChevronDown } from "lucide-react";
-import { SUPPORTED_LANGS, applyLangDir } from "@/lib/i18n";
+import { SUPPORTED_LANGS, applyLangDir, persistLanguage } from "@/lib/i18n";
 
 export function LangSwitcher({ tone = "light" }: { tone?: "light" | "dark" }) {
   const { i18n } = useTranslation();
@@ -37,6 +37,7 @@ export function LangSwitcher({ tone = "light" }: { tone?: "light" | "dark" }) {
                 key={l.code}
                 onClick={() => {
                   i18n.changeLanguage(l.code);
+                  persistLanguage(l.code);
                   applyLangDir(l.code);
                   setOpen(false);
                 }}

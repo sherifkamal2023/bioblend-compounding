@@ -15,7 +15,9 @@ import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { LaylaHost } from "../components/LaylaHost";
 import { Toaster } from "../components/ui/sonner";
-import { initI18n, applyLangDir } from "../lib/i18n";
+import { initI18n, applyLangDir, setLanguageSync } from "../lib/i18n";
+import { getLanguageCookie } from "../lib/lang.functions";
+
 
 
 function NotFoundComponent() {
@@ -143,11 +145,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
     ],
   }),
+  loader: async () => await getLanguageCookie(),
   shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
   errorComponent: ErrorComponent,
 });
+
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
@@ -165,16 +169,24 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const { lang } = Route.useLoaderData();
+
+  // Set the language during render (before children render) on both server
+  // and client so SSR output and hydration agree.
+  initI18n(lang);
+  setLanguageSync(lang);
 
   useEffect(() => {
-    const i = initI18n();
-    applyLangDir(i.language);
+    applyLangDir(lang);
     const handler = (lng: string) => applyLangDir(lng);
+    const i = initI18n();
     i.on("languageChanged", handler);
     return () => {
       i.off("languageChanged", handler);
     };
-  }, []);
+  }, [lang]);
+
+
 
   return (
     <QueryClientProvider client={queryClient}>
