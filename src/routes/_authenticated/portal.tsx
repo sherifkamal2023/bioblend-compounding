@@ -77,11 +77,15 @@ function PortalPage() {
           />
         </div>
 
-        <div className="mt-10 flex justify-center">
+        <div className="mt-10 flex flex-col items-center gap-3">
+          <Button asChild className="rounded-full">
+            <Link to="/clinical">Clinical pharmacist workspace</Link>
+          </Button>
           <Button variant="outline" onClick={signOut} className="rounded-full">
             Sign out
           </Button>
         </div>
+
       </div>
     </div>
   );
