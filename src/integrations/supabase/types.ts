@@ -14,6 +14,74 @@ export type Database = {
   }
   public: {
     Tables: {
+      clinical_case_messages: {
+        Row: {
+          case_id: string
+          content: string
+          created_at: string
+          id: string
+          role: string
+        }
+        Insert: {
+          case_id: string
+          content: string
+          created_at?: string
+          id?: string
+          role: string
+        }
+        Update: {
+          case_id?: string
+          content?: string
+          created_at?: string
+          id?: string
+          role?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "clinical_case_messages_case_id_fkey"
+            columns: ["case_id"]
+            isOneToOne: false
+            referencedRelation: "clinical_cases"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      clinical_cases: {
+        Row: {
+          created_at: string
+          created_by: string
+          follow_up_at: string | null
+          id: string
+          mode: string
+          patient_context: Json
+          status: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          created_by: string
+          follow_up_at?: string | null
+          id?: string
+          mode?: string
+          patient_context?: Json
+          status?: string
+          title?: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          created_by?: string
+          follow_up_at?: string | null
+          id?: string
+          mode?: string
+          patient_context?: Json
+          status?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       contact_submissions: {
         Row: {
           created_at: string
