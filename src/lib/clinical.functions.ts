@@ -4,6 +4,23 @@ import { z } from "zod";
 
 const CLINICAL_ROLES = ["pharmacist", "admin", "staff"] as const;
 
+/** Which clinical roles the user holds, via the security-definer has_role function. */
+async function clinicalRoles(
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  supabase: any,
+  userId: string,
+) {
+
+  const checks = await Promise.all(
+    CLINICAL_ROLES.map(async (role) => {
+      const { data, error } = await supabase.rpc("has_role", { _user_id: userId, _role: role });
+      if (error) console.error("has_role check failed", role, error);
+      return data === true ? role : null;
+    }),
+  );
+  return checks.filter((r): r is (typeof CLINICAL_ROLES)[number] => r !== null);
+}
+
 const AskInput = z.object({
   mode: z.enum([
     "mentoring",
@@ -25,15 +42,8 @@ const AskInput = z.object({
 export const getClinicalAccess = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .handler(async ({ context }) => {
-    const { data } = await context.supabase
-      .from("user_roles")
-      .select("role")
-      .eq("user_id", context.userId);
-    const roles = (data ?? []).map((r) => r.role as string);
-    return {
-      allowed: roles.some((r) => (CLINICAL_ROLES as readonly string[]).includes(r)),
-      roles,
-    };
+    const roles = await clinicalRoles(context.supabase, context.userId);
+    return { allowed: roles.length > 0, roles };
   });
 
 /** Ask the Clinical Pharmacist AI. Role-gated, server-side prompt. */
@@ -41,14 +51,8 @@ export const askClinicalAi = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .inputValidator((input: unknown) => AskInput.parse(input))
   .handler(async ({ data, context }) => {
-    const { data: roleRows } = await context.supabase
-      .from("user_roles")
-      .select("role")
-      .eq("user_id", context.userId);
-    const allowed = (roleRows ?? []).some((r) =>
-      (CLINICAL_ROLES as readonly string[]).includes(r.role as string),
-    );
-    if (!allowed) throw new Error("Clinical workspace access is restricted to BioBlend pharmacists.");
+    const roles = await clinicalRoles(context.supabase, context.userId);
+    if (roles.length === 0) throw new Error("Clinical workspace access is restricted to BioBlend pharmacists.");
 
     const key = process.env["LOVABLE_API_KEY"];
     if (!key) throw new Error("AI is not configured for this project.");
