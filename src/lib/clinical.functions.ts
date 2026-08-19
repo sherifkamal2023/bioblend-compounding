@@ -43,7 +43,6 @@ export const getClinicalAccess = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .handler(async ({ context }) => {
     const roles = await clinicalRoles(context.supabase, context.userId);
-    console.log("[clinical] access check", context.userId, roles);
     return { allowed: roles.length > 0, roles };
   });
 
